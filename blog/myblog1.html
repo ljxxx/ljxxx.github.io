@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <title>Nice responsive template for blogger</title>
+    <!-- BOOTSTRAP CORE STYLE -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICON STYLE -->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+    <script >hljs.initHighlightingOnLoad();</script>
+    <style type="text/css">
+        p{
+            text-indent: 2em; /*em是相对单位，2em即现在一个字大小的两倍*/
+        }
+    </style>
+
+</head>
+<body>
+<div id="header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 logo-div">
+                    <div class="logo-inner text-center">
+                        <div class="logo-name">
+                            <a href="index.html">
+                                <img src="../assets/img/me.jpg" class="img-circle" />
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-8 header-text-top " id="about">
+
+
+
+                    <h1>刘佳兴的个人博客</h1>
+                    记录我的学习历程。。。<br />
+                    <h2><strong>Who I am ? </strong></h2>
+                    <i>I am Jiaxing Liu </i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END HEADER SECTION-->
+<div class="info-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                 <strong>联系我</strong>jiaixnglaw@163.com
+            </div>
+            <div class="col-md-2">
+                <div class="social-link">
+                    <a href="#" class="btn btn-default btn-xs"><i class="fa fa-facebook fa-2x"></i></a>
+                    <a href="#" class="btn btn-default btn-xs"><i class="fa fa-linkedin fa-2x"></i></a>
+                    <a href="#" class="btn btn-default btn-xs"><i class="fa fa-google-plus fa-2x"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--END INFO SECTION-->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8 ">
+            <div class="blog-post">
+                <!--设计模式学习-->
+
+                <h4>单例模式</h4> 
+                <p>这一模式的目的是使得类的一个对象成为系统中的唯一实例。  要实现这一点，可以从客户端对其进行实例化开始。 
+                    因此需要用一种只允许生成对象类的唯一实例的机制，“阻止”所有想要生成对象的访问。使用工厂方法来限制实例化过程。 
+                    这个方法应该是静态方法（类方法），因为让类的实例去生成另一个唯一实例毫无意义。 <br/>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    单例模式的要点有三个；<br/> 
+                    一是某个类只能有一个实例；<br/> 
+                    二是它必须自行创建这个实例；<br/> 
+                    三是它必须自行向整个系统提供这个实例<br/> 
+                </p> 
+                <pre> 
+                    模式1:懒汉式 
+                    <code> 
+                        public class SingletonClass{ 
+                            private static volatile SingletonClass instance=null; 
+                                public static SingletonClass getInstance(){ 
+                                    synchronized(SingletonClass.class){ 
+                                        if(instance==null){ 
+                                         instance=new SingletonClass(); 
+                                           } 
+                                        } 
+                                     return instance; 
+                                } 
+                            private SingletonClass(){} 
+                        } 
+                    </code> 
+                    模式2:饿汉式
+                    <code>
+                        public class Singleton{
+                        //在自己内部定义自己的一个实例，只供内部调用
+                         private static final Singleton instance = new Singleton();
+                             private Singleton(){
+                                 //do something
+                             }
+                        //这里提供了一个供外部访问本class的静态方法，可以直接访问
+                            public static Singleton getInstance(){
+                             return instance;
+                             }
+                        }
+                    </code>
+                    模式3:双重锁式
+                    <code>
+                        public class Singleton{
+                            private static volatile Singleton instance=null;
+                                private Singleton(){
+                                 //do something
+                                 }
+                            public static  Singleton getInstance(){
+                                 if(instance==null){
+                                    synchronized(SingletonClass.class){
+                                        if(instance==null){
+                                            instance=new Singleton();
+                                         }
+                                     }
+                                    }
+                                return instance;
+                             }
+                        }
+
+                    </code>
+                </pre>
+
+
+            </div>
+
+            <br />
+
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3" style="padding-top: 30px;">
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>CATEGORIES</strong></li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
+            <div class="row">
+                <h3>Advertising</h3>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<!--END HOME PAGE SECTION-->
+<div class="footer-sec" style="margin-top: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 foo-inner">
+                &copy;  ljxxx.github.io
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END FOOTER SECTION -->
+<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME -->
+<!-- CORE JQUERY -->
+<script src="../assets/js/jquery-1.11.1.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="../assets/js/bootstrap.js"></script>
+
+</body>
+</html>
