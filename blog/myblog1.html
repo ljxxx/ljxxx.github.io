@@ -33,7 +33,7 @@
                 <div class="col-md-4 logo-div">
                     <div class="logo-inner text-center">
                         <div class="logo-name">
-                            <a href="index.html">
+                            <a href="/index.html">
                                 <img src="/assets/img/me.jpg" class="img-circle" />
                             </a>
                         </div>
@@ -58,7 +58,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10">
-                <a href="index.html">回到首页</a>
+                <a href="/index.html">回到首页</a>
                  <strong>联系我</strong>jiaixnglaw@163.com
             </div>
             <div class="col-md-2">
@@ -171,23 +171,22 @@
                     (Polymorphic Factory Pattern)。工厂方法模式是一种类创建型模式。</p>
                 <img src="/assets/img/blog102.jpeg" class="img-loc">
                 <pre>
-                    抽象工厂角色
+
                     <code>
+                        // 抽象工厂角色
                         interface Factory {
                             public Product factoryMethod();
                         }
-                    </code>
-                    具体产品对象的创建由其子类负责，客户端针对抽象工厂编程，<br/>可在运行时再指定具体工厂类，<br/>
-                    具体工厂类实现了工厂方法，不同的具体工厂可以创建不同的具体产品
-                    <code>
+
+                        /*具体产品对象的创建由其子类负责，客户端针对抽象工厂编程，
+                        *可在运行时再指定具体工厂类，
+                        *具体工厂类实现了工厂方法，不同的具体工厂可以创建不同的具体产品*/
                         class ConcreteFactory implements Factory {
                             public Product factoryMethod() {
                                 return new ConcreteProduct();
                              }
                         }
-                    </code>
-                    在客户端代码中，只需关心工厂类即可，不同的具体工厂可以创建不同的产品，<br/>典型的客户端类代码片段如下所示：
-                    <code>
+                        //在客户端代码中，只需关心工厂类即可，不同的具体工厂可以创建不同的产品，典型的客户端类代码片段如下所示：
                         Factory factory;
                         factory = new ConcreteFactory(); //可通过配置文件实现
                         Product product;
@@ -216,23 +215,23 @@
                 </p>
                 <img src="/assets/img/blog104.jpeg" class="img-loc">
                 <pre>
-                    在使用策略模式时，我们需要将算法从Context类中提取出来，<br/>首先应该创建一个抽象策略类，其典型代码如下所示：
                     <code>
+                        // 在使用策略模式时，我们需要将算法从Context类中提取出来，首先应该创建一个抽象策略类，其典型代码如下所示：
                         abstract class AbstractStrategy {
                          public abstract void algorithm(); //声明抽象算法
                         }
-                    </code>
-                    然后再将封装每一种具体算法的类作为该抽象策略类的子类，如下代码所示：
-                    <code>
+
+                        //
+                        //然后再将封装每一种具体算法的类作为该抽象策略类的子类，如下代码所示：
                         class ConcreteStrategyA extends AbstractStrategy {
                         //算法的具体实现
                           public void algorithm() {
                             //算法A
                           }
                         }
-                    </code>
-                    其他具体策略类与之类似，对于Context类而言，<br/>在它与抽象策略类之间建立一个关联关系，其典型代码如下所示：
-                    <code>
+
+
+                        //其他具体策略类与之类似，对于Context类而言，在它与抽象策略类之间建立一个关联关系，其典型代码如下所示：
                         class Context {
                          private AbstractStrategy strategy; //维持一个对抽象策略类的引用
                              public void setStrategy(AbstractStrategy strategy) {
@@ -243,9 +242,9 @@
                               strategy.algorithm();
                             }
                         }
-                    </code>
-                    在Context类中定义一个AbstractStrategy类型的对象strategy，<br/>通过注入的方式在客户端传入一个具体策略对象，客户端代码片段如下所示：
-                    <code>
+
+                        //在Context类中定义一个AbstractStrategy类型的对象strategy，
+                        //通过注入的方式在客户端传入一个具体策略对象，客户端代码片段如下所示：
                         Context context = new Context();
                         AbstractStrategy strategy;
                         strategy = new ConcreteStrategyA(); //可在运行时指定类型
@@ -273,15 +272,15 @@
                 </p>
                 <img src="/assets/img/blog105.jpeg" class="img-loc">
                 <pre>
-                    典型的抽象主题类代码如下：
+
                     <code>
+                        //典型的抽象主题类代码如下：
                         abstract class Subject
                          {
                              public abstract void Request();
                          }
-                    </code>
-                    真实主题类继承了抽象主题类，提供了业务方法的具体实现，其典型代码如下：
-                    <code>
+
+                        // 真实主题类继承了抽象主题类，提供了业务方法的具体实现，其典型代码如下：
                         class RealSubject : Subject
                          {
                              public override void Request()
@@ -289,10 +288,11 @@
                               //业务方法具体实现代码
                               }
                         }
-                    </code>
-                    代理类也是抽象主题类的子类，它维持一个对真实主题对象的引用，<br/>调用在真实主题中实现的业务方法，<br/>
-                    在调用时可以在原有业务方法的基础上附加一些新的方法来对功能进行扩充或约束，<br/>最简单的代理类实现代码如下：
-                    <code>
+
+                        /*代理类也是抽象主题类的子类，它维持一个对真实主题对象的引用，
+                        *调用在真实主题中实现的业务方法，在调用时可以在原有业务方法的基础上
+                        *附加一些新的方法来对功能进行扩充或约束，最简单的代理类实现代码如下：*/
+
                         class Proxy : Subject{
                            private RealSubject realSubject = new RealSubject(); //维持一个对真实主题对象的引用
                            public void PreRequest()
@@ -351,9 +351,8 @@
                              return prototype;
                             }
                         }
-                    </code>
-                    在客户端创建原型对象和克隆对象也很简单，如下代码所示：
-                    <code>
+
+                        //在客户端创建原型对象和克隆对象也很简单，如下代码所示：
                         Prototype obj1 = new ConcretePrototype();
                         Prototype obj2 = obj1.clone();
                     </code>
