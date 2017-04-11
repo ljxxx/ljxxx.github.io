@@ -8,7 +8,7 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
-    <title>Nice responsive template for blogger</title>
+    <title>刘佳兴的个人网站</title>
     <!-- BOOTSTRAP CORE STYLE -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICON STYLE -->
@@ -47,8 +47,6 @@
 
                     <h1>刘佳兴的个人博客</h1>
                     记录我的学习历程。。。<br />
-                    <h2><strong>Who I am ? </strong></h2>
-                    <i>I am Jiaxing Liu </i>
 
                 </div>
             </div>
@@ -60,6 +58,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10">
+                <a href="index.html">回到首页</a>
                  <strong>联系我</strong>jiaixnglaw@163.com
             </div>
             <div class="col-md-2">
@@ -84,38 +83,36 @@
                 <!--设计模式学习20170410-->
                 <h4>设计模式的六大原则</h4>
                 <p>
-                    1、开闭原则（Open Close Principle） <br/>
+                    <h4>1、开闭原则（Open Close Principle)</h4>
 
-                    开闭原则就是说对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。
-                    所以一句话概括就是：为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类，后面的具体设计中我们会提到这点。 <br/>
+                    开闭原则就是说对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。<br/>
+                    所以一句话概括就是：为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类，后面的具体设计中我们会提到这点。
 
-                    2、里氏代换原则（Liskov Substitution Principle） <br/>
+                    <h4>2、里氏代换原则（Liskov Substitution Principle） </h4>
 
                     里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。
-                    里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。
+                    里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 <br/>
                     LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。
-                    里氏代换原则是对“开-闭”原则的补充。实现“开-闭”原则的关键步骤就是抽象化。
-                    而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。
-                    —— From Baidu 百科 <br/>
+                    里氏代换原则是对“开-闭”原则的补充。实现“开-闭”原则的关键步骤就是抽象化。 <br/>
+                    而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。—— From Baidu 百科 
 
-                    3、依赖倒转原则（Dependence Inversion Principle） <br/>
+                    <h4>3、依赖倒转原则（Dependence Inversion Principle）</h4>
 
-                    这个是开闭原则的基础，具体内容：真对接口编程，依赖于抽象而不依赖于具体。 <br/>
+                    这个是开闭原则的基础，具体内容：真对接口编程，依赖于抽象而不依赖于具体。
 
-                    4、接口隔离原则（Interface Segregation Principle） <br/>
+                    <h4>4、接口隔离原则（Interface Segregation Principle） </h4>
 
                     这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。
-                    还是一个降低类之间的耦合度的意思，从这儿我们看出，其实设计模式就是一个软件的设计思想，
-                    从大型软件架构出发，为了升级和维护方便。
-                    所以上文中多次出现：降低依赖，降低耦合。 <br/>
+                    还是一个降低类之间的耦合度的意思，从这儿我们看出，其实设计模式就是一个软件的设计思想，从大型软件架构出发，为了升级和维护方便。
+                    所以上文中多次出现：降低依赖，降低耦合。
 
-                    5、迪米特法则（最少知道原则）（Demeter Principle） <br/>
+                    <h4>5、迪米特法则（最少知道原则）（Demeter Principle）</h4> 
 
-                    为什么叫最少知道原则，就是说：一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。 <br/>
+                    为什么叫最少知道原则，就是说：一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。 
 
-                    6、合成复用原则（Composite Reuse Principle） <br/>
+                    <h4>6、合成复用原则（Composite Reuse Principle）</h4>
 
-                    原则是尽量使用合成/聚合的方式，而不是使用继承。 <br/>
+                    原则是尽量使用合成/聚合的方式，而不是使用继承。 
                 </p>
                 <h4>简单工厂模式</h4>
                 <p>简单工厂模式(Simple Factory Pattern)：定义一个工厂类，它可以根据参数的不同返回不同类的
@@ -180,7 +177,8 @@
                             public Product factoryMethod();
                         }
                     </code>
-                    具体产品对象的创建由其子类负责，客户端针对抽象工厂编程，可在运行时再指定具体工厂类，具体工厂类实现了工厂方法，不同的具体工厂可以创建不同的具体产品
+                    具体产品对象的创建由其子类负责，客户端针对抽象工厂编程，<br/>可在运行时再指定具体工厂类，<br/>
+                    具体工厂类实现了工厂方法，不同的具体工厂可以创建不同的具体产品
                     <code>
                         class ConcreteFactory implements Factory {
                             public Product factoryMethod() {
@@ -188,7 +186,7 @@
                              }
                         }
                     </code>
-                    在客户端代码中，只需关心工厂类即可，不同的具体工厂可以创建不同的产品，典型的客户端类代码片段如下所示：
+                    在客户端代码中，只需关心工厂类即可，不同的具体工厂可以创建不同的产品，<br/>典型的客户端类代码片段如下所示：
                     <code>
                         Factory factory;
                         factory = new ConcreteFactory(); //可通过配置文件实现
@@ -197,7 +195,8 @@
                     </code>
                 </pre>
                 <h4>策略模式</h4>
-                <p>策略模式的主要目的是将算法的定义与使用分开，也就是将算法的行为和环境分开，将算法的定义放在专门的策略类中，每一个策略类封装了一种实现算法，使用算法的环境类针对抽
+                <p>策略模式的主要目的是将算法的定义与使用分开，也就是将算法的行为和环境分开，
+                    将算法的定义放在专门的策略类中，每一个策略类封装了一种实现算法，使用算法的环境类针对抽
                     象策略类进行编程，符合“依赖倒转原则”。<br/>
                     在出现新的算法时，只需要增加一个新的实现了抽象策略类的具体策略类即可。<br/>
                     策略模式定义如下： 策略模式(Strategy Pattern)：定义一系列算法类，将每一个算法封装起来，并让它们可以相互替换，策略模式让算法独立于使用它的客
@@ -217,7 +216,7 @@
                 </p>
                 <img src="/assets/img/blog104.jpeg" class="img-loc">
                 <pre>
-                    在使用策略模式时，我们需要将算法从Context类中提取出来，首先应该创建一个抽象策略类，其典型代码如下所示：
+                    在使用策略模式时，我们需要将算法从Context类中提取出来，<br/>首先应该创建一个抽象策略类，其典型代码如下所示：
                     <code>
                         abstract class AbstractStrategy {
                          public abstract void algorithm(); //声明抽象算法
@@ -232,7 +231,7 @@
                           }
                         }
                     </code>
-                    其他具体策略类与之类似，对于Context类而言，在它与抽象策略类之间建立一个关联关系，其典型代码如下所示：
+                    其他具体策略类与之类似，对于Context类而言，<br/>在它与抽象策略类之间建立一个关联关系，其典型代码如下所示：
                     <code>
                         class Context {
                          private AbstractStrategy strategy; //维持一个对抽象策略类的引用
@@ -245,7 +244,7 @@
                             }
                         }
                     </code>
-                    在Context类中定义一个AbstractStrategy类型的对象strategy，通过注入的方式在客户端传入一个具体策略对象，客户端代码片段如下所示：
+                    在Context类中定义一个AbstractStrategy类型的对象strategy，<br/>通过注入的方式在客户端传入一个具体策略对象，客户端代码片段如下所示：
                     <code>
                         Context context = new Context();
                         AbstractStrategy strategy;
@@ -291,8 +290,8 @@
                               }
                         }
                     </code>
-                    代理类也是抽象主题类的子类，它维持一个对真实主题对象的引用，调用在真实主题中实现的业务方法，
-                    在调用时可以在原有业务方法的基础上附加一些新的方法来对功能进行扩充或约束，最简单的代理类实现代码如下：
+                    代理类也是抽象主题类的子类，它维持一个对真实主题对象的引用，<br/>调用在真实主题中实现的业务方法，<br/>
+                    在调用时可以在原有业务方法的基础上附加一些新的方法来对功能进行扩充或约束，<br/>最简单的代理类实现代码如下：
                     <code>
                         class Proxy : Subject{
                            private RealSubject realSubject = new RealSubject(); //维持一个对真实主题对象的引用
