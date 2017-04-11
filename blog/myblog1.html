@@ -173,15 +173,192 @@
                     工厂方法模式又简称为工厂模式(Factory Pattern)，又可称作虚拟构造器模式(Virtual Constructor Pattern)或多态工厂模式
                     (Polymorphic Factory Pattern)。工厂方法模式是一种类创建型模式。</p>
                 <img src="/assets/img/blog102.jpeg" class="img-loc">
-                
+                <pre>
+                    抽象工厂角色
+                    <code>
+                        interface Factory {
+                            public Product factoryMethod();
+                        }
+                    </code>
+                    具体产品对象的创建由其子类负责，客户端针对抽象工厂编程，可在运行时再指定具体工厂类，具体工厂类实现了工厂方法，不同的具体工厂可以创建不同的具体产品
+                    <code>
+                        class ConcreteFactory implements Factory {
+                            public Product factoryMethod() {
+                                return new ConcreteProduct();
+                             }
+                        }
+                    </code>
+                    在客户端代码中，只需关心工厂类即可，不同的具体工厂可以创建不同的产品，典型的客户端类代码片段如下所示：
+                    <code>
+                        Factory factory;
+                        factory = new ConcreteFactory(); //可通过配置文件实现
+                        Product product;
+                        product = factory.factoryMethod();
+                    </code>
+                </pre>
                 <h4>策略模式</h4>
-                <p></p>
+                <p>策略模式的主要目的是将算法的定义与使用分开，也就是将算法的行为和环境分开，将算法的定义放在专门的策略类中，每一个策略类封装了一种实现算法，使用算法的环境类针对抽
+                    象策略类进行编程，符合“依赖倒转原则”。<br/>
+                    在出现新的算法时，只需要增加一个新的实现了抽象策略类的具体策略类即可。<br/>
+                    策略模式定义如下： 策略模式(Strategy Pattern)：定义一系列算法类，将每一个算法封装起来，并让它们可以相互替换，策略模式让算法独立于使用它的客
+                    户而变化，也称为政策模式(Policy)。
+                    策略模式是一种对象行为型模式。
+                </p>
+                <p>
+                    在策略模式结构图中包含如下几个角色：<br/>
+                    ● Context（环境类）：环境类是使用算法的角色，它在解决某个问题（即实现某个方法）时
+                    可以采用多种策略。在环境类中维持一个对抽象策略类的引用实例，用于定义所采用的策
+                    略。<br/>
+                    ● Strategy（抽象策略类）：它为所支持的算法声明了抽象方法，是所有策略类的父类，它可
+                    以是抽象类或具体类，也可以是接口。环境类通过抽象策略类中声明的方法在运行时调用具
+                    体策略类中实现的算法。<br/>
+                    ● ConcreteStrategy（具体策略类）：它实现了在抽象策略类中声明的算法，在运行时，具体策
+                    略类将覆盖在环境类中定义的抽象策略类对象，使用一种具体的算法实现某个业务处理。
+                </p>
+                <img src="/assets/img/blog104.jpeg" class="img-loc">
+                <pre>
+                    在使用策略模式时，我们需要将算法从Context类中提取出来，首先应该创建一个抽象策略类，其典型代码如下所示：
+                    <code>
+                        abstract class AbstractStrategy {
+                         public abstract void algorithm(); //声明抽象算法
+                        }
+                    </code>
+                    然后再将封装每一种具体算法的类作为该抽象策略类的子类，如下代码所示：
+                    <code>
+                        class ConcreteStrategyA extends AbstractStrategy {
+                        //算法的具体实现
+                          public void algorithm() {
+                            //算法A
+                          }
+                        }
+                    </code>
+                    其他具体策略类与之类似，对于Context类而言，在它与抽象策略类之间建立一个关联关系，其典型代码如下所示：
+                    <code>
+                        class Context {
+                         private AbstractStrategy strategy; //维持一个对抽象策略类的引用
+                             public void setStrategy(AbstractStrategy strategy) {
+                                  this.strategy= strategy;
+                             }
+                           //调用策略类中的算法
+                           public void algorithm() {
+                              strategy.algorithm();
+                            }
+                        }
+                    </code>
+                    在Context类中定义一个AbstractStrategy类型的对象strategy，通过注入的方式在客户端传入一个具体策略对象，客户端代码片段如下所示：
+                    <code>
+                        Context context = new Context();
+                        AbstractStrategy strategy;
+                        strategy = new ConcreteStrategyA(); //可在运行时指定类型
+                        context.setStrategy(strategy);
+                        context.algorithm();
+                    </code>
+                </pre>
                 <h4>代理模式</h4>
-                <p></p>
+                <>代理模式：给某一个对象提供一个代理或占位符，并由代理对象来控制对原对象的访问。<br/>
+                    代理模式是一种对象结构型模式。在代理模式中引入了一个新的代理对象，代理对象在客户端对象和目标对象之间起到中介的作用，
+                    它去掉客户不能看到的内容和服务或者增添客户需要的额外的新服务。</p>
+                <p>
+                    代理模式包含如下三个角色：<br/>
+                    (1) Subject（抽象主题角色）：它声明了真实主题和代理主题的共同接口，这样一来在任何使
+                    用真实主题的地方都可以使用代理主题，客户端通常需要针对抽象主题角色进行编程。<br/>
+                    (2) Proxy（代理主题角色）：它包含了对真实主题的引用，从而可以在任何时候操作真实主题
+                    对象；在代理主题角色中提供一个与真实主题角色相同的接口，以便在任何时候都可以替代
+                    真实主题；代理主题角色还可以控制对真实主题的使用，负责在需要的时候创建和删除真实
+                    主题对象，并对真实主题对象的使用加以约束。通常，在代理主题角色中，客户端在调用所
+                    引用的真实主题操作之前或之后还需要执行其他操作，而不仅仅是单纯调用真实主题对象中
+                    的操作。<br/>
+                    (3) RealSubject（真实主题角色）：它定义了代理角色所代表的真实对象，在真实主题角色中
+                    实现了真实的业务操作，客户端可以通过代理主题角色间接调用真实主题角色中定义的操
+                    作。
+                </p>
+                <img src="/assets/img/blog105.jpeg" class="img-loc">
+                <pre>
+                    典型的抽象主题类代码如下：
+                    <code>
+                        abstract class Subject
+                         {
+                             public abstract void Request();
+                         }
+                    </code>
+                    真实主题类继承了抽象主题类，提供了业务方法的具体实现，其典型代码如下：
+                    <code>
+                        class RealSubject : Subject
+                         {
+                             public override void Request()
+                              {
+                              //业务方法具体实现代码
+                              }
+                        }
+                    </code>
+                    代理类也是抽象主题类的子类，它维持一个对真实主题对象的引用，调用在真实主题中实现的业务方法，
+                    在调用时可以在原有业务方法的基础上附加一些新的方法来对功能进行扩充或约束，最简单的代理类实现代码如下：
+                    <code>
+                        class Proxy : Subject{
+                           private RealSubject realSubject = new RealSubject(); //维持一个对真实主题对象的引用
+                           public void PreRequest()
+                            {
+                             …...
+                            }
+                            public override void Request()
+                            {
+                                PreRequest();
+                                realSubject.Request(); //调用真实主题对象的方法
+                              PostRequest();
+                             }
+                            public void PostRequest()
+                             {
+                              ……
+                             }
+                        }
+                    </code>
+
+                </pre>
                 <h4>装饰模式</h4>
                 <p></p>
                 <h4>原型模式</h4>
-                <p></p>
+                <p>使用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。原型模式是一种对象创建型模式。
+                    原型模式的工作原理很简单：<br/>
+                    将一个原型对象传给那个要发动创建的对象，这个要发动创建的对象通过请求原型对象拷贝自己来实现创建过程。
+                    由于在软件系统中我们经常会遇到需要创建多个相同或者相似对象的情况，因此原型模式在真实开发中的使用频率还是非常高的。<br/>
+                    原型模式是一种“另类”的创建型模式，创建克隆对象的工厂就是原型类自身，工厂方法由克隆方法来实现。
+                </p>
+                <p>
+                    在原型模式结构图中包含如下几个角色：<br/>
+                    ●Prototype（抽象原型类）：它是声明克隆方法的接口，是所有具体原型类的公共父类，可以
+                    是抽象类也可以是接口，甚至还可以是具体实现类。<br/>
+                    ● ConcretePrototype（具体原型类）：它实现在抽象原型类中声明的克隆方法，在克隆方法中
+                    返回自己的一个克隆对象。<br/>
+                    ● Client（客户类）：让一个原型对象克隆自身从而创建一个新的对象，在客户类中只需要直
+                    接实例化或通过工厂方法等方式创建一个原型对象，再通过调用该对象的克隆方法即可得到
+                    多个相同的对象。<br/>由于客户类针对抽象原型类Prototype编程，因此用户可以根据需要选择具体
+                    原型类，系统具有较好的可扩展性，增加或更换具体原型类都很方便。
+                </p>
+                <img src="/assets/img/blog103.jpeg" class="img-loc">
+                <pre>
+                    <code>
+                        class ConcretePrototype implements Prototype
+                            {
+                             private String attr; //成员属性
+                             public void setAttr(String attr){
+                                this.attr = attr;
+                            }
+                            public String getAttr(){
+                                return this.attr;
+                            }
+                            public Prototype clone() //克隆方法{
+                             Prototype prototype = new ConcretePrototype(); //创建新对象
+                             prototype.setAttr(this.attr);
+                             return prototype;
+                            }
+                        }
+                    </code>
+                    在客户端创建原型对象和克隆对象也很简单，如下代码所示：
+                    <code>
+                        Prototype obj1 = new ConcretePrototype();
+                        Prototype obj2 = obj1.clone();
+                    </code>
+                </pre>
                 <h4>单例模式</h4> 
                 <p>这一模式的目的是使得类的一个对象成为系统中的唯一实例。  要实现这一点，可以从客户端对其进行实例化开始。 
                     因此需要用一种只允许生成对象类的唯一实例的机制，“阻止”所有想要生成对象的访问。使用工厂方法来限制实例化过程。 
