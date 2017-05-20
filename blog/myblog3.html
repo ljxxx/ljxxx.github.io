@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+    <meta http-equiv="content-language" content="IE=edge,chrome=1">
+    <![endif]-->
+    <title>刘佳兴的个人网站</title>
+    <!-- BOOTSTRAP CORE STYLE -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICON STYLE -->
+    <link href="/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+    <script >hljs.initHighlightingOnLoad();</script>
+    <style type="text/css">
+        p{
+            text-indent: 2em; /*em是相对单位，2em即现在一个字大小的两倍*/
+        }
+    </style>
+
+</head>
+<body>
+<div id="header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 logo-div">
+                    <div class="logo-inner text-center">
+                        <div class="logo-name">
+                            <a href="/index.html">
+                                <img src="/assets/img/me.jpg" class="img-circle" />
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-8 header-text-top " id="about">
+
+
+
+                    <h1>刘佳兴的个人博客</h1>
+                    记录我的学习历程。。。<br/>
+                    <h3>深度学习之coffe和Intel深度学习sdk安装</h3>
+                    <h3>点击头像返回首页</h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END HEADER SECTION-->
+<div class="info-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <a href="/index.html">回到首页</a>
+                <strong>联系我</strong>jiaixnglaw@163.com
+            </div>
+            <div class="col-md-2">
+                <div class="social-link">
+                    <a href="#" class="btn btn-default btn-xs">1<i class="fa fa-facebook fa-2x"></i></a>
+                    <a href="#" class="btn btn-default btn-xs">2<i class="fa fa-linkedin fa-2x"></i></a>
+                    <a href="#" class="btn btn-default btn-xs">3<i class="fa fa-google-plus fa-2x"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--END INFO SECTION-->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8 ">
+            <div class="blog-post">
+                <!-- 放内容 -->
+                <h4>深度学习sdk安装</h4>
+                <p>本文中很多安装的具体过程都没有截图出来,具体步骤在参考网页中,若网页失效可私我,我已经保存了</p>
+                <p>参考Intel官方的教程:<a href="https://software.intel.com/zh-cn/articles/intel-deep-learning-sdk-tutorial
+                -getting-started-with-intel-deep-learning-sdk-training-tool#_Toc468983680">
+                    英特尔® 深度学习 SDK 教程
+                </a>以及<a href="https://software.intel.com/zh-cn/articles/intel-deep-learning-sdk-tutorial" >安装指南</a><br/>里面有安装和简单介绍
+                </p>
+                <p>深度学习的SDK桌面应用可以安装在MacOS或Windows下,我这里是安装在Mac下,同时还需要部署在Linux系统端。<br/>
+                首先去下载相应的安装包,解压后打开安装文件,如下所示。<br/>
+                    <img class="img-loc" src="/assets/img/blog3-2.jpg">
+                    如果本机(Mac)装有Docker,可以选择安装在本机上;<br/>
+                    如果在如腾讯云或阿里云等上有云主机,或是有能够通过网络连接的PC或虚拟机,可以选择第二个选项;<br/>
+                    至于它这里提到的Cloud Machine 应该是针对亚马逊云等,本人倒没有尝试。<br/>
+                    第一种方法不多讲了,这里提一下第二种方法,本人在腾讯云上申请了个云主机+域名的学生优惠套餐。<br/>
+                    只需要提供机器的公网IP地址,及其管理员账号的账号和密码,测试能够连接的话,直接下一步,让它自动安装。<br/>
+                    <img class="img-loc" src="/assets/img/blog3-3.jpg">
+                    <img class="img-loc" src="/assets/img/blog3-4.jpg">
+                    如果有什么环境需要提前安装的,一般用 apt-get和yum什么的都能搞定,这里不多提了。<br/>
+                    值得一提的是,在安装时,可能会在某一两步上卡住,并且log文件上也卡着不动,等到安装预计时间那个转完了还是没反应,一开是我以为是bug,直到因为出门吃饭晾了它几个小时,才发现。。。原来只是卡了点慢了点,
+                    所以只要没报错什么的,耐心等就好了。<br/>
+                    安装完后,可以再web上管理使用,界面如下:
+                    <img class="img-loc" src="/assets/img/blog3-5.jpg">
+                    这里装完了就先放一边啦,接下来安装caffe。<br/>
+                    装caffe,可以选择在Mac OS 和 Linux下安装,本人在Mac上折腾了一天后失败,遂用VMware fusion开了个Ubuntu 14.10 的虚拟机来装。<br/>
+                    对于新手来说,装caffe很烦的一点是预先的各种环境,这边贴出三个网址,分别为,<a href="http://caffe.berkeleyvision.org/install_apt.html" >官方安装教程</a>(请自行选择Mac版或Linux版),
+                    <a href="http://www.jianshu.com/p/0a5e5af2627f">Mac版推荐的教程</a> 和<a href="http://www.cnblogs.com/xuanxufeng/p/6016945.html">Linux推荐的教程</a> 。<br/>
+                    当然,这也是我自己百度以后筛选的,大家也可以自己百度下最新最适合自己的教程。<br/>
+                    环境的安装当然有点麻烦,不过一步一步来就好了,我之前没用过Anaconda和CUDA等,遇到一个简单了解学习一个就好了,至于环境变量等,我个人的建议是先选定一个教程,然后照搬就好了。。。<br/>
+                    虽然我在安装上花了差不多一天时间,不过耐着性子到也没觉得什么。哦,提一下,我在虚拟机上安装的是cpu-only模式,即不借助显卡来计算,这样当然在安装上简单一点,不过后面运算效率会差,这里
+                    我是抱着学习学习的心态,如果是真正开发,还是完整的来吧。<br/>
+                    这里分享下我遇到的几个问题吧。<br/>
+                    首先,是在虚拟机下,执行apt-get指令是,老是提示"找不到包",解决方法就是换源,具体步骤可百度 apt-get update 失败等,选择国内的如 阿里 的源,在配置文件里替换一下。
+                    再 update一下, 执行安装的指令,就能正常进行了。<br/>
+                    还有就是 hdf5的问题,我之前在Mac下老不能成功,就是hdf5的版本存在冲突。<br/>
+                    按步骤安装完成后,通过runtest如下:<br/>
+                    <img class="img-loc" src="/assets/img/blog3-6.jpg">
+                    后面的内容,再一点一点来啦。
+                </p>
+            </div>
+
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3" style="padding-top: 30px;">
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>分类</strong></li>
+                    <li class="list-group-item">Java基础</li>
+                    <li class="list-group-item">JAVA WEB</li>
+                    <li class="list-group-item">数据库</li>
+                    <li class="list-group-item">数据结构</li>
+                    <li class="list-group-item">计算机网络</li>
+                    <li class="list-group-item">面经</li>
+                    <li class="list-group-item">设计模式</li>
+                    <li class="list-group-item">杂</li>
+
+                </ul>
+            </div>
+            <div class="row">
+                <h3>Advertising</h3>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<!--END HOME PAGE SECTION-->
+<div class="footer-sec" style="margin-top: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 foo-inner">
+                &copy;  ljxxx.github.io
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END FOOTER SECTION -->
+<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME -->
+<!-- CORE JQUERY -->
+<script src="/assets/js/jquery-1.11.1.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="/assets/js/bootstrap.js"></script>
+
+</body>
+</html>
