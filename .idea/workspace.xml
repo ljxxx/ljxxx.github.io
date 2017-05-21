@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/blog3-1.jpeg" afterPath="$PROJECT_DIR$/assets/img/blog301.jpeg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/blog3-2.jpeg" afterPath="$PROJECT_DIR$/assets/img/blog302.jpeg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/blog3-3.jpeg" afterPath="$PROJECT_DIR$/assets/img/blog303.jpeg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/blog3-4.jpeg" afterPath="$PROJECT_DIR$/assets/img/blog304.jpeg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/blog3-5.jpeg" afterPath="$PROJECT_DIR$/assets/img/blog305.jpeg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/blog3-6.jpeg" afterPath="$PROJECT_DIR$/assets/img/blog306.jpeg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/myblog3.html" afterPath="$PROJECT_DIR$/blog/myblog3.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -47,8 +41,8 @@
       <file leaf-file-name="myblog3.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/myblog3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8372093">
-              <caret line="121" column="75" selection-start-line="121" selection-start-column="75" selection-end-line="121" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.093023255">
+              <caret line="90" column="20" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -496,7 +490,7 @@
       <workItem from="1491914232983" duration="748000" />
       <workItem from="1491984250677" duration="2771000" />
       <workItem from="1492431644642" duration="2000" />
-      <workItem from="1495295280300" duration="6500000" />
+      <workItem from="1495295280300" duration="6666000" />
     </task>
     <task id="LOCAL-00001" summary="from IDEA">
       <created>1491836770901</created>
@@ -510,11 +504,17 @@
       <option name="project" value="LOCAL" />
       <updated>1495297111994</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="from IDEA">
+      <created>1495332790330</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1495332790330</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19644000" />
+    <option name="totallyTimeSpent" value="19810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="789" extended-state="0" />
@@ -834,8 +834,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/myblog3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8372093">
-          <caret line="121" column="75" selection-start-line="121" selection-start-column="75" selection-end-line="121" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.093023255">
+          <caret line="90" column="20" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
