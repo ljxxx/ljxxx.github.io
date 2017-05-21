@@ -91,20 +91,21 @@
                 </p>
                 <p>深度学习的SDK桌面应用可以安装在MacOS或Windows下,我这里是安装在Mac下,同时还需要部署在Linux系统端。<br/>
                 首先去下载相应的安装包,解压后打开安装文件,如下所示。<br/>
-                    <img class="img-loc" src="/assets/img/blog3-2.jpg">
                     如果本机(Mac)装有Docker,可以选择安装在本机上;<br/>
                     如果在如腾讯云或阿里云等上有云主机,或是有能够通过网络连接的PC或虚拟机,可以选择第二个选项;<br/>
-                    至于它这里提到的Cloud Machine 应该是针对亚马逊云等,本人倒没有尝试。<br/>
-                    第一种方法不多讲了,这里提一下第二种方法,本人在腾讯云上申请了个云主机+域名的学生优惠套餐。<br/>
+                    至于它这里提到的Cloud Machine 应该是针对亚马逊云等,本人倒没有尝试。</p>
+                <img class="img-loc" src="/assets/img/blog302.jpg">
+                    <p>第一种方法不多讲了,这里提一下第二种方法,本人在腾讯云上申请了个云主机+域名的学生优惠套餐。<br/>
                     只需要提供机器的公网IP地址,及其管理员账号的账号和密码,测试能够连接的话,直接下一步,让它自动安装。<br/>
-                    <img class="img-loc" src="/assets/img/blog3-3.jpg">
-                    <img class="img-loc" src="/assets/img/blog3-4.jpg">
                     如果有什么环境需要提前安装的,一般用 apt-get和yum什么的都能搞定,这里不多提了。<br/>
                     值得一提的是,在安装时,可能会在某一两步上卡住,并且log文件上也卡着不动,等到安装预计时间那个转完了还是没反应,一开是我以为是bug,直到因为出门吃饭晾了它几个小时,才发现。。。原来只是卡了点慢了点,
                     所以只要没报错什么的,耐心等就好了。<br/>
                     安装完后,可以再web上管理使用,界面如下:
-                    <img class="img-loc" src="/assets/img/blog3-5.jpg">
-                    这里装完了就先放一边啦,接下来安装caffe。<br/>
+                    </p>
+                    <img class="img-loc" src="/assets/img/blog303.jpg">
+                    <img class="img-loc" src="/assets/img/blog304.jpg">
+                    <img class="img-loc" src="/assets/img/blog305.jpg">
+                    <p>这里装完了就先放一边啦,接下来安装caffe。<br/>
                     装caffe,可以选择在Mac OS 和 Linux下安装,本人在Mac上折腾了一天后失败,遂用VMware fusion开了个Ubuntu 14.10 的虚拟机来装。<br/>
                     对于新手来说,装caffe很烦的一点是预先的各种环境,这边贴出三个网址,分别为,<a href="http://caffe.berkeleyvision.org/install_apt.html" >官方安装教程</a>(请自行选择Mac版或Linux版),
                     <a href="http://www.jianshu.com/p/0a5e5af2627f">Mac版推荐的教程</a> 和<a href="http://www.cnblogs.com/xuanxufeng/p/6016945.html">Linux推荐的教程</a> 。<br/>
@@ -117,8 +118,8 @@
                     再 update一下, 执行安装的指令,就能正常进行了。<br/>
                     还有就是 hdf5的问题,我之前在Mac下老不能成功,就是hdf5的版本存在冲突。<br/>
                     按步骤安装完成后,通过runtest如下:<br/>
-                    <img class="img-loc" src="/assets/img/blog3-6.jpg">
                     后面的内容,再一点一点来啦。
+                        <img class="img-loc" src="/assets/img/blog3-6.jpg">
                 </p>
             </div>
 
