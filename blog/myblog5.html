@@ -47,7 +47,7 @@
 
                     <h1>刘佳兴的个人博客</h1>
                     记录我的学习历程。。。<br/>
-                    <h3>我的caffe项目</h3>
+                    <h3>我的caffe项目--利用深度学习进行地磁定位计算</h3>
                     <h3>点击头像返回首页</h3>
                 </div>
             </div>
@@ -82,7 +82,155 @@
         <div class="col-md-8 ">
             <div class="blog-post">
                 <!-- 放内容 -->
+                <h3>第一部分,处理数据的准备</h3>
+                <p>
+                    主要工作:用数据生成图片以进行深度学习;
+                    难点:图片需要突出点与点之间的不同;
+                    故,先计算所有数据每一项的均值;取减去均值后的数据生成图片。
+                    <ul>
+                <li>
+                    数据的处理在excel中进行
+                </li>
+                <li>
+                    处理完的数据分别生成图片,并保存,如下图所示
+                    <img class="img-loc" src="/assets/img/blog501.jpeg">
+                </li>
+                <li>
+                    将数据存储在指定的文件夹下,我是选择在caffe目录中的data下,新建文件夹保存数据。
+                    <img class="img-loc" src="/assets/img/blog502.jpeg">
+                </li>
+                    </ul>
 
+                </p>
+                <h3>第二部分,caffe运行准备</h3>
+                <p>
+                   <a href="http://blog.csdn.net/qq_27923041/article/details/54139887">主要参考资料</a>
+                    <ul>
+                <li>
+                    首先,在caffe目录下的examples文件夹下创建一个存放自己项目的文件夹,这里命名为myfile<br/>
+                    通过编写脚本生成train.txt和test.txt,二者分别用于记录用于训练的图片信息和用于测试的图片信息。
+                    <pre>
+                        <code>
+                            #sudo mkdir examples/myfile
+                            #sudo vi examples/myfile/create_filelist.sh
+
+                            //脚本create_filelist.sh的内容如下:
+
+                            #!/usr/bin/env sh
+                            DATA=data/re/
+                            MY=examples/myfile
+
+                            echo "Create train.txt..."
+                            rm -rf $MY/train.txt
+                            for i in 3 4 5 6 7
+                            do
+                            find $DATA/train -name $i*.jpg | cut -d '/' -f4-5 | sed "s/$/ $i/">>$MY/train.txt
+                            done
+                            echo "Create test.txt..."
+                            rm -rf $MY/test.txt
+                            for i in 3 4 5 6 7
+                            do
+                            find $DATA/test -name $i*.jpg | cut -d '/' -f4-5 | sed "s/$/ $i/">>$MY/test.txt
+                            done
+                            echo "All done"
+                        </code>
+                    </pre>
+                    脚本中用到了如下一些指令:
+                    rm：删除文件;
+                    find：寻找文件;
+                    cut ：截取路径;
+                    sed：在每行的最后面加上标注。本例中将找到的“i*.jpg”文件加入标注为i，比如“3*.jpg”标注为3;
+                    cat：将两个类别合并在一个文件里。<br/>
+                    运行脚本:#sudo sh examples/myfile/create_filelist.sh,<br/>
+                    则可以看到生成了保存有图片信息的两个文件。
+                    <img class="img-loc" src="/assets/img/blog503.jpeg">
+                    这里,为了提高分类的精度,建议类别从0开始编辑,可以手动的替换。
+                </li>
+                <li>
+                    接下来对图片数据进行转换,转为caffe能够使用的数据格式,主要的操作同样通过编写脚本来实现:
+                    <pre>
+                        <code>
+                            #sudo vi examples/myfile/create_lmdb.sh
+
+                            //create_lmdb.sh的内容如下所示:
+
+                            #!/usr/bin/env sh
+                            MY=examples/myfile
+
+
+                            echo "Create train lmdb.."
+                            rm -rf $MY/img_train_lmdb
+                            build/tools/convert_imageset \
+                            --shuffle \
+                            --resize_height=256 \
+                            --resize_width=256 \
+                            /home/xxx/caffe/data/re/ \
+                            $MY/train.txt \
+                            $MY/img_train_lmdb
+
+
+                            echo "Create test lmdb.."
+                            rm -rf $MY/img_test_lmdb
+                            build/tools/convert_imageset \
+                            --shuffle \
+                            --resize_width=256 \
+                            --resize_height=256 \
+                            /home/xxx/caffe/data/re/ \
+                            $MY/test.txt \
+                            $MY/img_test_lmdb
+
+
+                            echo "All Done.."
+
+                            //运行脚本
+                            #sudo sh examples/myfile/create_lmdb.sh
+                        </code>
+                    </pre>
+                    处理后的图片将统一转换成256*256大小。<br/>
+                    运行成功后，会在examples/myfile下面生成两个img_test_lmdb和img_train_lmdb，分别用于保存训练图片和测试图片转换后的lmdb文件<br/>
+                    <img class="img-loc" src="/assets/img/blog504.jpeg">
+                </li>
+                <li>
+                    接下来,计算图片的均值,减去均值后的图片再进行训练效果会更好。<br/>
+                    我们通过使用caffe自带的文件compute_image_mean.cpp，进行均值的计算。<br/>
+                    #sudo build/tools/compute_image_mean examples/myfile/img_train_lmdb examples/myfile/mean.binaryproto<br/>
+                    compute_image_mean带两个参数，第一个参数时lmdb训练数据位置，第二个参数设定均值文件的名字及保存路径。<br/>
+                    运行成功后，如下图所示:
+                    <img class="img-loc" src="/assets/img/blog505.jpeg">
+                </li>
+                <li>
+                    接下是最重要的一部分了,即创建模型,在caffe中,模型的配置也是通过文件的形式实现的。
+                    这里,我们使用caffe自带的caffenet模型，位置在models/bvlc_reference_caffenet/文件夹下，将需要的两个配置文件，复制到myfile文件夹内,
+                    #sudo cp models/bvlc_reference_caffenet/solver.prototxt examples/myfile/
+                    #sudo cp models/bvlc_reference_caffenet/train_val.prototxt examples/myfile/
+                    通过vi命令修改两个文件:
+                    <img class="img-loc" src="/assets/img/blog506.jpeg">
+                    关于上面每个文件,每个参数的简要介绍:<br/>
+                    test_iter: 2指测试批次，val.prototxt文件每批次batch数和之相乘应等于测试样本数 <br/>
+                    test_interval: 40是指每40次进行一次迭代测试 <br/>
+                    base_lr: 0.001是基础学习率，即对应本论文2.1中的学习率μ，对识别率影响很大 <br/>
+                    lr_policy: "step"学习率变化，这里可以设置学习率变化策略 <br/>
+                    gamma: 0.1学习率变化的比率，学习率慢慢变小，可以使结果收敛 <br/>
+                    stepsize: 10000 每10000次迭代减少学习率 <br/>
+                    display: 120 每迭代120次测试一次数据 <br/>
+                    max_iter: 50000 最大迭代次数 <br/>
+                    momentum: 0.9 初始化权值时的参数 <br/>
+                    weight_decay: 0.00005初始化权值时的参数 <br/>
+                    snapshot: 2000 每迭代2000次进行一次模型的保存。 <br/>
+                    snapshot_prefix: "Caffe_15s_lr0.0005_imagenet_train" 保存的名字<br/>
+                    <img class="img-loc" src="/assets/img/blog507.jpeg">
+                    对train_val.prototxt的修改,主要是mean_file修改为:"examples/myfile/mean.binaryproto";<br/>
+                    将source改为:"examples/myfile/img_train_lmdb"<br/>
+                </li>
+            </ul>
+                </p>
+                <h3>第三部分,训练和测试</h3>
+                <p>
+                    在准备好了数据后,直接运行:<br/>
+                    #sudo build/tools/caffe train -solver examples/myfile/solver.prototxt<br/>
+                    结果为:
+                    <img class="img-loc" src="/assets/img/blog508.jpeg">
+                </p>
             </div>
 
         </div>
