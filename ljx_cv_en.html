@@ -52,7 +52,9 @@
 <p>
     I get a second Bachelor’s degree in Finance and have experience in student union
 </p>
+<p>
 
+</p>
 
 <h2>Contact</h2>
 <ul>
@@ -100,7 +102,11 @@ Intern in Neusoft, Dalian, July 2014 to Aug 2014
     <img src="images/transcript1.jpeg"  alt="Undergraduate Student's Transcript" width="50%"/>
 </div>
 
+<h2>IELST SCORE &nbsp;&nbsp;<label id='ielts-show' style="color: #0C739B;text-decoration: underline">【展开】</label></h2>
+<div id="myielts" style=" display:none">
+    <img src="images/ljxielts.jpeg"  alt="IELTS SCORE" width="40%"/>
 
+</div>
 
 <div class="foot">
     Last updated: 09 Dec, 2017
@@ -112,10 +118,8 @@ Intern in Neusoft, Dalian, July 2014 to Aug 2014
 <script >
 
     $(function(){
-         $('#transcript-show').click(function(){//给d1绑定一个点击事件;
+         $('#transcript-show').click(function(){
 
-                     /*这个判断的意义是,如果d2是隐藏的,那么让它显示出来,并将d1的文本内容替换成收起,
-                      如果是显示的,那么就隐藏它并将d1的文本内容替换为展开;*/
                      if($('#mytranscript').is(':hidden'))
                          {
                            $('#mytranscript').slideDown('slow');
@@ -124,9 +128,18 @@ Intern in Neusoft, Dalian, July 2014 to Aug 2014
                            $('#mytranscript').slideUp('slow');
                            $(this).text('【展开】');
                              }
-
-                 /*这是一个很简单的事件处理,如果还需要跟上图片的变换,就在判断的对应位置写入图片或者背景变换的代码,*/
              });
+        $('#ielts-show').click(function(){
+
+            if($('#myielts').is(':hidden'))
+            {
+                $('#myielts').slideDown('slow');
+                $(this).text('【收起】');
+            }else{
+                $('#myielts').slideUp('slow');
+                $(this).text('【展开】');
+            }
+        });
          });
      </script>
 </html>
