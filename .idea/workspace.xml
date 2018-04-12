@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/indoor_position_project.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ljx_cv_en.html" afterPath="$PROJECT_DIR$/ljx_cv_en.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/myblog5.html" afterPath="$PROJECT_DIR$/blog/myblog5.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ljxxx.github.io.iws" />
@@ -31,8 +28,8 @@
       <file leaf-file-name="ljx_cv_en.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.554731">
-              <caret line="183" column="30" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.69573283">
+              <caret line="102" column="33" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
               <folding>
                 <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -475,7 +472,7 @@
       <workItem from="1520693475464" duration="731000" />
       <workItem from="1520780578637" duration="47000" />
       <workItem from="1521532467628" duration="1245000" />
-      <workItem from="1523499317925" duration="1544000" />
+      <workItem from="1523499317925" duration="2737000" />
     </task>
     <task id="LOCAL-00001" summary="from IDEA">
       <created>1491836770901</created>
@@ -567,11 +564,17 @@
       <option name="project" value="LOCAL" />
       <updated>1523499809895</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="0412 from IDEA">
+      <created>1523500933457</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1523500933457</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63464000" />
+    <option name="totallyTimeSpent" value="64657000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="26" width="1311" height="798" extended-state="0" />
@@ -950,8 +953,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.554731">
-          <caret line="183" column="30" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.69573283">
+          <caret line="102" column="33" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
           <folding>
             <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
