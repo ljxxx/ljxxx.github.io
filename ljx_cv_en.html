@@ -23,7 +23,7 @@
 </head>
 
 
-<body>
+<body style="margin-left:30px;">
 
 <h1>
     <img src="ljx_cv/logo-whu.png" alt="Wuhan University" width="10%">
@@ -35,8 +35,8 @@
 <div class="introimage"><img src="ljx_cv/liujiaxing.jpg" alt="Jiaxing Liu"></div>
 
 <p>
-    I am a Master student of <a href="http://iss.whu.edu.cn/" target="_blank">International School of Software</a>(Now
-    in
+    I am a Master student of <a href="http://iss.whu.edu.cn/" target="_blank">International School of Software</a>(Graduated from
+
     <a href="http://rsgis.whu.edu.cn/">School of Remote Sensing and Information Engineering</a> due to discipline
     adjustment
     ), <a
@@ -85,7 +85,7 @@
     </li>
     <li>Minored in <strong>Finance</strong>, Economics and Management School of Wuhan University.</li>
     <br>
-    <strong>Sept.2015- Now</strong>
+    <strong>Sept.2015-June.2015</strong>
     <li>International School of Software, Majoring in Software Engineering, Graduate School of Wuhan University, Master
         of Engineering.
     </li>
@@ -164,20 +164,18 @@ Intern in Neusoft, Dalian, July 2014 to Aug 2014
         </li>
     </ul>
 </div>
-<h2>INTENDED AREAS OF STUDY</h2>
-<ul>
-    <li>Comprehensive research on finance, geography and computer science</li>
-    <li>Indoor Position</li>
-    <li>GIS</li>
-    <li>AI & Machine Learning</li>
-</ul>
+
 <h2>PAPERS</h2>
 <ul>
-    <li class="title">J. Liu, C. Jiang, and Z. Shi. The Design and Implementation of Indoor Localization System Using
+    <li class="title"><strong>J. Liu</strong>, C. Jiang, and Z. Shi. The Design and Implementation of Indoor Localization System Using
         Magnetic Field Based on Smartphone. (<a href="https://doi.org/10.5194/isprs-archives-XLII-2-W7-379-2017">doi</a>)
     </li>
-    <li class="title">J. Liu, C. Jiang.The Research on Indoor Positioning Based on Geomagnetic Field on Smartphone,
-        International Conference on Geo-informatics in Sustainable Ecosystem and Society, 2017.
+    <li class="title">(In Chinese)C. Jiang, <strong>J. Liu</strong>. An Indoor Geomagnetic Positioning System Based on Smartphone, 
+        GNSS World of China, ISSN 1008-9268, Chinese Core Journals, published soon.
+    </li>
+    <li class="title">
+        (Abstract)<strong>J. Liu</strong>, C. Jiang. The Research on Indoor Positioning Based on Geomagnetic Field on Smartphone, 
+        International Conference on Geo-informatics in Sustainable Ecosystem and Society, 2017.
     </li>
 </ul>
 <h2>TRANSCRIPT &nbsp;&nbsp;<label id='transcript-show' style="color: #0C739B;text-decoration: underline">【SEE
@@ -193,11 +191,20 @@ Intern in Neusoft, Dalian, July 2014 to Aug 2014
 </h2>
 
 <div id="myielts" style=" display:none">
-    <img src="images/ljxielts.jpeg" alt="IELTS SCORE" width="40%"/>
+    <img src="images/ljxielts.JPG" alt="IELTS SCORE" width="40%"/>
 
 </div>
 <h2>ABOUT ME</h2>
-
+<h3>Memorable moment</h3>
+<label id='me-show' style="color: #0C739B;text-decoration: underline">【SEE MORE】</label>
+<div id="myphoto" style=" display:none">
+Photo with Xiankang Dou -the principal of Wuhan University  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Photo with Xiaohui Cui<br>
+<img src="images/DouXiankang.jpg" alt="Graduate Student's Transcript" width="35%"/>
+<img src="images/Cui.png" alt="Undergraduate Student's Transcript" width="50%"/><br>
+Conference and Dinner with Deren Li<br>
+<img src="images/DerenLi.JPG" alt="Undergraduate Student's Transcript" width="40%"/>
+<img src="images/HALL.JPG" alt="Undergraduate Student's Transcript" width="40%"/><br>
+</div>
 <h3>Hobby</h3>
 <ul>
     <li>Build Muscle</li>
@@ -208,8 +215,15 @@ Intern in Neusoft, Dalian, July 2014 to Aug 2014
 <h3>Why HongKong? &nbsp; I like this city that blends modern and traditional atmosphere, that has both skyscrapers and
     traditional culture and customs</h3>
 
+<h2>INTENDED AREAS OF STUDY</h2>
+<ul>
+    <li>Comprehensive research on finance, geography and computer science</li>
+    <li>Indoor Position</li>
+    <li>GIS</li>
+    <li>AI & Machine Learning</li>
+</ul>
 <div class="foot">
-    Last updated: 14 Apr, 2018
+    Last updated: 14 Oct, 2018
 </div>
 
 <script type="text/javascript" src="//js.users.51.la/19413951.js"></script>
@@ -244,6 +258,16 @@ Intern in Neusoft, Dalian, July 2014 to Aug 2014
                 $(this).text('【HIDE】');
             } else {
                 $('#myexp').slideUp('slow');
+                $(this).text('【SEE MORE】');
+            }
+        });
+        $('#me-show').click(function () {
+
+            if ($('#myphoto').is(':hidden')) {
+                $('#myphoto').slideDown('slow');
+                $(this).text('【HIDE】');
+            } else {
+                $('#myphoto').slideUp('slow');
                 $(this).text('【SEE MORE】');
             }
         });
