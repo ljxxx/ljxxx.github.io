@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ljx_cv_en.html" afterPath="$PROJECT_DIR$/ljx_cv_en.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ljxxx.github.io.iws" />
@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ljx_cv_en.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ljx_cv_en.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="98.75">
-              <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.6793478">
+              <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -45,10 +45,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7554348">
+            <state vertical-scroll-proportion="-23.0">
               <caret line="182" column="75" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
               <folding>
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -60,7 +60,7 @@
       <file leaf-file-name="liujiaxing.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/liujiaxing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-136.875">
+            <state vertical-scroll-proportion="0.0">
               <caret line="238" column="7" selection-start-line="238" selection-start-column="7" selection-end-line="238" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -109,8 +109,8 @@
         <option value="$PROJECT_DIR$/blog/myblog5.html" />
         <option value="$PROJECT_DIR$/indoor_position_project.html" />
         <option value="$PROJECT_DIR$/liujiaxing.html" />
-        <option value="$PROJECT_DIR$/ljx_cv_en.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/ljx_cv_en.html" />
       </list>
     </option>
   </component>
@@ -192,8 +192,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -521,7 +521,8 @@
       <workItem from="1540146944739" duration="26000" />
       <workItem from="1540298326466" duration="118000" />
       <workItem from="1540298447760" duration="285000" />
-      <workItem from="1540821030654" duration="544000" />
+      <workItem from="1540821030654" duration="576000" />
+      <workItem from="1542641422787" duration="308000" />
     </task>
     <task id="LOCAL-00001" summary="from IDEA">
       <created>1491836770901</created>
@@ -697,11 +698,17 @@
       <option name="project" value="LOCAL" />
       <updated>1540298689892</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="1020 from IDEA">
+      <created>1540821584215</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1540821584215</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77944000" />
+    <option name="totallyTimeSpent" value="78284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="46" y="23" width="1139" height="808" extended-state="0" />
@@ -1074,7 +1081,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/liujiaxing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-136.875">
+        <state vertical-scroll-proportion="0.0">
           <caret line="238" column="7" selection-start-line="238" selection-start-column="7" selection-end-line="238" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1087,10 +1094,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.0">
+          <caret line="182" column="75" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="98.75">
-          <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.6793478">
+          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1101,16 +1118,6 @@
             <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7554348">
-          <caret line="182" column="75" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
