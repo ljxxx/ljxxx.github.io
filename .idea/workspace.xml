@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="1004from IDEA">
-      <change afterPath="$PROJECT_DIR$/LSGI521.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSGI521.html" beforeDir="false" afterPath="$PROJECT_DIR$/LSGI521.html" afterDir="false" />
     </list>
     <ignored path="ljxxx.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +41,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LSGI521.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-114">
-              <caret line="57" column="50" lean-forward="true" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
+            <state relative-caret-position="304">
+              <caret line="630" selection-start-line="630" selection-end-line="630" />
+              <folding>
+                <element signature="n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#section#4;n#main#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -401,14 +405,7 @@
       <workItem from="1570158390627" duration="1390000" />
       <workItem from="1570159804829" duration="97000" />
       <workItem from="1571368661599" duration="606000" />
-      <workItem from="1571376810154" duration="918000" />
-    </task>
-    <task id="LOCAL-00008" summary="from IDEA">
-      <created>1496395746450</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1496395746450</updated>
+      <workItem from="1571376810154" duration="2094000" />
     </task>
     <task id="LOCAL-00009" summary="from IDEA">
       <created>1513000659384</created>
@@ -746,11 +743,18 @@
       <option name="project" value="LOCAL" />
       <updated>1570159893147</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="1004from IDEA">
+      <created>1571378457147</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1571378457147</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106993000" />
+    <option name="totallyTimeSpent" value="108169000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="336" y="8" width="1152" height="808" extended-state="0" />
@@ -1076,8 +1080,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LSGI521.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="57" column="50" lean-forward="true" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
+        <state relative-caret-position="304">
+          <caret line="630" selection-start-line="630" selection-end-line="630" />
+          <folding>
+            <element signature="n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#section#4;n#main#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
