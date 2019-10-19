@@ -2,23 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="10184from IDEA">
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/1-Map.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/1-RMS-Errors.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/1-table.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/2-1.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/2-2.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/2-3.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/2-4.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/2-5.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/2-6.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-0.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-2.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-3.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-4.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-5.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-6.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-7.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-1-1.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-1-2.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-2-1.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-2-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-2-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-2-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-2-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-2-7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-2-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-3-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-3-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-4-1.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-4-2.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-4-3.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-4-4.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-4-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-5-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI521/3-5-2.JPG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSGI521.html" beforeDir="false" afterPath="$PROJECT_DIR$/LSGI521.html" afterDir="false" />
     </list>
@@ -41,21 +42,26 @@
     <favorites_list name="ljxxx.github.io" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LSGI521.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="458" column="81" selection-start-line="458" selection-start-column="81" selection-end-line="458" selection-end-column="81" />
+            <state relative-caret-position="437">
+              <caret line="663" column="136" selection-start-line="663" selection-start-column="136" selection-end-line="663" selection-end-column="136" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-5-1.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LSGI522.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="201" column="37" lean-forward="true" selection-start-line="195" selection-start-column="32" selection-end-line="201" selection-end-column="37" />
+            <state relative-caret-position="3819">
+              <caret line="201" column="37" selection-start-line="195" selection-start-column="32" selection-end-line="201" selection-end-column="37" />
               <folding>
                 <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#2;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" />
@@ -142,10 +148,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="320" />
-    <option name="y" value="31" />
-    <option name="width" value="1620" />
-    <option name="height" value="1010" />
+    <option name="x" value="46" />
+    <option name="y" value="15" />
+    <option name="width" value="1789" />
+    <option name="height" value="1013" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -155,14 +161,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="LSGI521" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -181,18 +205,18 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io" />
-      <recent name="$PROJECT_DIR$/images" />
-      <recent name="$PROJECT_DIR$/blog/ljx_cv" />
-      <recent name="$PROJECT_DIR$/assets/img/cv" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\images\LSGI521" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/cv" />
       <recent name="$PROJECT_DIR$/assets/img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io" />
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/blog/ljx_cv" />
+      <recent name="$PROJECT_DIR$/assets/img/cv" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -453,14 +477,8 @@
       <workItem from="1571376810154" duration="2094000" />
       <workItem from="1571381453578" duration="769000" />
       <workItem from="1571463757063" duration="10159000" />
-      <workItem from="1571476374130" duration="1482000" />
-    </task>
-    <task id="LOCAL-00010" summary="from IDEA">
-      <created>1513007566434</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1513007566434</updated>
+      <workItem from="1571476374130" duration="1590000" />
+      <workItem from="1571489847435" duration="4347000" />
     </task>
     <task id="LOCAL-00011" summary="from IDEA">
       <created>1520175914097</created>
@@ -798,17 +816,24 @@
       <option name="project" value="LOCAL" />
       <updated>1571381489182</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="10184from IDEA">
+      <created>1571478749879</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1571478749879</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120579000" />
+    <option name="totallyTimeSpent" value="125034000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="256" y="25" width="1296" height="808" extended-state="0" />
+    <frame x="37" y="12" width="1431" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1558966" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1427531" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Palette&#9;" order="3" />
@@ -915,40 +940,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog302.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog303.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog301.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog306.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog307.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog401.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog402.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog403.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/blog404.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/img/blog405.jpeg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1141,8 +1132,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LSGI522.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="201" column="37" lean-forward="true" selection-start-line="195" selection-start-column="32" selection-end-line="201" selection-end-column="37" />
+        <state relative-caret-position="3819">
+          <caret line="201" column="37" selection-start-line="195" selection-start-column="32" selection-end-line="201" selection-end-column="37" />
           <folding>
             <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#2;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" />
@@ -1182,10 +1173,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-1-1.JPG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-2-1.JPG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-2-5.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-2-6.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-2-7.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-3-1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-4-1.JPG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-4-2.JPG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-5-2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-5-1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/LSGI521.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="458" column="81" selection-start-line="458" selection-start-column="81" selection-end-line="458" selection-end-column="81" />
+        <state relative-caret-position="437">
+          <caret line="663" column="136" selection-start-line="663" selection-start-column="136" selection-end-line="663" selection-end-column="136" />
         </state>
       </provider>
     </entry>
