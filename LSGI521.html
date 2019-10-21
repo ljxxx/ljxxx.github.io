@@ -28,30 +28,16 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
     <!-- Poppins for Title -->
   	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
- 
- 
-	
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
 	  <script>
-		  /**
-		   * 页面加载完毕后刷新一遍当前页面
-		   */
-		  function reurl(){
-			  url = location.href; //把当前页面的地址赋给变量 url
-			  var times = url.split("?"); //分切变量 url 分隔符号为 "?"
-			  if(times[1] != 1){ //如果?后的值不等于1表示没有刷新
-				  url += "?1"; //把变量 url 的值加入 ?1
-				  self.location.replace(url); //刷新页面
-			  }
+		  $(document).ready(function () {
+		  if(location.href.indexOf("#reloaded")==-1){
+			  location.href=location.href+"#reloaded";
+			  location.reload();
 		  }
-
+	  })
 	  </script>
-    <![endif]-->
   </head>
   <body>
   	
@@ -513,6 +499,11 @@
 									I hope I can use different methods as much as possible while successfully completing the task.
 								</p>
 								<p>
+									<b>
+										My analysis including the following (Perhaps the statistical analysis is not intuitive):
+									</b>
+								</p>
+								<p>
 								<ul >
 									<li >1. I create a buffer of light of lamps.</li>
 									<li >2. The second analysis is much more difficult. I want to get the roads that do not cover by light of lamps.
@@ -885,7 +876,7 @@
     <!-- Custom js -->
 	<script type="text/javascript" src="assets/js/custom.js"></script>
 
-	
+
 	
     
   </body>

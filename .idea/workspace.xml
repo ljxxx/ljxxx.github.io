@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="1020from IDEA">
+    <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="1021from IDEA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSGI521.html" beforeDir="false" afterPath="$PROJECT_DIR$/LSGI521.html" afterDir="false" />
     </list>
@@ -28,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LSGI521.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+            <state relative-caret-position="420">
+              <caret line="502" column="116" selection-start-line="502" selection-start-column="116" selection-end-line="502" selection-end-column="116" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#4;n#main#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#4;n#main#0;n#body#0;n#html#0;n#!!top" />
@@ -52,11 +52,6 @@
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-5-1.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -150,10 +145,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="132" />
+    <option name="x" value="131" />
     <option name="y" value="5" />
     <option name="width" value="1790" />
-    <option name="height" value="1014" />
+    <option name="height" value="1015" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -163,6 +158,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,7 +189,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -481,14 +476,8 @@
       <workItem from="1571463757063" duration="10159000" />
       <workItem from="1571476374130" duration="1590000" />
       <workItem from="1571489847435" duration="7431000" />
-      <workItem from="1571622509817" duration="91000" />
-    </task>
-    <task id="LOCAL-00014" summary="0319 from IDEA">
-      <created>1521536785308</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1521536785308</updated>
+      <workItem from="1571622509817" duration="260000" />
+      <workItem from="1571622989712" duration="876000" />
     </task>
     <task id="LOCAL-00015" summary="0412 from IDEA">
       <created>1523499809895</created>
@@ -826,17 +815,24 @@
       <option name="project" value="LOCAL" />
       <updated>1571508033042</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="1021from IDEA">
+      <created>1571622751776</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1571622751776</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128209000" />
+    <option name="totallyTimeSpent" value="129254000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="106" y="4" width="1432" height="811" extended-state="0" />
+    <frame x="105" y="4" width="1432" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14483261" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14701602" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Palette&#9;" order="3" />
@@ -937,7 +933,8 @@
     <MESSAGE value="1004from IDEA" />
     <MESSAGE value="10184from IDEA" />
     <MESSAGE value="1020from IDEA" />
-    <option name="LAST_COMMIT_MESSAGE" value="1020from IDEA" />
+    <MESSAGE value="1021from IDEA" />
+    <option name="LAST_COMMIT_MESSAGE" value="1021from IDEA" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1159,10 +1156,13 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-5-2.png" />
+    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-5-1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/LSGI521.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        <state relative-caret-position="420">
+          <caret line="502" column="116" selection-start-line="502" selection-start-column="116" selection-end-line="502" selection-end-column="116" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#4;n#main#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#4;n#main#0;n#body#0;n#html#0;n#!!top" />
@@ -1185,9 +1185,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/images/LSGI521/3-5-1.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/LSGI522.html">
       <provider selected="true" editor-type-id="text-editor">
