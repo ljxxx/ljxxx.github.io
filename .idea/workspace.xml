@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="1021from IDEA">
-      <change afterPath="$PROJECT_DIR$/LSGI532.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/HK.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/echarts.js" afterDir="false" />
+    <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="1205 from IDEA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSGI532.html" beforeDir="false" afterPath="$PROJECT_DIR$/LSGI532.html" afterDir="false" />
     </list>
     <ignored path="ljxxx.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,11 +57,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LSGI532.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="346" column="25" selection-start-line="346" selection-start-column="25" selection-end-line="346" selection-end-column="25" />
+            <state relative-caret-position="307">
+              <caret line="525" column="14" selection-start-line="525" selection-start-column="14" selection-end-line="525" selection-end-column="14" />
               <folding>
                 <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -449,21 +449,7 @@
       <workItem from="1571489847435" duration="7431000" />
       <workItem from="1571622509817" duration="260000" />
       <workItem from="1571622989712" duration="2159000" />
-      <workItem from="1575552140978" duration="5035000" />
-    </task>
-    <task id="LOCAL-00017" summary="0412 from IDEA">
-      <created>1523502333027</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1523502333027</updated>
-    </task>
-    <task id="LOCAL-00018" summary="0412 from IDEA">
-      <created>1523505763127</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1523505763127</updated>
+      <workItem from="1575552140978" duration="6681000" />
     </task>
     <task id="LOCAL-00019" summary="0412 from IDEA">
       <created>1523506790592</created>
@@ -794,11 +780,25 @@
       <option name="project" value="LOCAL" />
       <updated>1571625695957</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="1021from IDEA">
+      <created>1575557568106</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1575557568107</updated>
+    </task>
+    <task id="LOCAL-00067" summary="1205 from IDEA">
+      <created>1575558112430</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1575558112430</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135572000" />
+    <option name="totallyTimeSpent" value="137218000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="8" width="1432" height="812" extended-state="0" />
@@ -896,7 +896,6 @@
     <MESSAGE value="1020 from IDEA" />
     <MESSAGE value="1120 from IDEA" />
     <MESSAGE value="1127 from IDEA" />
-    <MESSAGE value="1205 from IDEA" />
     <MESSAGE value="1214 from IDEA" />
     <MESSAGE value="0214 from IDEA" />
     <MESSAGE value="0301 from IDEA" />
@@ -906,7 +905,8 @@
     <MESSAGE value="10184from IDEA" />
     <MESSAGE value="1020from IDEA" />
     <MESSAGE value="1021from IDEA" />
-    <option name="LAST_COMMIT_MESSAGE" value="1021from IDEA" />
+    <MESSAGE value="1205 from IDEA" />
+    <option name="LAST_COMMIT_MESSAGE" value="1205 from IDEA" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1200,11 +1200,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LSGI532.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="346" column="25" selection-start-line="346" selection-start-column="25" selection-end-line="346" selection-end-column="25" />
+        <state relative-caret-position="307">
+          <caret line="525" column="14" selection-start-line="525" selection-start-column="14" selection-end-line="525" selection-end-column="14" />
           <folding>
             <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
