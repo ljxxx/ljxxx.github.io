@@ -202,6 +202,12 @@
                                 <div id="map3" style="width: 800px;height:600px;"></div>
                                 <br>
                                 <div id="map4" style="width: 800px;height:600px;"></div>
+                                <br>
+                                <div id="map5" style="width: 800px;height:600px;"></div>
+                                <br>
+                                <div id="map6" style="width: 800px;height:600px;"></div>
+                                <br>
+                                <div id="map7" style="width: 800px;height:600px;"></div>
                             </div>
                         </div>
                         <!-- End show-practical1 -->
@@ -364,6 +370,9 @@
     var myChart2 = echarts.init(document.getElementById('map2'));
     var myChart3 = echarts.init(document.getElementById('map3'));
     var myChart4 = echarts.init(document.getElementById('map4'));
+    var myChart5 = echarts.init(document.getElementById('map5'));
+    var myChart6 = echarts.init(document.getElementById('map6'));
+    var myChart7 = echarts.init(document.getElementById('map7'));
     myChart.showLoading();
     myChart2.showLoading();
     myChart3.showLoading();
@@ -596,8 +605,8 @@
 
     myChart4.setOption(option = {
         title : {
-            text: '某站点用户访问来源',
-            subtext: '纯属虚构',
+            text: '1.年龄构成Age',
+            subtext: 'LIU Jiaxing-LSGI532',
             x:'center'
         },
         tooltip : {
@@ -607,20 +616,20 @@
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+            data: ['below 18','18-44','45-59','above 59']
         },
         series : [
             {
-                name: '访问来源',
+                name: 'Age',
                 type: 'pie',
                 radius : '55%',
                 center: ['50%', '60%'],
                 data:[
-                    {value:335, name:'直接访问'},
-                    {value:310, name:'邮件营销'},
-                    {value:234, name:'联盟广告'},
-                    {value:135, name:'视频广告'},
-                    {value:1548, name:'搜索引擎'}
+
+                    {value:0, name:'below 18'},
+                    {value:31, name:'18-44'},
+                    {value:15, name:'45-59'},
+                    {value:8, name:'above 59'}
                 ],
                 itemStyle: {
                     emphasis: {
@@ -631,6 +640,99 @@
                 }
             }
         ]
+    });
+    myChart5.setOption(option = {
+        title : {
+            text: '2.背景Background',
+            subtext: 'LIU Jiaxing-LSGI532',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['Study in related major','Have a certain understanding','Have used','Know nothing']
+        },
+        series : [
+            {
+                name: 'Age',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+
+                    {value:19, name:'Study in related major'},
+                    {value:9, name:'Have a certain understanding'},
+                    {value:14, name:'Have used'},
+                    {value:12, name:'Know nothing'}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    });
+    myChart6.setOption(option = {
+        title : {
+            text: '3.地图选择Choose favorite Map',
+            subtext: 'LIU Jiaxing-LSGI532',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['Map1','Map2','Map3']
+        },
+        series : [
+            {
+                name: 'Age',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+
+                    {value:35, name:'Map1'},
+                    {value:17, name:'Map2'},
+                    {value:2, name:'Map3'}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    });
+    myChart7.setOption(option = {
+        title : {
+            text: '4.地图选择Choose Map that can distinguish difference',
+            subtext: 'LIU Jiaxing-LSGI532',
+            x:'center'
+        },
+        xAxis: {
+            type: 'category',
+            data: ['Map1', 'Map2', 'Map1 and 2', 'all maps', 'none of them', 'Map1 and 3']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [18, 7, 23, 3, 1, 2],
+            type: 'bar'
+        }]
     });
 </script>
 
