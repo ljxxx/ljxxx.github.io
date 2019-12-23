@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="1214 from IDEA">
+      <change afterPath="$PROJECT_DIR$/assets/images/LSGI532/a1.JPG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LSGI532.html" beforeDir="false" afterPath="$PROJECT_DIR$/LSGI532.html" afterDir="false" />
     </list>
@@ -28,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LSGI532.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="726" column="88" selection-start-line="726" selection-start-column="88" selection-end-line="726" selection-end-column="88" />
+            <state relative-caret-position="264">
+              <caret line="244" column="94" selection-start-line="244" selection-start-column="94" selection-end-line="244" selection-end-column="94" />
               <folding>
                 <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -92,10 +93,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-55" />
-    <option name="y" value="-19" />
-    <option name="width" value="1823" />
-    <option name="height" value="1009" />
+    <option name="x" value="-8" />
+    <option name="y" value="15" />
+    <option name="width" value="1824" />
+    <option name="height" value="1010" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -105,7 +106,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -122,6 +122,12 @@
               <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -129,6 +135,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -137,23 +144,24 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images/LSGI532" />
     <property name="settings.editor.selected.configurable" value="vcs.CVS" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\images\LSGI532" />
+      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io" />
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/blog/ljx_cv" />
+      <recent name="$PROJECT_DIR$/assets/img/cv" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\js" />
       <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets" />
       <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\images\LSGI521" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io" />
-      <recent name="$PROJECT_DIR$/images" />
-      <recent name="$PROJECT_DIR$/blog/ljx_cv" />
-      <recent name="$PROJECT_DIR$/assets/img/cv" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -423,21 +431,8 @@
       <workItem from="1576170234935" duration="1708000" />
       <workItem from="1576292277818" duration="1119000" />
       <workItem from="1576327866808" duration="4346000" />
-      <workItem from="1576418556514" duration="646000" />
-    </task>
-    <task id="LOCAL-00023" summary="0412 from IDEA">
-      <created>1523852778492</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1523852778492</updated>
-    </task>
-    <task id="LOCAL-00024" summary="0412 from IDEA">
-      <created>1523853332177</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1523853332177</updated>
+      <workItem from="1576418556514" duration="2374000" />
+      <workItem from="1577103959137" duration="776000" />
     </task>
     <task id="LOCAL-00025" summary="1020 from IDEA">
       <created>1540033630956</created>
@@ -768,18 +763,32 @@
       <option name="project" value="LOCAL" />
       <updated>1576327987439</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="1214 from IDEA">
+      <created>1576419301622</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1576419301623</updated>
+    </task>
+    <task id="LOCAL-00073" summary="1214 from IDEA">
+      <created>1576422464365</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1576422464365</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146455000" />
+    <option name="totallyTimeSpent" value="148959000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-44" y="-15" width="1458" height="807" extended-state="0" />
+    <frame x="-6" y="12" width="1459" height="808" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="top" id="Ant Build" order="0" side_tool="true" weight="0.24924012" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15714286" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15917201" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Palette&#9;" order="3" />
@@ -1171,8 +1180,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LSGI532.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="726" column="88" selection-start-line="726" selection-start-column="88" selection-end-line="726" selection-end-column="88" />
+        <state relative-caret-position="264">
+          <caret line="244" column="94" selection-start-line="244" selection-start-column="94" selection-end-line="244" selection-end-column="94" />
           <folding>
             <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1182,8 +1191,6 @@
             <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#5;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#6;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#22705#25665#0" />
-            <element signature="e#28552#29600#0" />
           </folding>
         </state>
       </provider>
