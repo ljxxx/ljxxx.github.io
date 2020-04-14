@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="0214 from IDEA">
-      <change afterPath="$PROJECT_DIR$/LSGI535.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI535/1.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI535/2.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/LSGI535/3.JPG" afterDir="false" />
+    <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="0303 from IDEA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ljx_cv_en.html" beforeDir="false" afterPath="$PROJECT_DIR$/ljx_cv_en.html" afterDir="false" />
     </list>
     <ignored path="ljxxx.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,11 +56,31 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LSGI535.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
+            <state relative-caret-position="301">
               <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#h2#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#h2#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -172,7 +188,6 @@
         <option value="$PROJECT_DIR$/blog/myblog4.html" />
         <option value="$PROJECT_DIR$/blog/myblog5.html" />
         <option value="$PROJECT_DIR$/indoor_position_project.html" />
-        <option value="$PROJECT_DIR$/ljx_cv_en.html" />
         <option value="$PROJECT_DIR$/liujiaxing.html" />
         <option value="$PROJECT_DIR$/cv.html" />
         <option value="$PROJECT_DIR$/LSGI532.html" />
@@ -180,6 +195,7 @@
         <option value="$PROJECT_DIR$/LSGI522.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/LSGI535.html" />
+        <option value="$PROJECT_DIR$/ljx_cv_en.html" />
       </list>
     </option>
   </component>
@@ -191,8 +207,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="17" />
-    <option name="y" value="11" />
+    <option name="x" value="15" />
+    <option name="y" value="10" />
     <option name="width" value="1825" />
     <option name="height" value="1010" />
   </component>
@@ -204,8 +220,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -223,13 +239,6 @@
               <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="LSGI535" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -539,14 +548,9 @@
       <workItem from="1581613670337" duration="1128000" />
       <workItem from="1582983305093" duration="2533000" />
       <workItem from="1582987361060" duration="2300000" />
-      <workItem from="1583242712697" duration="1103000" />
-    </task>
-    <task id="LOCAL-00027" summary="1020 from IDEA">
-      <created>1540143098750</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1540143098750</updated>
+      <workItem from="1583242712697" duration="1194000" />
+      <workItem from="1584607942896" duration="26000" />
+      <workItem from="1586877726528" duration="71000" />
     </task>
     <task id="LOCAL-00028" summary="1020 from IDEA">
       <created>1540143624898</created>
@@ -884,18 +888,25 @@
       <option name="project" value="LOCAL" />
       <updated>1581614748388</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="0303 from IDEA">
+      <created>1583244255821</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1583244255821</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156837000" />
+    <option name="totallyTimeSpent" value="157025000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="14" y="9" width="1460" height="808" extended-state="0" />
+    <frame x="12" y="8" width="1460" height="808" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="top" id="Ant Build" order="0" side_tool="true" weight="0.24924012" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17332383" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17760342" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Palette&#9;" order="3" />
@@ -997,7 +1008,8 @@
     <MESSAGE value="1213 from IDEA" />
     <MESSAGE value="1214 from IDEA" />
     <MESSAGE value="0214 from IDEA" />
-    <option name="LAST_COMMIT_MESSAGE" value="0214 from IDEA" />
+    <MESSAGE value="0303 from IDEA" />
+    <option name="LAST_COMMIT_MESSAGE" value="0303 from IDEA" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1070,24 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3952">
-          <caret line="208" column="61" selection-start-line="208" selection-start-column="61" selection-end-line="208" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#h2#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#h2#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1300,8 +1294,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LSGI535.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
+        <state relative-caret-position="301">
           <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#h2#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#h2#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
