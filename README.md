@@ -1,7 +1,7 @@
 ## 欢迎来到刘佳兴的个人主页
 主要记录的是个人的学习历程，具体的内容在
 
-我的一些代码实现可以再这里看
+我的一些代码实现可以在这里看
 You can use the [editor on GitHub](https://github.com/ljxxx/ljxxx.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
