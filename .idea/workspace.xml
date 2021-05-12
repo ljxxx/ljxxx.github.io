@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="0602 from IDEA">
+    <list default="true" id="f05eaf45-162b-49a6-8efc-f9b2a2bb8b90" name="Default" comment="0302 from IDEA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv.html" beforeDir="false" afterPath="$PROJECT_DIR$/cv.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSGI521.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/LSGI521.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSGI522.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/LSGI522.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSGI532.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/LSGI532.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSGI535.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/LSGI535.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aboutme.html" beforeDir="false" afterPath="$PROJECT_DIR$/aboutme.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/indoor_position_project.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/indoor_position_project.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/liujiaxing.html" beforeDir="false" afterPath="$PROJECT_DIR$/liujiaxing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ljx_cv_en.html" beforeDir="false" afterPath="$PROJECT_DIR$/ljx_cv_en.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ljx_cv_cn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ljx_cv_en.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lsgi535-project-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/lsgi535-project-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lsgi535-project-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/lsgi535-project-2.html" afterDir="false" />
     </list>
     <ignored path="ljxxx.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,28 +37,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LSGI532.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1235">
-              <caret line="65" column="77" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="77" />
-              <folding>
-                <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1079">
+            <state relative-caret-position="799">
               <caret line="75" column="59" selection-start-line="75" selection-start-column="59" selection-end-line="75" selection-end-column="59" />
               <folding>
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -59,10 +49,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
+        <entry file="file://$PROJECT_DIR$/cv.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
+            <state relative-caret-position="-323">
+              <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liujiaxing.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="582">
+              <caret line="34" column="10" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="10" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -78,40 +82,38 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cv.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog/lsgi535-project-1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="83" column="10" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
+            <state relative-caret-position="19">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/aboutme.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/liujiaxing.html">
+        <entry file="file://$PROJECT_DIR$/blog/indoor_position_project.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="94" column="40" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
+            <state relative-caret-position="19">
+              <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lsgi535-project-1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LSGI521.html">
+        <entry file="file://$PROJECT_DIR$/blog/LSGI521.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1197">
               <caret line="63" column="39" selection-end-line="883" selection-end-column="7" />
@@ -140,7 +142,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LSGI522.html">
+        <entry file="file://$PROJECT_DIR$/blog/LSGI522.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1311">
               <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
@@ -218,24 +220,17 @@
         <option value="$PROJECT_DIR$/LSGI522.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/LSGI535.html" />
-        <option value="$PROJECT_DIR$/aboutme.html" />
         <option value="$PROJECT_DIR$/ljx_cv_en.html" />
-        <option value="$PROJECT_DIR$/liujiaxing.html" />
         <option value="$PROJECT_DIR$/cv.html" />
+        <option value="$PROJECT_DIR$/liujiaxing.html" />
+        <option value="$PROJECT_DIR$/aboutme.html" />
       </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-15" />
-    <option name="y" value="51" />
-    <option name="width" value="1924" />
+    <option name="y" value="50" />
+    <option name="width" value="1925" />
     <option name="height" value="1060" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -246,7 +241,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -254,22 +248,12 @@
               <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ljxxx.github.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ljxxx.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -283,19 +267,19 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\blog" />
+      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\js" />
+      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets" />
+      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\images\LSGI521" />
+      <recent name="$PROJECT_DIR$/images" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io" />
       <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\images\LSGI535" />
       <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\images\LSGI532" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/blog/ljx_cv" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\js" />
-      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets" />
-      <recent name="C:\Users\jiaxi\Downloads\ljxxx.github.io\assets\images\LSGI521" />
-      <recent name="$PROJECT_DIR$/images" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -580,14 +564,9 @@
       <workItem from="1588259724181" duration="6000" />
       <workItem from="1591109029537" duration="328000" />
       <workItem from="1603541428504" duration="557000" />
-      <workItem from="1614655985691" duration="307000" />
-    </task>
-    <task id="LOCAL-00032" summary="1120 from IDEA">
-      <created>1542641873842</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1542641873842</updated>
+      <workItem from="1614655985691" duration="1302000" />
+      <workItem from="1614869276889" duration="3000" />
+      <workItem from="1620787692303" duration="456000" />
     </task>
     <task id="LOCAL-00033" summary="1127 from IDEA">
       <created>1543313720902</created>
@@ -925,18 +904,25 @@
       <option name="project" value="LOCAL" />
       <updated>1603541930697</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="0302 from IDEA">
+      <created>1614656356777</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1614656356777</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159539000" />
+    <option name="totallyTimeSpent" value="160993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="33" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="top" id="Ant Build" order="0" side_tool="true" weight="0.24924012" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17560321" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17962466" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Palette&#9;" order="3" />
@@ -950,9 +936,9 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.45412844" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32874617" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49932975" weight="0.45321637" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49932975" weight="0.32894737" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50067025" side_tool="true" visible="true" weight="0.32894737" />
       <window_info anchor="bottom" id="Application Servers" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32916668" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
@@ -1041,16 +1027,14 @@
     <MESSAGE value="0303 from IDEA" />
     <MESSAGE value="0414 from IDEA" />
     <MESSAGE value="0602 from IDEA" />
-    <option name="LAST_COMMIT_MESSAGE" value="0602 from IDEA" />
+    <MESSAGE value="0302 from IDEA" />
+    <option name="LAST_COMMIT_MESSAGE" value="0302 from IDEA" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/img/blog508.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1082,13 +1066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indoor_position_project.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -1191,23 +1168,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aboutme.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1402">
-          <caret line="209" column="3" selection-start-line="209" selection-start-column="3" selection-end-line="209" selection-end-column="3" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#1135#1141#0" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CNAME">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/LSGI532.html">
+    <entry file="file://$PROJECT_DIR$/blog/LSGI535.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1079">
+          <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/LSGI532.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1235">
           <caret line="65" column="77" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="77" />
@@ -1224,14 +1203,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lsgi535-project-1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/ljx_cv_cn.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/LSGI521.html">
+    <entry file="file://$PROJECT_DIR$/blog/LSGI521.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1197">
           <caret line="63" column="39" selection-end-line="883" selection-end-column="7" />
@@ -1258,7 +1233,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LSGI522.html">
+    <entry file="file://$PROJECT_DIR$/blog/LSGI522.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1311">
           <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
@@ -1300,16 +1275,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LSGI535.html">
+    <entry file="file://$PROJECT_DIR$/blog/lsgi535-project-1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1079">
-          <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
+        <state relative-caret-position="19">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/indoor_position_project.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1079">
+        <state relative-caret-position="799">
           <caret line="75" column="59" selection-start-line="75" selection-start-column="59" selection-end-line="75" selection-end-column="59" />
           <folding>
             <element signature="n#style#0;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1317,20 +1299,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ljx_cv_cn.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liujiaxing.html">
+    <entry file="file://$PROJECT_DIR$/cv.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="94" column="40" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
+        <state relative-caret-position="-323">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ljx_cv_en.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
+        <state relative-caret-position="115">
+          <caret line="71" column="4" lean-forward="true" selection-end-line="299" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1345,14 +1329,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cv.html">
+    <entry file="file://$PROJECT_DIR$/liujiaxing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="83" column="10" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
+        <state relative-caret-position="582">
+          <caret line="34" column="10" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#h2#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#h2#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#ul#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aboutme.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
