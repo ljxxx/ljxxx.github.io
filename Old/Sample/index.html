@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供给调查 - 社区适老化功能空间分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 20%, #f093fb 100%);
+            padding-bottom: 100px;
+            min-height: 100vh;
+        }
+        .ios-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .ios-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        .status-bar {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+        }
+        .community-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .community-card.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .camera-container {
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .form-input {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 16px 20px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 0 8px 0;
+            z-index: 40;
+        }
+        .nav-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 4px;
+            border-radius: 12px;
+        }
+        .nav-item.active {
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+        .nav-item:not(.active) {
+            color: #6b7280;
+        }
+        .nav-item:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+        .nav-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        .nav-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .header-title {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .community-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        }
+        .community-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 14px;
+        }
+        .community-status {
+            font-size: 15px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .progress-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+        }
+        .progress-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+        .progress-fill.red {
+            background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+        }
+        .progress-fill.green {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+        .progress-container-inline {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            min-width: 140px;
+            margin-left: auto;
+        }
+        .progress-header-inline {
+            margin-bottom: 10px;
+        }
+        .progress-text-inline {
+            font-size: 16px;
+            color: #1f2937;
+            font-weight: 700;
+        }
+        .progress-bar-inline {
+            width: 100px;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .progress-fill-inline {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+        .progress-fill-inline.red {
+            background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+        }
+        .progress-fill-inline.green {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+        }
+        .progress-fill-inline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar fixed top-0 left-0 right-0 z-50 px-6 py-3 flex justify-between items-center text-white text-sm font-medium">
+        <div class="flex items-center space-x-2">
+            <span class="font-semibold">9:41</span>
+        </div>
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-signal text-sm"></i>
+            <i class="fas fa-wifi text-sm"></i>
+            <i class="fas fa-battery-three-quarters text-sm"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="bg-white/90 backdrop-blur-xl border-b border-white/20 pt-16 pb-6 px-6">
+        <div class="flex items-center justify-between">
+            <h1 class="header-title">供给调查</h1>
+            <div class="flex items-center space-x-4">
+                <div class="progress-container-inline">
+                    <div class="progress-header-inline">
+                        <span class="progress-text-inline">15/20</span>
+                    </div>
+                    <div class="progress-bar-inline">
+                        <div class="progress-fill-inline red" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <button onclick="openChat()" class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-comments text-blue-600 text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="p-6 pb-8">
+        <!-- 标题区域 -->
+        <div class="mb-8">
+            <h2 class="section-title">选择社区</h2>
+            <p class="text-white/80 text-lg mb-6">点击社区卡片开始调查</p>
+        </div>
+
+        <!-- 社区卡片网格 -->
+        <div class="grid grid-cols-2 gap-5">
+            <!-- 已开放社区 -->
+            <div class="community-card ios-card p-6" onclick="openObservation('岳麓山社区')">
+                <div class="text-center">
+                    <div class="community-icon mx-auto">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="community-name text-gray-800">岳麓山社区</h3>
+                    <p class="community-status text-green-600">已开放</p>
+                </div>
+            </div>
+
+            <div class="community-card ios-card p-6" onclick="openObservation('坡子街社区')">
+                <div class="text-center">
+                    <div class="community-icon mx-auto">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="community-name text-gray-800">坡子街社区</h3>
+                    <p class="community-status text-green-600">已开放</p>
+                </div>
+            </div>
+
+            <div class="community-card ios-card p-6" onclick="openObservation('通泰街社区')">
+                <div class="text-center">
+                    <div class="community-icon mx-auto">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="community-name text-gray-800">通泰街社区</h3>
+                    <p class="community-status text-green-600">已开放</p>
+                </div>
+            </div>
+
+            <div class="community-card ios-card p-6" onclick="openObservation('东塘社区')">
+                <div class="text-center">
+                    <div class="community-icon mx-auto">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="community-name text-gray-800">东塘社区</h3>
+                    <p class="community-status text-green-600">已开放</p>
+                </div>
+            </div>
+
+            <div class="community-card ios-card p-6" onclick="openObservation('韭菜园社区')">
+                <div class="text-center">
+                    <div class="community-icon mx-auto">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="community-name text-gray-800">韭菜园社区</h3>
+                    <p class="community-status text-green-600">已开放</p>
+                </div>
+            </div>
+
+            <div class="community-card ios-card p-6" onclick="openObservation('月亮岛社区')">
+                <div class="text-center">
+                    <div class="community-icon mx-auto">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="community-name text-gray-800">月亮岛社区</h3>
+                    <p class="community-status text-green-600">已开放</p>
+                </div>
+            </div>
+
+            <div class="community-card ios-card p-6" onclick="openObservation('星沙社区')">
+                <div class="text-center">
+                    <div class="community-icon mx-auto">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="community-name text-gray-800">星沙社区</h3>
+                    <p class="community-status text-green-600">已开放</p>
+                </div>
+            </div>
+
+            <div class="community-card ios-card p-6" onclick="openObservation('淮川社区')">
+                <div class="text-center">
+                    <div class="community-icon mx-auto">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="community-name text-gray-800">淮川社区</h3>
+                    <p class="community-status text-green-600">已开放</p>
+                </div>
+            </div>
+
+            <!-- 未开放社区 -->
+            <div class="community-card disabled ios-card p-6" onclick="showDisabledMessage()">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gray-300 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-building text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="community-name text-gray-400">玉潭社区</h3>
+                    <p class="community-status text-gray-500">未开放</p>
+                </div>
+            </div>
+
+            <div class="community-card disabled ios-card p-6" onclick="showDisabledMessage()">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gray-300 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-building text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="community-name text-gray-400">麓谷社区</h3>
+                    <p class="community-status text-gray-500">未开放</p>
+                </div>
+            </div>
+
+            <div class="community-card disabled ios-card p-6" onclick="showDisabledMessage()">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gray-300 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-building text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="community-name text-gray-400">马栏山社区</h3>
+                    <p class="community-status text-gray-500">未开放</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <div class="grid grid-cols-4 gap-2 px-6">
+            <div class="nav-item active text-center" onclick="navigateTo('index.html')">
+                <i class="fas fa-building nav-icon"></i>
+                <div class="nav-text">供给调查</div>
+            </div>
+            <div class="nav-item text-center" onclick="navigateTo('demand-survey.html')">
+                <i class="fas fa-users nav-icon"></i>
+                <div class="nav-text">需求调查</div>
+            </div>
+            <div class="nav-item text-center" onclick="navigateTo('analysis.html')">
+                <i class="fas fa-chart-line nav-icon"></i>
+                <div class="nav-text">供需分析</div>
+            </div>
+            <div class="nav-item text-center" onclick="navigateTo('profile.html')">
+                <i class="fas fa-user nav-icon"></i>
+                <div class="nav-text">个人中心</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 聊天界面模态框 -->
+    <div id="chatModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden">
+        <div class="bg-white h-full overflow-y-auto">
+            <!-- 聊天页面头部 -->
+            <div class="bg-white/95 backdrop-blur-xl border-b border-gray-200 pt-16 pb-6 px-6 sticky top-0 z-10">
+                <div class="flex items-center justify-between">
+                    <button onclick="closeChat()" class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-arrow-left text-blue-600 text-lg"></i>
+                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800">智能助手</h1>
+                    <div class="w-10"></div>
+                </div>
+            </div>
+
+            <!-- 聊天内容 -->
+            <div class="p-6 pb-24">
+                <!-- 欢迎消息 -->
+                <div class="flex justify-start mb-6">
+                    <div class="max-w-xs bg-gray-100 rounded-2xl p-4">
+                        <p class="text-gray-800 text-lg">您好！我是社区适老化设计智能助手，有什么可以帮助您的吗？</p>
+                    </div>
+                </div>
+
+                <!-- 对话1：设计规范 -->
+                <div class="flex justify-end mb-6">
+                    <div class="max-w-xs bg-blue-500 rounded-2xl p-4">
+                        <p class="text-white text-lg">请问社区适老化设计有哪些规范要求？</p>
+                    </div>
+                </div>
+                <div class="flex justify-start mb-6">
+                    <div class="max-w-xs bg-gray-100 rounded-2xl p-4">
+                        <p class="text-gray-800 text-lg">根据《无障碍环境建设条例》和《老年人建筑设计规范》，主要要求包括：</p>
+                        <ul class="text-gray-800 text-lg mt-2 space-y-1">
+                            <li>• 无障碍通道宽度≥1.2m</li>
+                            <li>• 坡道坡度≤1:12</li>
+                            <li>• 扶手高度0.85-0.9m</li>
+                            <li>• 地面防滑系数≥0.6</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 对话2：政策法规 -->
+                <div class="flex justify-end mb-6">
+                    <div class="max-w-xs bg-blue-500 rounded-2xl p-4">
+                        <p class="text-white text-lg">相关的政策法规有哪些？</p>
+                    </div>
+                </div>
+                <div class="flex justify-start mb-6">
+                    <div class="max-w-xs bg-gray-100 rounded-2xl p-4">
+                        <p class="text-gray-800 text-lg">主要政策法规包括：</p>
+                        <ul class="text-gray-800 text-lg mt-2 space-y-1">
+                            <li>• 《无障碍环境建设条例》</li>
+                            <li>• 《老年人权益保障法》</li>
+                            <li>• 《社区养老服务设施建设标准》</li>
+                            <li>• 《适老化改造技术导则》</li>
+                            <li>• 各地适老化改造补贴政策</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 对话3：资金投入 -->
+                <div class="flex justify-end mb-6">
+                    <div class="max-w-xs bg-blue-500 rounded-2xl p-4">
+                        <p class="text-white text-lg">建设社区医院需要多少资金投入？</p>
+                    </div>
+                </div>
+                <div class="flex justify-start mb-6">
+                    <div class="max-w-xs bg-gray-100 rounded-2xl p-4">
+                        <p class="text-gray-800 text-lg">社区医院建设资金投入参考：</p>
+                        <ul class="text-gray-800 text-lg mt-2 space-y-1">
+                            <li>• 小型社区医院：50-100万元</li>
+                            <li>• 中型社区医院：100-300万元</li>
+                            <li>• 大型社区医院：300-500万元</li>
+                            <li>• 包含适老化改造：额外20-30%</li>
+                        </ul>
+                        <p class="text-gray-600 text-base mt-2">具体投入需根据规模、设备配置和地区差异确定。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 输入框 -->
+            <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+                <div class="flex items-center space-x-3">
+                    <input type="text" placeholder="输入您的问题..." class="flex-1 border border-gray-300 rounded-2xl px-4 py-3 text-lg focus:outline-none focus:border-blue-500">
+                    <button class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-paper-plane text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 观察页面模态框 -->
+    <div id="observationModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden">
+        <div class="bg-white h-full overflow-y-auto">
+            <!-- 观察页面头部 -->
+            <div class="bg-white/95 backdrop-blur-xl border-b border-gray-200 pt-16 pb-6 px-6 sticky top-0 z-10">
+                <div class="flex items-center justify-between">
+                    <button onclick="closeObservation()" class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-arrow-left text-blue-600 text-lg"></i>
+                    </button>
+                    <h1 id="communityName" class="text-2xl font-bold text-gray-800">岳麓山社区</h1>
+                    <div class="w-10"></div>
+                </div>
+            </div>
+
+            <!-- 观察页面内容 -->
+            <div class="p-6">
+                <!-- 摄像头区域 -->
+                <div class="camera-container mb-8">
+                    <div class="aspect-video bg-gray-900 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-camera text-6xl mb-6 opacity-50"></i>
+                            <p class="text-lg font-medium">摄像头预览区域</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <button class="w-full bg-blue-500 text-white py-4 rounded-2xl font-semibold text-lg shadow-lg">
+                            <i class="fas fa-camera mr-3"></i>拍照
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 表单区域 -->
+                <div class="space-y-6">
+                    <!-- 位置 -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-800 mb-3">位置</label>
+                        <div class="flex">
+                            <input type="text" placeholder="点击定位图标获取当前位置" class="form-input flex-1 rounded-l-2xl rounded-r-none">
+                            <button class="bg-blue-500 text-white px-6 rounded-r-2xl">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 类型 -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-800 mb-3">类型</label>
+                        <select class="form-input w-full rounded-2xl">
+                            <option value="">请选择类型</option>
+                            <option value="medical">医疗照料</option>
+                            <option value="daily">日常生活</option>
+                            <option value="social">社交休闲</option>
+                            <option value="sports">体育锻炼</option>
+                            <option value="education">教育</option>
+                        </select>
+                    </div>
+
+                    <!-- 面积 -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-800 mb-3">面积 (平方米)</label>
+                        <input type="number" placeholder="请输入面积" class="form-input w-full rounded-2xl">
+                    </div>
+
+                    <!-- 产权 -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-800 mb-3">产权</label>
+                        <select class="form-input w-full rounded-2xl">
+                            <option value="">请选择产权</option>
+                            <option value="public">公共</option>
+                            <option value="collective">集体</option>
+                            <option value="private">个人</option>
+                            <option value="unknown">未知</option>
+                        </select>
+                    </div>
+
+                    <!-- 是否闲置 -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-800 mb-3">是否闲置</label>
+                        <div class="flex space-x-6">
+                            <label class="flex items-center">
+                                <input type="radio" name="idle" value="yes" class="mr-3 w-5 h-5">
+                                <span class="text-lg">是</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="idle" value="no" class="mr-3 w-5 h-5">
+                                <span class="text-lg">否</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 提交按钮 -->
+                <div class="mt-10 pb-8">
+                    <button class="w-full bg-green-500 text-white py-5 rounded-2xl font-bold text-xl shadow-lg">
+                        提交观察记录
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openObservation(communityName) {
+            document.getElementById('communityName').textContent = communityName;
+            document.getElementById('observationModal').classList.remove('hidden');
+        }
+
+        function closeObservation() {
+            document.getElementById('observationModal').classList.add('hidden');
+        }
+
+        function showDisabledMessage() {
+            alert('该社区暂未开放，敬请期待！');
+        }
+
+        function openChat() {
+            document.getElementById('chatModal').classList.remove('hidden');
+        }
+
+        function closeChat() {
+            document.getElementById('chatModal').classList.add('hidden');
+        }
+
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        // 添加点击反馈效果
+        document.querySelectorAll('.community-card:not(.disabled)').forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // 底部导航点击反馈
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            item.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html> 
