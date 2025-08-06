@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Walk Link - Age Balance 城乡养老公共环境交互智能系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #4682B4 50%, #8B4513 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .ios-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .ios-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        .entry-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .entry-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        .entry-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        }
+        .entry-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+        .entry-desc {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        /* 弹窗样式 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px 30px;
+            margin: 20px;
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 36px;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .modal-message {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+        
+        .modal-button {
+            background: linear-gradient(135deg, #4682B4 0%, #2E5A88 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(70, 130, 180, 0.3);
+        }
+        
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(70, 130, 180, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- 主内容区域 -->
+    <div class="pt-8 px-6 pb-8">
+
+        <!-- 标题区域 -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-white mb-4">City Walk Link</h1>
+            <h1 class="text-4xl font-bold text-white mb-4">Age Balance</h1>
+            <p class="text-white/80 text-lg">城乡养老公共环境交互 </p>
+        </div>
+
+        <!-- 入口卡片 -->
+        <div class="space-y-6">
+
+            <!-- 登录 -->
+            <div class="entry-card ios-card p-8" onclick="login()">
+                <div class="text-center">
+                    <div class="entry-icon mx-auto" style="background: linear-gradient(135deg, #4682B4 0%, #2E5A88 100%);">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <h2 class="entry-title text-gray-800">登录</h2>
+                    <p class="entry-desc">登录已有账户，继续之前的调查工作</p>
+                </div>
+            </div>
+            <!-- 注册 -->
+            <div class="entry-card ios-card p-8" onclick="showComingSoonModal('注册功能')">
+                <div class="text-center">
+                    <div class="entry-icon mx-auto" style="background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h2 class="entry-title text-gray-800">注册</h2>
+                    <p class="entry-desc">创建账户，保存调查进度和数据</p>
+                </div>
+            </div>
+
+            <!-- 公众 -->
+            <div class="entry-card ios-card p-8" onclick="showComingSoonModal('公众功能')">
+                <div class="text-center">
+                    <div class="entry-icon mx-auto" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2 class="entry-title text-gray-800">公众-直接参与</h2>
+                    <p class="entry-desc">选择"直接参与"可立即开始使用，无需任何注册</p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- 实现中弹窗 -->
+    <div id="comingSoonModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h3 class="modal-title" id="modalTitle">功能开发中</h3>
+            <p class="modal-message">该功能正在紧张开发中，敬请期待！我们会尽快为您提供更完善的服务。</p>
+            <button class="modal-button" onclick="closeModal()">
+                <i class="fas fa-check mr-2"></i>我知道了
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function directParticipate() {
+            // 跳转到简化的调查页面
+            window.location.href = 'direct-survey.html';
+        }
+
+        function showComingSoonModal(feature) {
+            const modal = document.getElementById('comingSoonModal');
+            const title = document.getElementById('modalTitle');
+            title.textContent = feature + '开发中';
+            modal.classList.add('show');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('comingSoonModal');
+            modal.classList.remove('show');
+        }
+
+        // 点击模态框外部关闭
+        document.getElementById('comingSoonModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        function login() {
+            // 跳转到登录页面
+            window.location.href = 'login.html';
+        }
+
+        // 添加点击反馈效果
+        document.querySelectorAll('.entry-card').forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html> 
