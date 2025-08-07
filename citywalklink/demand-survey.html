@@ -729,8 +729,8 @@
                             <!-- 拍照 -->
                             <div>
                                 <label class="block text-lg font-semibold text-gray-800 mb-3">拍照</label>
-                                <button class="w-full bg-green-500 text-white py-4 rounded-2xl font-semibold hover:bg-green-600 transition-colors">
-                                    <i class="fas fa-camera mr-2"></i>拍照
+                                <button onclick="openRecognition()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-semibold hover:bg-green-600 transition-colors">
+                                    <i class="fas fa-camera mr-2"></i>拍照提取
                                 </button>
                             </div>
                         </div>
@@ -765,6 +765,136 @@
             <button class="modal-button" onclick="closeModal()">
                 <i class="fas fa-check mr-2"></i>我知道了
             </button>
+        </div>
+    </div>
+
+    <!-- 识别页面模态框 -->
+    <div id="recognitionModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden">
+        <div class="bg-white h-full overflow-y-auto">
+            <!-- 识别页面头部 -->
+            <div class="bg-white/95 backdrop-blur-xl border-b border-gray-200 pt-16 pb-6 px-6 sticky top-0 z-10">
+                <div class="flex items-center justify-between">
+                    <button onclick="closeRecognition()" class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-arrow-left text-green-600 text-lg"></i>
+                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800">图像转译</h1>
+                    <div class="w-10"></div>
+                </div>
+            </div>
+
+            <!-- 识别页面内容 -->
+            <div class="p-6">
+                <!-- 前一张图 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">原始图片</h3>
+                    <div class="aspect-video bg-gray-100 rounded-2xl overflow-hidden">
+                        <img src="识别前.png" alt="原始图片" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- 识别按钮 -->
+                <div class="mb-6">
+                    <button onclick="startRecognition()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-bold text-lg hover:bg-green-600 transition-colors">
+                        <i class="fas fa-magic mr-2"></i>
+                        开始识别
+                    </button>
+                </div>
+
+                <!-- 识别结果 -->
+                <div id="recognitionResult" class="hidden">
+                    <!-- 识别后的图片 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">识别结果</h3>
+                        <div class="aspect-video bg-gray-100 rounded-2xl overflow-hidden">
+                            <img src="识别后.png" alt="识别结果" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- 识别说明 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">识别结果表格</h3>
+                        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b border-blue-200">
+                                        <th class="text-left py-3 px-4 font-semibold text-blue-800">识别类型</th>
+                                        <th class="text-left py-3 px-4 font-semibold text-blue-800">颜色标识</th>
+                                        <th class="text-left py-3 px-4 font-semibold text-blue-800">识别内容</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-700">
+                                    <tr class="border-b border-blue-100">
+                                        <td class="py-3 px-4 font-medium">行为类型</td>
+                                        <td class="py-3 px-4">
+                                            <div class="w-4 h-4 bg-yellow-400 rounded"></div>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <div class="space-y-1">
+                                                <div class="flex items-center">
+                                                    <span class="w-2 h-2 bg-yellow-400 rounded mr-2"></span>
+                                                    <span>吃饭</span>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <span class="w-2 h-2 bg-yellow-400 rounded mr-2"></span>
+                                                    <span>聊天</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-blue-100">
+                                        <td class="py-3 px-4 font-medium">空间类型</td>
+                                        <td class="py-3 px-4">
+                                            <div class="w-4 h-4 bg-red-400 rounded"></div>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <div class="space-y-1">
+                                                <div class="flex items-center">
+                                                    <span class="w-2 h-2 bg-red-400 rounded mr-2"></span>
+                                                    <span>社区门店及前坪</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium">环境舒适物</td>
+                                        <td class="py-3 px-4">
+                                            <div class="w-4 h-4 bg-blue-400 rounded"></div>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <div class="space-y-1">
+                                                <div class="flex items-center">
+                                                    <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
+                                                    <span>展示牌</span>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
+                                                    <span>乔木树荫</span>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
+                                                    <span>可移动桌椅</span>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
+                                                    <span>遮阴遮雨棚</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 保存并返回按钮 -->
+                    <div class="pb-8">
+                        <button onclick="saveAndReturn()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-bold text-lg hover:bg-green-600 transition-colors">
+                            <i class="fas fa-save mr-2"></i>
+                            保存并返回
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -830,8 +960,8 @@
                     </div>
                     <div>
                         <label class="block text-lg font-semibold text-gray-800 mb-3">拍照</label>
-                        <button class="w-full bg-green-500 text-white py-4 rounded-2xl font-semibold hover:bg-green-600 transition-colors">
-                            <i class="fas fa-camera mr-2"></i>拍照
+                        <button onclick="openRecognition()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-semibold hover:bg-green-600 transition-colors">
+                            <i class="fas fa-camera mr-2"></i>拍照提取
                         </button>
                     </div>
                 </div>
@@ -1107,6 +1237,43 @@
             } catch (error) {
                 alert('自动填充失败，请手动填写表单');
             }
+        }
+
+        function openRecognition() {
+            document.getElementById('recognitionModal').classList.remove('hidden');
+        }
+
+        function closeRecognition() {
+            document.getElementById('recognitionModal').classList.add('hidden');
+        }
+
+        function startRecognition() {
+            // 显示加载状态
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>识别中...';
+            button.disabled = true;
+            
+            // 模拟识别过程
+            setTimeout(() => {
+                // 显示识别结果
+                document.getElementById('recognitionResult').classList.remove('hidden');
+                
+                // 恢复按钮状态
+                button.innerHTML = originalText;
+                button.disabled = false;
+                
+                // 滚动到结果区域
+                document.getElementById('recognitionResult').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        function saveAndReturn() {
+            // 保存识别结果
+            alert('识别结果已保存');
+            
+            // 关闭识别页面，返回观察页面
+            closeRecognition();
         }
 
         // 底部导航点击反馈

@@ -167,93 +167,6 @@
             margin-bottom: 24px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
-        /* 弹窗样式 */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .modal-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 40px 30px;
-            margin: 20px;
-            max-width: 350px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
-        
-        .modal.show .modal-content {
-            transform: scale(1);
-        }
-        
-        .modal-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            color: white;
-            font-size: 36px;
-        }
-        
-        .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 16px;
-        }
-        
-        .modal-message {
-            font-size: 16px;
-            color: #6b7280;
-            line-height: 1.5;
-            margin-bottom: 32px;
-        }
-        
-        .modal-button {
-            background: linear-gradient(135deg, #4682B4 0%, #2E5A88 100%);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            padding: 16px 32px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(70, 130, 180, 0.3);
-        }
-        
-        .modal-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(70, 130, 180, 0.4);
-        }
         .progress-container {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 12px;
@@ -364,10 +277,20 @@
     </style>
 </head>
 <body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar fixed top-0 left-0 right-0 z-50 px-6 py-3 flex justify-between items-center text-white text-sm font-medium">
+        <div class="flex items-center space-x-2">
+            <span class="font-semibold">9:41</span>
+        </div>
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-signal text-sm"></i>
+            <i class="fas fa-wifi text-sm"></i>
+            <i class="fas fa-battery-three-quarters text-sm"></i>
+        </div>
+    </div>
 
-
-                    <!-- 导航栏 -->
-    <div class="bg-white/90 backdrop-blur-xl border-b border-white/20 pt-8 pb-6 px-6">
+                <!-- 导航栏 -->
+                <div class="bg-white/90 backdrop-blur-xl border-b border-white/20 pt-16 pb-6 px-6">
                     <div class="flex items-center justify-between">
                         <h1 class="header-title">供给调查</h1>
                         <div class="flex items-center space-x-4">
@@ -531,7 +454,7 @@
                 <i class="fas fa-chart-line nav-icon"></i>
                 <div class="nav-text">供需分析</div>
             </div>
-            <div class="nav-item text-center" onclick="showComingSoonModal('个人中心')">
+            <div class="nav-item text-center" onclick="navigateTo('profile.html')">
                 <i class="fas fa-user nav-icon"></i>
                 <div class="nav-text">个人中心</div>
             </div>
@@ -553,7 +476,7 @@
             </div>
 
             <!-- 聊天内容 -->
-            <div id="chatContent" class="p-6 pb-28">
+            <div id="chatContent" class="p-6 pb-24">
                 <!-- 欢迎消息 -->
                 <div class="flex justify-start mb-6">
                     <div class="max-w-xs bg-gray-100 rounded-2xl p-4">
@@ -563,9 +486,9 @@
             </div>
 
             <!-- 输入框 -->
-            <div class="fixed bottom-20 left-0 right-0 bg-white border-t border-gray-200 p-4">
+            <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
                 <div class="flex items-center space-x-3">
-                    <input type="text" id="chatInput" placeholder="输入您的问题..." class="flex-1 border border-gray-300 rounded-2xl px-4 py-3 text-lg focus:outline-none focus:border-blue-500">
+                    <input type="text" id="chatInput" placeholder="输入您的问题..." class="flex-1 border border-gray-300 rounded-2xl px-4 py-3 text-lg focus:outline-none focus:border-blue-500" readonly>
                     <button class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
                         <i class="fas fa-paper-plane text-white"></i>
                     </button>
@@ -589,7 +512,7 @@
             </div>
 
             <!-- 观察页面内容 -->
-            <div class="p-6 pb-32">
+            <div class="p-6">
                 <!-- 社区名称 -->
                 <div class="mb-6">
                     <h2 class="text-xl font-bold text-gray-800">观察社区：<span id="communityName" class="text-green-600"></span></h2>
@@ -703,7 +626,7 @@
                     </div>
 
                     <!-- 提交按钮 -->
-                    <div class="mt-10 pb-16">
+                    <div class="mt-10 pb-8">
                         <button class="w-full bg-green-500 text-white py-5 rounded-2xl font-bold text-xl shadow-lg">
                             提交观察记录
                         </button>
@@ -733,7 +656,7 @@
                 <div class="mb-6">
                     <h3 class="text-lg font-semibold text-gray-800 mb-3">原始图片</h3>
                     <div class="aspect-video bg-gray-100 rounded-2xl overflow-hidden">
-                        <img src="识别前.png" alt="原始图片" class="w-full h-full object-cover">
+                        <img src="识别前-1.png" alt="原始图片" class="w-full h-full object-cover">
                     </div>
                 </div>
 
@@ -745,13 +668,31 @@
                     </button>
                 </div>
 
+                <!-- 识别过程说明 -->
+                <div id="recognitionProcess" class="hidden mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">识别过程</h3>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4">
+                        <p class="text-gray-800 text-base leading-relaxed">
+                            可从开放空间和铺地材质关联、招牌文字、空间类型转译得到：图片中存在明确的商业招牌（如 "天鑫家电水电制冷维修""曙光领峰车位销售中心"），这类商业经营性质的空间（商铺、销售中心）通常对应私有产权（产权归个体 / 企业所有，用于商业活动）。画面中商铺外的开放公共空间（街道 / 人行道）、带有 "垃圾分类 人人有责" 标语的公共宣传区域，属于城市公共基础设施范畴。根据城市空间权属逻辑，这类公共开放空间（道路、公共宣传区域）通常由政府管理，对应国有产权（产权归国家所有，供公众使用）。
+                        </p>
+                        <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-xl">
+                            <h4 class="font-semibold text-blue-800 mb-2">识别结果为：</h4>
+                            <p class="text-blue-700 text-sm leading-relaxed">
+                                这张照片的空间权属包含两类：<br>
+                                商铺建筑及经营空间 → 私有产权（商业经营属性，由招牌文字、空间类型转译）；<br>
+                                商铺外的开放公共空间（街道、公共宣传区域） → 国有产权（公共属性，由开放空间特征转译）。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 识别结果 -->
                 <div id="recognitionResult" class="hidden">
                     <!-- 识别后的图片 -->
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold text-gray-800 mb-3">识别结果</h3>
                         <div class="aspect-video bg-gray-100 rounded-2xl overflow-hidden">
-                            <img src="识别后.png" alt="识别结果" class="w-full h-full object-cover">
+                            <img src="识别后-1.png" alt="识别结果" class="w-full h-full object-cover">
                         </div>
                     </div>
 
@@ -759,75 +700,65 @@
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold text-gray-800 mb-3">识别结果表格</h3>
                         <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 overflow-x-auto">
-                            <table class="w-full text-sm">
-                                <thead>
-                                    <tr class="border-b border-blue-200">
-                                        <th class="text-left py-3 px-4 font-semibold text-blue-800">识别类型</th>
-                                        <th class="text-left py-3 px-4 font-semibold text-blue-800">颜色标识</th>
-                                        <th class="text-left py-3 px-4 font-semibold text-blue-800">识别内容</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-gray-700">
-                                    <tr class="border-b border-blue-100">
-                                        <td class="py-3 px-4 font-medium">行为类型</td>
-                                        <td class="py-3 px-4">
-                                            <div class="w-4 h-4 bg-yellow-400 rounded"></div>
-                                        </td>
-                                        <td class="py-3 px-4">
-                                            <div class="space-y-1">
-                                                <div class="flex items-center">
-                                                    <span class="w-2 h-2 bg-yellow-400 rounded mr-2"></span>
-                                                    <span>吃饭</span>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <span class="w-2 h-2 bg-yellow-400 rounded mr-2"></span>
-                                                    <span>聊天</span>
-                                                </div>
+                                                    <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-blue-200">
+                                    <th class="text-left py-3 px-4 font-semibold text-blue-800">空间类型</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-blue-800">颜色标识</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-blue-800">识别内容</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <tr class="border-b border-blue-100">
+                                    <td class="py-3 px-4 font-medium">商铺建筑及经营空间</td>
+                                    <td class="py-3 px-4">
+                                        <div class="w-4 h-4 bg-red-400 rounded"></div>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="space-y-1">
+                                            <div class="flex items-center">
+                                                <span class="w-2 h-2 bg-red-400 rounded mr-2"></span>
+                                                <span>私有产权（商业经营属性）</span>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b border-blue-100">
-                                        <td class="py-3 px-4 font-medium">空间类型</td>
-                                        <td class="py-3 px-4">
-                                            <div class="w-4 h-4 bg-red-400 rounded"></div>
-                                        </td>
-                                        <td class="py-3 px-4">
-                                            <div class="space-y-1">
-                                                <div class="flex items-center">
-                                                    <span class="w-2 h-2 bg-red-400 rounded mr-2"></span>
-                                                    <span>社区门店及前坪</span>
-                                                </div>
+                                            <div class="flex items-center">
+                                                <span class="w-2 h-2 bg-red-400 rounded mr-2"></span>
+                                                <span>天鑫家电水电制冷维修</span>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-3 px-4 font-medium">环境舒适物</td>
-                                        <td class="py-3 px-4">
-                                            <div class="w-4 h-4 bg-blue-400 rounded"></div>
-                                        </td>
-                                        <td class="py-3 px-4">
-                                            <div class="space-y-1">
-                                                <div class="flex items-center">
-                                                    <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
-                                                    <span>展示牌</span>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
-                                                    <span>乔木树荫</span>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
-                                                    <span>可移动桌椅</span>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
-                                                    <span>遮阴遮雨棚</span>
-                                                </div>
+                                            <div class="flex items-center">
+                                                <span class="w-2 h-2 bg-red-400 rounded mr-2"></span>
+                                                <span>曙光领峰车位销售中心</span>
                                             </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 font-medium">开放公共空间</td>
+                                    <td class="py-3 px-4">
+                                        <div class="w-4 h-4 bg-blue-400 rounded"></div>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="space-y-1">
+                                            <div class="flex items-center">
+                                                <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
+                                                <span>国有产权（公共属性）</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
+                                                <span>街道/人行道</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
+                                                <span>垃圾分类 人人有责</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <span class="w-2 h-2 bg-blue-400 rounded mr-2"></span>
+                                                <span>公共宣传区域</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         </div>
                     </div>
 
@@ -840,20 +771,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- 实现中弹窗 -->
-    <div id="comingSoonModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <i class="fas fa-tools"></i>
-            </div>
-            <h3 class="modal-title" id="modalTitle">功能开发中</h3>
-            <p class="modal-message">该功能正在紧张开发中，敬请期待！我们会尽快为您提供更完善的服务。</p>
-            <button class="modal-button" onclick="closeModal()">
-                <i class="fas fa-check mr-2"></i>我知道了
-            </button>
         </div>
     </div>
 
@@ -873,6 +790,9 @@
 
         function closeRecognition() {
             document.getElementById('recognitionModal').classList.add('hidden');
+            document.getElementById('observationModal').classList.remove('hidden');
+            // 隐藏识别过程说明
+            document.getElementById('recognitionProcess').classList.add('hidden');
         }
 
         function startRecognition() {
@@ -881,6 +801,9 @@
             const originalText = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>识别中...';
             button.disabled = true;
+            
+            // 显示识别过程说明
+            document.getElementById('recognitionProcess').classList.remove('hidden');
             
             // 模拟识别过程
             setTimeout(() => {
@@ -902,6 +825,8 @@
             
             // 关闭识别页面，返回观察页面
             closeRecognition();
+            // 隐藏识别过程说明
+            document.getElementById('recognitionProcess').classList.add('hidden');
         }
 
         function updateFunctionType() {
@@ -1110,25 +1035,6 @@
             window.location.href = page;
         }
 
-        function showComingSoonModal(feature) {
-            const modal = document.getElementById('comingSoonModal');
-            const title = document.getElementById('modalTitle');
-            title.textContent = feature + '开发中';
-            modal.classList.add('show');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('comingSoonModal');
-            modal.classList.remove('show');
-        }
-
-        // 点击模态框外部关闭
-        document.getElementById('comingSoonModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
         // 舒适物管理相关变量
         let comfortItems = [];
 
@@ -1270,6 +1176,9 @@
             button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>识别中...';
             button.disabled = true;
             
+            // 显示识别过程说明
+            document.getElementById('recognitionProcess').classList.remove('hidden');
+            
             // 模拟识别过程
             setTimeout(() => {
                 // 显示识别结果
@@ -1290,6 +1199,8 @@
             
             // 关闭识别页面，返回观察页面
             closeRecognition();
+            // 隐藏识别过程说明
+            document.getElementById('recognitionProcess').classList.add('hidden');
         }
 
         function updateFunctionType() {
