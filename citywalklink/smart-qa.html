@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能问答 - 社区适老化功能空间分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding-bottom: 100px;
+            min-height: 100vh;
+        }
+        .ios-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .ios-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        .status-bar {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 0 8px 0;
+            z-index: 40;
+        }
+        .main-content {
+            padding-bottom: 100px;
+        }
+        .nav-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 4px;
+            border-radius: 12px;
+        }
+        .nav-item.active {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        .nav-item:not(.active) {
+            color: #6b7280;
+        }
+        .nav-item:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        .nav-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        .nav-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .header-title {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .chat-bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 20px;
+            margin: 6px 0;
+            animation: fadeInUp 0.3s ease;
+        }
+        .chat-bubble.user {
+            background: transparent;
+            margin-left: auto;
+            max-width: 70%;
+        }
+        .chat-bubble.user img {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 200px;
+            margin-left: auto;
+            display: block;
+        }
+        .chat-bubble.user .text-content {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            padding: 12px 16px;
+            border-radius: 18px;
+            border-bottom-right-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            display: inline-block;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+        .chat-bubble.assistant {
+            background: transparent;
+            color: #374151;
+            margin-right: auto;
+            border-bottom-left-radius: 8px;
+            border: none;
+        }
+        .chat-bubble.system {
+            background: rgba(59, 130, 246, 0.1);
+            color: #1e40af;
+            margin: 8px auto;
+            text-align: center;
+            font-size: 14px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .quick-action {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin: 8px 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .quick-action:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+        .quick-action-compact {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 6px 10px;
+            margin: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .quick-action-compact:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+        .category-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 4px;
+            display: inline-block;
+        }
+        .search-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 25px;
+            padding: 12px 20px;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .mode-switch {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 4px;
+            display: flex;
+            gap: 4px;
+        }
+        .mode-button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .mode-button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .mode-button:not(.active) {
+            color: #6b7280;
+        }
+        .history-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+        .history-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .floating-button {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            z-index: 30;
+        }
+        .floating-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+        }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin: 12px 0;
+            width: fit-content;
+        }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        .voice-button {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .voice-button:hover {
+            transform: scale(1.1);
+        }
+        .voice-button.recording {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .typing-effect {
+            display: inline-block;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #667eea; }
+        }
+        .thinking {
+            color: #6b7280;
+            font-style: italic;
+            font-size: 0.875rem;
+            background: transparent;
+            padding: 12px 16px;
+            border-radius: 16px;
+            border-left: 4px solid #3b82f6;
+            margin-bottom: 8px;
+            box-shadow: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .thinking::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+            animation: thinking-progress 3s ease-in-out;
+        }
+        @keyframes thinking-progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        .answer-content {
+            color: #1f2937;
+            font-size: 1rem;
+            line-height: 1.7;
+            background: transparent;
+            padding: 8px 0;
+            border: none;
+            box-shadow: none;
+            position: relative;
+        }
+        .option-button {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #374151;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            padding: 8px 16px;
+            margin: 4px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            letter-spacing: 0.025em;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            min-width: fit-content;
+        }
+        .option-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .option-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-color: #9ca3af;
+        }
+        .option-button:hover::before {
+            left: 100%;
+        }
+        .image-message {
+            max-width: 200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .card-option {
+            background: rgba(128, 128, 128, 0.1);
+            border: 1px solid rgba(128, 128, 128, 0.2);
+            border-radius: 8px;
+            padding: 6px 10px;
+            margin: 2px 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: none;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        .card-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+        .card-option:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            border-color: #cbd5e1;
+        }
+        .conclusion-card {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 16px 0;
+            box-shadow: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .conclusion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #3b82f6, #8b5cf6);
+        }
+        
+        .quick-guide-btn {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #374151;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quick-guide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="bg-white/90 backdrop-blur-xl border-b border-white/20 pt-4 pb-3 px-6">
+        <div class="flex items-center justify-between">
+            <h1 class="header-title text-xl">City Walk 智能交互</h1>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleHistory()" class="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-history text-blue-600 text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="p-4 pb-8 main-content">
+
+        <!-- 聊天区域 -->
+        <div class="ios-card p-4 mb-4" style="height: calc(100vh - 300px);" id="chatArea">
+            <div id="chatMessages" class="space-y-4 h-full overflow-y-auto">
+                <!-- 初始引导内容 -->
+                <div id="initialGuide" class="text-center py-8">
+                    <div class="text-gray-400 text-lg mb-6">
+                        欢迎使用智能助手<br>
+                        上传照片或选择快捷问题开始对话
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button class="quick-guide-btn" onclick="askQuickQuestion('养老设施的资金来源有哪些？')">
+                            <i class="fas fa-money-bill-wave mr-2"></i>
+                            开始录音
+                        </button>
+                        <button class="quick-guide-btn" onclick="askQuickQuestion('社区养老设施的空间需求？')">
+                            <i class="fas fa-home mr-2"></i>
+                            拍照识别
+                        </button>
+                        <button class="quick-guide-btn" onclick="askQuickQuestion('老年人行为模式分析？')">
+                            <i class="fas fa-users mr-2"></i>
+                            XXXX
+                        </button>
+                        <button class="quick-guide-btn" onclick="askQuickQuestion('公益性养老设施如何运营？')">
+                            <i class="fas fa-handshake mr-2"></i>
+                            XXXX
+                        </button>
+                    </div>
+                </div>
+                <!-- 对话内容将通过JavaScript动态添加 -->
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- 底部对话框部分 -->
+    <div class="fixed bottom-24 left-4 right-4 z-30">
+        <div class="ios-card p-4 shadow-xl">
+            <!-- 四个水平排列的选项 -->
+            <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center gap-1 p-1 rounded-lg hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-tasks text-blue-600 text-xs"></i>
+                    <span class="text-xs font-medium text-gray-700">XXXX</span>
+                </div>
+                <div class="flex items-center gap-1 p-1 rounded-lg hover:bg-green-50 transition-colors">
+                    <i class="fas fa-tags text-green-600 text-xs"></i>
+                    <span class="text-xs font-medium text-gray-700">XXXX</span>
+                </div>
+                <div class="flex items-center gap-1 p-1 rounded-lg hover:bg-orange-50 transition-colors">
+                    <i class="fas fa-handshake text-orange-600 text-xs"></i>
+                    <span class="text-xs font-medium text-gray-700">XXXX</span>
+                </div>
+                <div class="flex items-center gap-1 p-1 rounded-lg hover:bg-red-50 transition-colors">
+                    <i class="fas fa-chart-line text-red-600 text-xs"></i>
+                    <span class="text-xs font-medium text-gray-700">XXXX</span>
+                </div>
+            </div>
+
+            <!-- 对话框 -->
+            <div class="bg-white rounded-full shadow-lg border border-gray-200 p-3 flex items-center gap-3">
+                <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-microphone text-blue-600 text-lg"></i>
+                </div>
+                <input type="text" id="quickInput" class="flex-1 border-none outline-none bg-transparent text-sm" placeholder="在这里输入你的问题" readonly>
+                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-arrow-up text-purple-600 text-lg"></i>
+                </div>
+                <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-camera text-green-600 text-lg"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <div class="grid grid-cols-4 gap-2 px-6">
+            <div class="nav-item text-center" onclick="navigateTo('explore.html')">
+                <i class="fas fa-compass nav-icon"></i>
+                <div class="nav-text">探索</div>
+            </div>
+            <div class="nav-item active text-center" onclick="navigateTo('chat.html')">
+                <i class="fas fa-comments nav-icon"></i>
+                <div class="nav-text">对话</div>
+            </div>
+            <div class="nav-item text-center" onclick="navigateTo('analysis.html')">
+                <i class="fas fa-chart-line nav-icon"></i>
+                <div class="nav-text">智能分析</div>
+            </div>
+            <div class="nav-item text-center" onclick="navigateTo('profile.html')">
+                <i class="fas fa-user nav-icon"></i>
+                <div class="nav-text">个人中心</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isRecording = false;
+        let chatHistory = [];
+
+        // 问答数据库
+        const qaDatabase = {
+            '养老设施的资金来源有哪些？': {
+                answer: '养老设施的资金来源比较多样，主要包括政府补贴（如建设补贴、运营补贴）、老人缴纳的费用、社会捐赠、企业投入等。其中政府补贴是重要来源之一，尤其对公益性质的设施。',
+                category: 'finance',
+                followUp: ['政府如何补贴？', '没有补贴的设施会如何？']
+            },
+            '政府如何补贴？': {
+                answer: '政府对养老设施的补贴主要通过分类化、差异化的政策工具实现，具体方式涵盖建设、运营、税费、土地、融资等多个维度。以长沙为例：其构建了覆盖全链条的补贴体系，包括建设补贴：自建床位1万元/床，改扩建设施0.5万元/床。运营补贴：全失能老人500元/月/床，补贴资金市、区按4:6分担。',
+                category: 'finance',
+                followUp: ['政府补贴是按照什么标准有不同的补贴？']
+            },
+            '政府补贴是按照什么标准有不同的补贴？': {
+                answer: '长沙养老补贴的差异化设计，核心是通过"分层精准匹配"实现财政资金高效利用：按机构属性定方向：公办机构保底线、民办普惠扩供给、专业机构提品质；按老人需求定力度：困难程度越高、失能等级越重，补贴越高；按服务质量定额度：等级越高、合规性越强，补贴越优；按财政责任定来源：市、区协同分担。',
+                category: 'finance',
+                followUp: ['没有补贴的设施会如何？']
+            },
+            '公益性养老设施如何运营？': {
+                answer: '在补贴有限的情况下，长沙多个社区养老设施通过"空间复用+资源拼凑+服务聚焦"的方式维持运营：1.资源整合与场地共享；2.多方合作与社会力量参与；3.服务分层与适度收费；4.成本控制与资源调配；5.政策争取与灵活应对。',
+                category: 'operation',
+                followUp: ['为什么很多公益性养老设施都面临亏损？']
+            },
+            '养老设施的成本构成？': {
+                answer: '运营养老设施的成本主要包括人工工资、水电费、场地相关费用（如租赁或维护）、活动材料等。其中人工成本是最大开支之一，尤其是专业护理人员的工资。其次是水电费、活动物资采购。',
+                category: 'finance',
+                followUp: ['如何控制运营成本？']
+            },
+            '社区养老设施的空间需求？': {
+                answer: '根据需求计算，社区老年人功能空间总需求面积约为2975㎡，包括：社交休闲1023㎡、日常生活462㎡、医疗照护300㎡、体育锻炼733㎡、文化教育457㎡。',
+                category: 'space',
+                followUp: ['如何优化空间布局？']
+            },
+            '老年人行为模式分析？': {
+                answer: '老年人行为模式按年龄层分为：低龄(60-69岁)行为强度最高，中龄(70-79岁)为低龄的70%，高龄(80+岁)为低龄的50%。主要活动包括打麻将、饮茶、闲坐、交谈等社交活动，以及体育锻炼和文化教育。',
+                category: 'demand',
+                followUp: ['如何根据行为模式设计服务？']
+            }
+        };
+
+
+
+        function askQuestion(question) {
+            addMessage(question, 'user');
+            
+            // 模拟AI思考时间
+            showTypingIndicator();
+            
+            setTimeout(() => {
+                hideTypingIndicator();
+                const answer = qaDatabase[question]?.answer || '抱歉，我暂时没有找到这个问题的答案。请尝试其他相关问题。';
+                addMessage(answer, 'assistant');
+                
+                // 添加到历史记录
+                addToHistory(question, answer);
+                
+                // 显示追问选项
+                if (qaDatabase[question]?.followUp) {
+                    setTimeout(() => {
+                        showFollowUpQuestions(qaDatabase[question].followUp);
+                    }, 1000);
+                }
+            }, 1500);
+        }
+
+        function addMessage(content, type) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-bubble ${type}`;
+            messageDiv.innerHTML = content;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const chatMessages = document.getElementById('chatMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <span class="ml-2 text-gray-600">AI正在思考...</span>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        function showFollowUpQuestions(questions) {
+            const chatMessages = document.getElementById('chatMessages');
+            const followUpDiv = document.createElement('div');
+            followUpDiv.className = 'chat-bubble system';
+            followUpDiv.innerHTML = `
+                <div class="text-sm mb-2">您可能还想了解：</div>
+                <div class="flex flex-wrap gap-2">
+                    ${questions.map(q => `<span class="quick-action text-xs" onclick="askQuestion('${q}')">${q}</span>`).join('')}
+                </div>
+            `;
+            chatMessages.appendChild(followUpDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (message) {
+                askQuestion(message);
+                input.value = '';
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function searchQuestions() {
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            if (searchTerm) {
+                // 搜索逻辑
+                const results = Object.keys(qaDatabase).filter(q => 
+                    q.includes(searchTerm) || qaDatabase[q].answer.includes(searchTerm)
+                );
+                
+                if (results.length > 0) {
+                    askQuestion(results[0]);
+                } else {
+                    addMessage('抱歉，没有找到相关的问题。请尝试其他关键词。', 'assistant');
+                }
+            }
+        }
+
+        function filterByCategory(category) {
+            const filteredQuestions = Object.keys(qaDatabase).filter(q => 
+                qaDatabase[q].category === category
+            );
+            
+            if (filteredQuestions.length > 0) {
+                askQuestion(filteredQuestions[0]);
+            }
+        }
+
+        function startVoiceSearch() {
+            const voiceButton = document.getElementById('voiceButton');
+            if (!isRecording) {
+                isRecording = true;
+                voiceButton.classList.add('recording');
+                voiceButton.innerHTML = '<i class="fas fa-stop"></i>';
+                
+                // 模拟语音识别
+                setTimeout(() => {
+                    isRecording = false;
+                    voiceButton.classList.remove('recording');
+                    voiceButton.innerHTML = '<i class="fas fa-microphone"></i>';
+                    
+                    // 模拟识别结果
+                    const recognizedText = '养老设施的资金来源';
+                    document.getElementById('searchInput').value = recognizedText;
+                    searchQuestions();
+                }, 3000);
+            } else {
+                isRecording = false;
+                voiceButton.classList.remove('recording');
+                voiceButton.innerHTML = '<i class="fas fa-microphone"></i>';
+            }
+        }
+
+        function toggleHistory() {
+            const historySection = document.getElementById('historySection');
+            historySection.classList.toggle('hidden');
+        }
+
+        function addToHistory(question, answer) {
+            chatHistory.unshift({ question, answer, timestamp: new Date() });
+            updateHistoryDisplay();
+        }
+
+        function updateHistoryDisplay() {
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = chatHistory.slice(0, 10).map(item => `
+                <div class="history-item" onclick="loadFromHistory('${item.question}')">
+                    <div class="font-semibold text-gray-800">${item.question}</div>
+                    <div class="text-sm text-gray-600 mt-1">${item.answer.substring(0, 50)}...</div>
+                    <div class="text-xs text-gray-400 mt-1">${item.timestamp.toLocaleString()}</div>
+                </div>
+            `).join('');
+        }
+
+        function loadFromHistory(question) {
+            askQuestion(question);
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startVoiceInput() {
+            const input = document.getElementById('messageInput');
+            input.value = '养老设施的资金来源有哪些？';
+            sendMessage();
+        }
+
+        function startCameraInput() {
+            const input = document.getElementById('messageInput');
+            input.value = '请分析这张图片中的内容';
+            sendMessage();
+        }
+
+
+
+        function navigateTo(page) {
+            if (page === 'chat.html') {
+                return; // 当前页面
+            }
+            // 其他页面点击无反应
+        }
+
+        // 逐字显示函数
+        function typeWriter(element, text, speed = 50, callback) {
+            let i = 0;
+            element.value = ''; // 对于input元素使用value而不是innerHTML
+            element.style.display = 'inline-block';
+            
+            function type() {
+                if (i < text.length) {
+                    element.value += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // 逐字显示完成后执行回调
+                    if (callback) {
+                        callback();
+                    }
+                }
+            }
+            type();
+        }
+
+        // 逐字显示思考过程
+        function typeThinking(element, text, speed = 30, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            // 将<br>标签转换为换行符
+            const processedText = text.replace(/<br>/g, '\n');
+            
+            function type() {
+                if (i < processedText.length) {
+                    const char = processedText.charAt(i);
+                    if (char === '\n') {
+                        element.innerHTML += '<br>';
+                    } else {
+                        element.innerHTML += char;
+                    }
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // 思考过程完全结束后执行回调
+                    if (callback) {
+                        setTimeout(callback, 500); // 等待500ms后执行
+                    }
+                }
+            }
+            type();
+        }
+
+        // 逐字显示回答内容
+        function typeAnswer(element, text, speed = 40, callback) {
+            // 检查是否包含HTML标签
+            const hasHtmlTags = /<[^>]*>/.test(text);
+            
+            if (hasHtmlTags) {
+                // 如果有HTML标签，直接显示完整内容
+                element.innerHTML = text;
+                if (callback) {
+                    setTimeout(callback, 1000);
+                }
+            } else {
+                // 如果没有HTML标签，使用逐字显示
+                let i = 0;
+                element.innerHTML = '';
+                
+                // 将<br>标签转换为换行符
+                const processedText = text.replace(/<br>/g, '\n');
+                
+                function type() {
+                    if (i < processedText.length) {
+                        const char = processedText.charAt(i);
+                        if (char === '\n') {
+                            element.innerHTML += '<br>';
+                        } else {
+                            element.innerHTML += char;
+                        }
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        // 逐字显示完成后执行回调
+                        if (callback) {
+                            setTimeout(callback, 1000);
+                        }
+                    }
+                }
+                type();
+            }
+        }
+
+        // 显示思考过程
+        function showThinking(element, text, callback) {
+            element.innerHTML = text;
+            element.style.display = 'block';
+            setTimeout(callback, 2000);
+        }
+
+        // 对话数据
+        const conversation = [
+            {
+                type: 'user',
+                content: 'image',
+                image: '交互1.png',
+                delay: 1000
+            },
+            {
+                type: 'assistant',
+                thinking: '【思考过程】已完成思考<br>用户上传了一张照片，但是没有提出要求。需要进一步跟用户确认。',
+                content: '关于这张照片你想了解什么？',
+                delay: 2000
+            },
+            {
+                type: 'user',
+                content: 'text',
+                text: '我想知道这个地方的空间权属是什么？',
+                delay: 1500
+            },
+            {
+                type: 'assistant',
+                thinking: '【思考过程】<br>已精选知网等内容<br>已完成思考<br>用户想让我识别一张照片的空间权属。空间权属具体包括私有产权、集体产权、国有产权。根据《基于图像编码方法的社区生活圈建设运营特征识别研究》，可以通过开放空间和铺地材质关联、招牌文字、空间类型来转译。现在需要用户进一步提供信息。',
+                content: [
+                    { title: '【道路】', desc: '车行道、人行道、行道树、隔离桩等市政设施、道路铺装、桌椅等家具、招牌文字', color: 'blue' },
+                    { title: '【建筑】', desc: '招牌文字、建筑立面', color: 'green' },
+                    { title: '【建筑前区】', desc: '桌椅等家具、招牌文字', color: 'orange' }
+                ],
+                delay: 3000
+            },
+            {
+                type: 'user',
+                content: 'text',
+                text: '选择了【道路】',
+                delay: 2000
+            },
+            {
+                type: 'assistant',
+                content: '好的，请拍照上传道路相关的照片，包括车行道、人行道、行道树、隔离桩等市政设施。',
+                delay: 1500
+            },
+            {
+                type: 'user',
+                content: 'image',
+                image: '交互2.png',
+                delay: 1000
+            },
+            {
+                type: 'assistant',
+                thinking: '【思考过程】<br>好的，用户补充上传了一张【道路】照片。需要分解这张照片的元素，这张照片包含了人行道、行道树、隔离桩、道路铺装、桌椅等家具。但是缺乏招牌文字的信息，需要进一步补充。',
+                content: ['【车行道】', '【人行道】', '【行道树】', '【市政设施如隔离桩】', '【道路铺装】', '【街道家具如桌椅】', '【招牌文字】', '【使用方式】', '【建筑立面】'],
+                delay: 2500
+            },
+            {
+                type: 'user',
+                content: 'text',
+                text: '选择了【招牌文字】',
+                delay: 2000
+            },
+            {
+                type: 'assistant',
+                content: '好的，请拍照上传招牌文字相关的照片，包括商铺招牌、建筑标识等文字信息。',
+                delay: 1500
+            },
+            {
+                type: 'user',
+                content: 'image',
+                image: '交互3.png',
+                delay: 1000
+            },
+            {
+                type: 'assistant',
+                thinking: '【思考过程】<br>好的，用户补充上传了一张【招牌文字】照片。要判断这张照片的空间权属，需从空间类型及其对应的要素分层拆解，结合 国有、私有、集体产权的核心逻辑分析：<br>一、空间组成与核心特征，画面已经包含齐全三类关键元素：<br>1. 道路、2、建筑；3、建筑前区<br>二、权属判断：分层次解析<br>1. 道路（国有产权）<br>• 要素识别：铺设有人行道地砖、种植标配市政行道树<br>• 空间权属：道路由政府规划建设，权属始终为国有产权（归国家所有，市政部门管理）。<br>2. 建筑（疑似私有产权为主）<br>•要素识别： 左侧商铺根据黄色招牌"芙蓉兴盛"，显示为商业经营用途；右侧建筑根据建筑立面来看为有可能为住宅或公寓。<br>•空间权属：左侧商铺若为市场化购买 / 租赁的商铺 ，建筑本体（房屋）权属多为私有产权（个体 / 企业持有）。右侧建筑若为住宅或公寓，住户 / 业主通过购房获得私有产权（房屋所有权），但也有可能是村集体集资建设的住区，属于集体产权。<br>3.建筑前区（国有产权）<br>• 要素识别：粉色桌椅为 临时摆放的经营设施 ，无固定建筑 / 围墙界定。<br>• 空间权属：即使商户长期在此摆摊，空间本身仍属公共属性（国有产权）—— 经营行为是 "国有空间的临时占用"（需向城管等部门申请许可，本质不改变权属）。',
+                content: '该照片中是<span style="color: #3b82f6; font-weight: bold;">"国有 + 私有"</span>产权混合空间。其中国有产权占主导：道路和建筑前区是核心，虽然存在"临时使用"经营行为，但是产权始终为国有产权。还有一部分是私有产权或集体产权，由于无 "村""集体" 标识、无宅基地自建房风貌，因此极大概率是国有产权。<span style="color: #ef4444; font-weight: bold;">但不排除集体产权的可能性，可以进一步补充调查</span>。',
+                delay: 4000
+            }
+        ];
+
+        let currentStep = 0;
+        let isWaitingForResponse = false; // 添加等待回复状态标志
+
+        // 添加消息到聊天区域
+        function addMessage(message) {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.appendChild(message);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // 创建用户图片消息
+        function createUserImageMessage(imageSrc) {
+            // 添加拍照符号放大效果
+            const cameraIcon = document.querySelector('.fas.fa-camera');
+            if (cameraIcon) {
+                cameraIcon.style.transform = 'scale(1.5)';
+                cameraIcon.style.transition = 'transform 0.4s ease';
+                setTimeout(() => {
+                    cameraIcon.style.transform = 'scale(1)';
+                }, 400);
+            }
+            
+            const div = document.createElement('div');
+            div.className = 'chat-bubble user';
+            div.innerHTML = `<img src="${imageSrc}" alt="用户上传的照片" class="image-message">`;
+            return div;
+        }
+
+        // 创建用户文字消息（在对话框中显示）
+        function createUserTextMessage(text) {
+            const input = document.querySelector('#quickInput');
+            if (input) {
+                input.value = '';
+                typeWriter(input, text, 50, () => {
+                    // 输入完成后，显示发送图标动效
+                    const sendIcon = input.parentElement.querySelector('.fas.fa-arrow-up');
+                    if (sendIcon) {
+                        sendIcon.style.transform = 'scale(1.5)';
+                        sendIcon.style.transition = 'transform 0.4s ease';
+                        setTimeout(() => {
+                            sendIcon.style.transform = 'scale(1)';
+                        }, 400);
+                    }
+                    
+                    // 等待动效完成后，清空输入框并显示到对话区域
+                    setTimeout(() => {
+                        input.value = '';
+                        addMessage(createUserTextBubble(text));
+                    }, 500);
+                });
+            }
+        }
+
+        // 检查是否可以接受用户输入
+        function canAcceptUserInput() {
+            return !isWaitingForResponse;
+        }
+
+        // 创建用户文字消息（在聊天区域显示）
+        function createUserTextBubble(text) {
+            const div = document.createElement('div');
+            div.className = 'chat-bubble user';
+            div.innerHTML = `<div class="text-content">${text}</div>`;
+            return div;
+        }
+
+        // 创建用户选择回复（灰色文字，无边框）
+        function createUserSelectionBubble(text) {
+            const div = document.createElement('div');
+            div.className = 'chat-bubble user';
+            div.innerHTML = `<div style="color: #6b7280; font-size: 0.875rem; padding: 8px 0; background: transparent; border: none; box-shadow: none;">${text}</div>`;
+            return div;
+        }
+
+        // 创建助手消息
+        function createAssistantMessage(thinking, content, type) {
+            const div = document.createElement('div');
+            div.className = 'chat-bubble assistant';
+            
+            let html = '';
+            if (thinking) {
+                html += `<div class="thinking" id="thinking-${Date.now()}"></div>`;
+            }
+            
+            // 初始时隐藏回答内容
+            if (type === 'options') {
+                html += `<div class="answer-content mb-4" id="answer-${Date.now()}" style="display: none;"></div>`;
+                html += '<div class="flex flex-wrap gap-2 mt-4" id="options-${Date.now()}" style="display: none;"></div>';
+            } else if (type === 'buttons') {
+                html += `<div class="answer-content mb-4" id="answer-${Date.now()}" style="display: none;"></div>`;
+                html += '<div class="flex flex-wrap gap-2 mt-4" id="buttons-${Date.now()}" style="display: none;"></div>';
+            } else if (type === 'conclusion') {
+                html += `<div class="conclusion-card" style="display: none;" id="conclusion-${Date.now()}">
+                    <div class="font-bold text-lg mb-3 text-gray-800">结论</div>
+                    <div class="answer-content text-gray-700" id="answer-${Date.now()}"></div>
+                </div>`;
+            } else {
+                html += `<div class="answer-content" id="answer-${Date.now()}" style="display: none;"></div>`;
+            }
+            
+            div.innerHTML = html;
+            
+            // 添加逐字显示效果
+            setTimeout(() => {
+                if (thinking) {
+                    const thinkingElement = div.querySelector('.thinking');
+                    if (thinkingElement) {
+                        // 使用回调确保思考过程完全结束后再显示回复
+                        typeThinking(thinkingElement, thinking, 5, () => {
+                            // 思考过程完全结束后的回调
+                            if (type === 'options') {
+                                const answerElement = div.querySelector('.answer-content');
+                                const optionsContainer = div.querySelector('[id^="options-"]');
+                                if (answerElement) {
+                                    answerElement.style.display = 'block';
+                                    typeAnswer(answerElement, '好的，空间权属具体包括私有产权、集体产权、国有产权。为了更精准判断，请你继续拍摄下列空间类型照片。', 40, () => {
+                                        // 回复完成后等待1秒再允许用户输入
+                                        setTimeout(() => {
+                                            isWaitingForResponse = false;
+                                        }, 1000);
+                                    });
+                                }
+                                if (optionsContainer && Array.isArray(content)) {
+                                    optionsContainer.style.display = 'flex';
+                                    optionsContainer.style.flexWrap = 'wrap';
+                                    optionsContainer.style.gap = '8px';
+                                    content.forEach(option => {
+                                        const optionDiv = document.createElement('div');
+                                        optionDiv.className = `card-option transition-all duration-300`;
+                                        optionDiv.innerHTML = `
+                                            <div class="font-semibold text-gray-700 text-sm">${option.title}</div>
+                                            <div class="text-xs text-gray-600 mt-1">${option.desc}</div>
+                                        `;
+                                        optionsContainer.appendChild(optionDiv);
+                                    });
+                                }
+                            } else if (type === 'buttons') {
+                                const answerElement = div.querySelector('.answer-content');
+                                const buttonsContainer = div.querySelector('[id^="buttons-"]');
+                                if (answerElement) {
+                                    answerElement.style.display = 'block';
+                                    typeAnswer(answerElement, '选择需要补充上传的照片信息', 40, () => {
+                                        // 回复完成后等待1秒再允许用户输入
+                                        setTimeout(() => {
+                                            isWaitingForResponse = false;
+                                        }, 1000);
+                                    });
+                                }
+                                if (buttonsContainer && Array.isArray(content)) {
+                                    buttonsContainer.style.display = 'flex';
+                                    buttonsContainer.style.flexWrap = 'wrap';
+                                    buttonsContainer.style.gap = '8px';
+                                    content.forEach(button => {
+                                        const buttonElement = document.createElement('button');
+                                        buttonElement.className = 'option-button';
+                                        buttonElement.textContent = button;
+                                        buttonsContainer.appendChild(buttonElement);
+                                    });
+                                }
+                            } else if (type === 'conclusion') {
+                                const conclusionElement = div.querySelector('[id^="conclusion-"]');
+                                const answerElement = div.querySelector('.answer-content');
+                                if (conclusionElement) {
+                                    conclusionElement.style.display = 'block';
+                                }
+                                if (answerElement) {
+                                    typeAnswer(answerElement, content, 40, () => {
+                                        // 回复完成后等待1秒再允许用户输入
+                                        setTimeout(() => {
+                                            isWaitingForResponse = false;
+                                        }, 1000);
+                                    });
+                                }
+                            } else {
+                                const answerElement = div.querySelector('.answer-content');
+                                if (answerElement) {
+                                    answerElement.style.display = 'block';
+                                    typeAnswer(answerElement, content, 40, () => {
+                                        // 回复完成后等待1秒再允许用户输入
+                                        setTimeout(() => {
+                                            isWaitingForResponse = false;
+                                        }, 1000);
+                                    });
+                                }
+                            }
+                            
+                        });
+                    }
+                } else {
+                    // 没有思考过程时直接显示回答
+                    if (type === 'options') {
+                        const answerElement = div.querySelector('.answer-content');
+                        const optionsContainer = div.querySelector('[id^="options-"]');
+                        if (answerElement) {
+                            answerElement.style.display = 'block';
+                            typeAnswer(answerElement, '好的，空间权属具体包括私有产权、集体产权、国有产权。为了更精准判断，请你继续拍摄下列空间类型照片。', 40, () => {
+                                // 回复完成后等待1秒再允许用户输入
+                                setTimeout(() => {
+                                    isWaitingForResponse = false;
+                                }, 1000);
+                            });
+                        }
+                                                if (optionsContainer && Array.isArray(content)) {
+                            optionsContainer.style.display = 'flex';
+                            optionsContainer.style.flexWrap = 'wrap';
+                            optionsContainer.style.gap = '8px';
+                            content.forEach(option => {
+                                const optionDiv = document.createElement('div');
+                                optionDiv.className = `card-option transition-all duration-300`;
+                                optionDiv.innerHTML = `
+                                    <div class="font-semibold text-gray-700 text-sm">${option.title}</div>
+                                    <div class="text-xs text-gray-600 mt-1">${option.desc}</div>
+                                `;
+                                optionsContainer.appendChild(optionDiv);
+                            });
+                        }
+                    } else if (type === 'buttons') {
+                        const answerElement = div.querySelector('.answer-content');
+                        const buttonsContainer = div.querySelector('[id^="buttons-"]');
+                        if (answerElement) {
+                            answerElement.style.display = 'block';
+                            typeAnswer(answerElement, '选择需要补充上传的照片信息（罗列可选项）', 40, () => {
+                                // 回复完成后等待1秒再允许用户输入
+                                setTimeout(() => {
+                                    isWaitingForResponse = false;
+                                }, 1000);
+                            });
+                        }
+                        if (buttonsContainer && Array.isArray(content)) {
+                            buttonsContainer.style.display = 'flex';
+                            buttonsContainer.style.flexWrap = 'wrap';
+                            buttonsContainer.style.gap = '8px';
+                            content.forEach(button => {
+                                const buttonElement = document.createElement('button');
+                                buttonElement.className = 'option-button';
+                                buttonElement.textContent = button;
+                                buttonsContainer.appendChild(buttonElement);
+                            });
+                        }
+                    } else if (type === 'conclusion') {
+                        const conclusionElement = div.querySelector('[id^="conclusion-"]');
+                        const answerElement = div.querySelector('.answer-content');
+                        if (conclusionElement) {
+                            conclusionElement.style.display = 'block';
+                        }
+                        if (answerElement) {
+                            typeAnswer(answerElement, content, 40, () => {
+                                // 回复完成后等待1秒再允许用户输入
+                                setTimeout(() => {
+                                    isWaitingForResponse = false;
+                                }, 1000);
+                            });
+                        }
+                    } else {
+                        const answerElement = div.querySelector('.answer-content');
+                        if (answerElement) {
+                            answerElement.style.display = 'block';
+                            typeAnswer(answerElement, content, 40, () => {
+                                // 回复完成后等待1秒再允许用户输入
+                                setTimeout(() => {
+                                    isWaitingForResponse = false;
+                                }, 1000);
+                            });
+                        }
+                    }
+                    
+                }
+            }, 100);
+            
+            return div;
+        }
+
+                        // 逐步展示对话
+        function showConversation() {
+            if (currentStep >= conversation.length) {
+                console.log('对话完成');
+                return;
+            }
+            
+            const step = conversation[currentStep];
+            console.log('当前步骤:', currentStep, step);
+            
+            // 如果是用户输入且正在等待回复，则延迟执行
+            if (step.type === 'user' && isWaitingForResponse) {
+                console.log('等待回复中，延迟用户输入');
+                setTimeout(() => showConversation(), 500); // 每500ms检查一次
+                return;
+            }
+            
+            setTimeout(() => {
+                try {
+                    if (step.type === 'user') {
+                        if (step.content === 'image') {
+                            // 清除初始引导内容
+                            const initialGuide = document.getElementById('initialGuide');
+                            if (initialGuide) {
+                                initialGuide.style.display = 'none';
+                            }
+                            addMessage(createUserImageMessage(step.image));
+                        } else if (step.content === 'text') {
+                            // 检查是否是选择回复，如果是则直接显示
+                            if (step.text.includes('选择了【')) {
+                                addMessage(createUserSelectionBubble(step.text));
+                            } else {
+                                createUserTextMessage(step.text);
+                            }
+                        }
+                    } else {
+                        // 开始回复时设置等待状态
+                        isWaitingForResponse = true;
+                        
+                        let type = 'text';
+                        if (Array.isArray(step.content)) {
+                            if (step.content.length > 0 && typeof step.content[0] === 'object' && step.content[0].title) {
+                                type = 'options';
+                            } else {
+                                type = 'buttons';
+                            }
+                        }
+                        addMessage(createAssistantMessage(step.thinking, step.content, type));
+                    }
+                    
+                    currentStep++;
+                    showConversation();
+                } catch (error) {
+                    console.error('对话步骤执行错误:', error);
+                    currentStep++;
+                    showConversation();
+                }
+            }, step.delay);
+        }
+
+        // 处理快捷问题
+        function askQuickQuestion(question) {
+            // 隐藏初始引导内容
+            const initialGuide = document.getElementById('initialGuide');
+            if (initialGuide) {
+                initialGuide.style.display = 'none';
+            }
+            
+            // 添加用户问题到对话区域
+            addMessage(createUserTextBubble(question));
+            
+            // 查找对应的回答
+            const answer = qaDatabase[question]?.answer || '抱歉，我暂时没有找到这个问题的答案。请尝试其他相关问题。';
+            
+            // 显示AI回答
+            setTimeout(() => {
+                addMessage(createAssistantMessage(null, answer, 'text'));
+                
+                // 显示追问选项
+                if (qaDatabase[question]?.followUp) {
+                    setTimeout(() => {
+                        showFollowUpQuestions(qaDatabase[question].followUp);
+                    }, 1000);
+                }
+            }, 800);
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 开始展示对话
+            setTimeout(showConversation, 1000);
+        });
+    </script>
+</body>
+</html> 
