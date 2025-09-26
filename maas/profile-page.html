@@ -1,0 +1,828 @@
+<!-- 个人主页 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaaS - 我的</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #1a202c;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 用户资料卡片 */
+        .profile-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .profile-email {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 20px;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 30px;
+            height: 30px;
+            top: 80%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        /* 菜单列表 */
+        .menu-section {
+            padding: 24px 20px;
+        }
+        
+        .menu-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-icon {
+            margin-right: 8px;
+        }
+        
+        .menu-list {
+            list-style: none;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: #f7fafc;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu-item:hover {
+            background: #edf2f7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+        
+        .menu-item-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .menu-item-content {
+            flex: 1;
+        }
+        
+        .menu-item-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+        
+        .menu-item-description {
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        .menu-item-arrow {
+            color: #a0aec0;
+            font-size: 16px;
+        }
+        
+        /* 电子钱包卡片 */
+        .wallet-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wallet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .wallet-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .wallet-balance {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .wallet-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .wallet-btn {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .wallet-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        /* 订单历史 */
+        .order-history {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .order-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .order-icon {
+            width: 40px;
+            height: 40px;
+            background: #f7fafc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 16px;
+        }
+        
+        .order-info {
+            flex: 1;
+        }
+        
+        .order-route {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+        
+        .order-details {
+            font-size: 12px;
+            color: #718096;
+        }
+        
+        .order-amount {
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        /* 设置按钮 */
+        .settings-button {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        .settings-button:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: scale(1.1);
+        }
+        
+        /* 偏好设置快捷入口 */
+        .quick-preferences {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preferences-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .preference-item {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .preference-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+        
+        .preference-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .preference-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        /* 成就系统 */
+        .achievements {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .achievements-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+        }
+        
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+        }
+        
+        .achievement-icon {
+            width: 40px;
+            height: 40px;
+            background: #f7fafc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 16px;
+        }
+        
+        .achievement-info {
+            flex: 1;
+        }
+        
+        .achievement-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 2px;
+        }
+        
+        .achievement-description {
+            font-size: 12px;
+            color: #718096;
+        }
+        
+        .achievement-status {
+            font-size: 12px;
+            color: #48bb78;
+            font-weight: 600;
+        }
+        
+        /* 版本信息 */
+        .version-info {
+            text-align: center;
+            padding: 20px;
+            color: #a0aec0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 用户资料卡片 -->
+        <div class="profile-card">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            
+            <div class="profile-avatar">👤</div>
+            <h1 class="profile-name">张三</h1>
+            <p class="profile-email">zhang.san@email.com</p>
+            
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-number">28</span>
+                    <span class="stat-label">出行次数</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">HK$156</span>
+                    <span class="stat-label">节省费用</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5h</span>
+                    <span class="stat-label">节省时间</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 电子钱包 -->
+        <div class="menu-section">
+            <div class="wallet-card">
+                <div class="wallet-header">
+                    <span class="wallet-title">电子钱包</span>
+                    <span>💳</span>
+                </div>
+                <div class="wallet-balance">HK$ 1,250.00</div>
+                <div class="wallet-actions">
+                    <button class="wallet-btn" onclick="topUpWallet()">充值</button>
+                    <button class="wallet-btn" onclick="viewTransactions()">明细</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 偏好设置快捷入口 -->
+        <div class="menu-section">
+            <h3 class="menu-title">
+                <span class="menu-icon">⚙️</span>
+                出行偏好
+            </h3>
+            <div class="preferences-grid">
+                <div class="preference-item" onclick="editPreferences()">
+                    <div class="preference-icon">🚇</div>
+                    <div class="preference-name">交通方式</div>
+                </div>
+                <div class="preference-item" onclick="editPreferences()">
+                    <div class="preference-icon">💰</div>
+                    <div class="preference-name">费用偏好</div>
+                </div>
+                <div class="preference-item" onclick="editPreferences()">
+                    <div class="preference-icon">⚡</div>
+                    <div class="preference-name">速度优先</div>
+                </div>
+                <div class="preference-item" onclick="editPreferences()">
+                    <div class="preference-icon">🛡️</div>
+                    <div class="preference-name">舒适优先</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 菜单列表 -->
+        <div class="menu-section">
+            <h3 class="menu-title">
+                <span class="menu-icon">📋</span>
+                订单历史
+            </h3>
+            <div class="order-history">
+                <div class="order-item">
+                    <div class="order-icon">🚇</div>
+                    <div class="order-info">
+                        <div class="order-route">尖沙咀 → 深圳湾口岸</div>
+                        <div class="order-details">地铁 → 巴士 | 2024-01-15 09:30</div>
+                    </div>
+                    <div class="order-amount">HK$28</div>
+                </div>
+                
+                <div class="order-item">
+                    <div class="order-icon">🚕</div>
+                    <div class="order-info">
+                        <div class="order-route">中环 → 深圳北站</div>
+                        <div class="order-details">出租车直达 | 2024-01-14 18:45</div>
+                    </div>
+                    <div class="order-amount">HK$85</div>
+                </div>
+                
+                <div class="order-item">
+                    <div class="order-icon">🚄</div>
+                    <div class="order-info">
+                        <div class="order-route">西九龙 → 福田口岸</div>
+                        <div class="order-details">高铁 → 步行 | 2024-01-13 14:20</div>
+                    </div>
+                    <div class="order-amount">HK$68</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 成就系统 -->
+        <div class="menu-section">
+            <h3 class="menu-title">
+                <span class="menu-icon">🏆</span>
+                成就徽章
+            </h3>
+            <div class="achievements">
+                <div class="achievement-item">
+                    <div class="achievement-icon">🌟</div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">首次出行</div>
+                        <div class="achievement-description">完成第一次跨城出行</div>
+                    </div>
+                    <div class="achievement-status">已解锁</div>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-icon">💰</div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">经济出行家</div>
+                        <div class="achievement-description">累计节省费用超过HK$100</div>
+                    </div>
+                    <div class="achievement-status">已解锁</div>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-icon">⚡</div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">速度达人</div>
+                        <div class="achievement-description">使用最快路线出行10次</div>
+                    </div>
+                    <div class="achievement-status">7/10</div>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-icon">🌍</div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">环保卫士</div>
+                        <div class="achievement-description">选择公共交通出行20次</div>
+                    </div>
+                    <div class="achievement-status">15/20</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 菜单列表 -->
+        <div class="menu-section">
+            <ul class="menu-list">
+                <li class="menu-item" onclick="openProfileSettings()">
+                    <div class="menu-item-icon">👤</div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">个人信息</div>
+                        <div class="menu-item-description">管理您的账户信息</div>
+                    </div>
+                    <div class="menu-item-arrow">›</div>
+                </li>
+                
+                <li class="menu-item" onclick="openNotificationSettings()">
+                    <div class="menu-item-icon">🔔</div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">通知设置</div>
+                        <div class="menu-item-description">管理消息推送和提醒</div>
+                    </div>
+                    <div class="menu-item-arrow">›</div>
+                </li>
+                
+                <li class="menu-item" onclick="openPrivacySettings()">
+                    <div class="menu-item-icon">🔒</div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">隐私设置</div>
+                        <div class="menu-item-description">管理数据共享和隐私选项</div>
+                    </div>
+                    <div class="menu-item-arrow">›</div>
+                </li>
+                
+                <li class="menu-item" onclick="openHelpCenter()">
+                    <div class="menu-item-icon">❓</div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">帮助中心</div>
+                        <div class="menu-item-description">常见问题和使用指南</div>
+                    </div>
+                    <div class="menu-item-arrow">›</div>
+                </li>
+                
+                <li class="menu-item" onclick="contactSupport()">
+                    <div class="menu-item-icon">📞</div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">联系客服</div>
+                        <div class="menu-item-description">获取专业帮助和支持</div>
+                    </div>
+                    <div class="menu-item-arrow">›</div>
+                </li>
+                
+                <li class="menu-item" onclick="shareApp()">
+                    <div class="menu-item-icon">📤</div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">分享应用</div>
+                        <div class="menu-item-description">邀请朋友一起使用</div>
+                    </div>
+                    <div class="menu-item-arrow">›</div>
+                </li>
+                
+                <li class="menu-item" onclick="rateApp()">
+                    <div class="menu-item-icon">⭐</div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">评价应用</div>
+                        <div class="menu-item-description">您的反馈对我们很重要</div>
+                    </div>
+                    <div class="menu-item-arrow">›</div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- 版本信息 -->
+        <div class="version-info">
+            MaaS v2.1.0 | © 2024 Supernova Corp
+        </div>
+    </div>
+    
+    <!-- 设置按钮 -->
+    <div class="settings-button" onclick="openSettings()">
+        ⚙️
+    </div>
+    
+    <script>
+        // 充值钱包
+        function topUpWallet() {
+            alert('充值功能开发中...');
+        }
+        
+        // 查看交易明细
+        function viewTransactions() {
+            alert('交易明细功能开发中...');
+        }
+        
+        // 编辑偏好设置
+        function editPreferences() {
+            window.location.href = 'preferences-setting.html';
+        }
+        
+        // 打开个人资料设置
+        function openProfileSettings() {
+            alert('个人资料设置功能开发中...');
+        }
+        
+        // 打开通知设置
+        function openNotificationSettings() {
+            alert('通知设置功能开发中...');
+        }
+        
+        // 打开隐私设置
+        function openPrivacySettings() {
+            alert('隐私设置功能开发中...');
+        }
+        
+        // 打开帮助中心
+        function openHelpCenter() {
+            alert('帮助中心功能开发中...');
+        }
+        
+        // 联系客服
+        function contactSupport() {
+            alert('客服功能开发中...');
+        }
+        
+        // 分享应用
+        function shareApp() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'MaaS - 智能出行规划',
+                    text: '发现一款超棒的出行规划应用！',
+                    url: window.location.href
+                });
+            } else {
+                alert('分享功能开发中...');
+            }
+        }
+        
+        // 评价应用
+        function rateApp() {
+            alert('评价功能开发中...');
+        }
+        
+        // 打开设置页面
+        function openSettings() {
+            alert('设置页面功能开发中...');
+        }
+        
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载用户数据
+            loadUserProfile();
+            
+            // 加载订单历史
+            loadOrderHistory();
+            
+            // 加载成就数据
+            loadAchievements();
+        });
+        
+        // 加载用户资料
+        function loadUserProfile() {
+            // 从本地存储加载用户数据
+            const userProfile = JSON.parse(localStorage.getItem('userProfile') || '{}');
+            
+            if (userProfile.name) {
+                document.querySelector('.profile-name').textContent = userProfile.name;
+            }
+            
+            if (userProfile.email) {
+                document.querySelector('.profile-email').textContent = userProfile.email;
+            }
+        }
+        
+        // 加载订单历史
+        function loadOrderHistory() {
+            // 从本地存储加载订单数据
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            
+            if (orders.length > 0) {
+                // 更新订单列表
+                updateOrderHistory(orders);
+            }
+        }
+        
+        // 更新订单历史
+        function updateOrderHistory(orders) {
+            const orderHistory = document.querySelector('.order-history');
+            
+            // 清空现有订单
+            const existingOrders = orderHistory.querySelectorAll('.order-item');
+            existingOrders.forEach((order, index) => {
+                if (index < orders.length) {
+                    // 更新现有订单信息
+                    order.querySelector('.order-route').textContent = orders[index].route;
+                    order.querySelector('.order-details').textContent = orders[index].details;
+                    order.querySelector('.order-amount').textContent = orders[index].amount;
+                } else {
+                    // 移除多余的订单
+                    order.remove();
+                }
+            });
+        }
+        
+        // 加载成就数据
+        function loadAchievements() {
+            // 从本地存储加载成就数据
+            const achievements = JSON.parse(localStorage.getItem('achievements') || '[]');
+            
+            if (achievements.length > 0) {
+                // 更新成就列表
+                updateAchievements(achievements);
+            }
+        }
+        
+        // 更新成就列表
+        function updateAchievements(achievements) {
+            const achievementsList = document.querySelector('.achievements');
+            
+            // 更新成就状态
+            achievements.forEach((achievement, index) => {
+                if (index < achievementsList.children.length) {
+                    const achievementItem = achievementsList.children[index];
+                    achievementItem.querySelector('.achievement-status').textContent = 
+                        achievement.unlocked ? '已解锁' : `${achievement.progress}/${achievement.target}`;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
