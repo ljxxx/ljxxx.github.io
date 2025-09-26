@@ -1,0 +1,478 @@
+<!-- 出行偏好设置页面 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaaS - 出行偏好设置</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #1a202c;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px 20px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-icon {
+            margin-right: 12px;
+            font-size: 24px;
+        }
+        
+        .transport-modes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .transport-item {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .transport-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .transport-item.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .transport-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .transport-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .preferences-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        
+        .preference-item {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .preference-item:hover {
+            border-color: #667eea;
+            transform: translateY(-1px);
+        }
+        
+        .preference-item.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .preference-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .preference-desc {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .slider-container {
+            margin-top: 20px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e2e8f0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+        }
+        
+        .action-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .btn-secondary:hover {
+            background: #edf2f7;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .drag-handle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            font-size: 18px;
+        }
+        
+        .sortable-list {
+            list-style: none;
+        }
+        
+        .sortable-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 8px;
+            cursor: move;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .sortable-item:hover {
+            border-color: #667eea;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+        
+        .sortable-item.dragging {
+            opacity: 0.5;
+            transform: rotate(5deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>出行偏好设置</h1>
+            <p>个性化您的出行体验</p>
+        </div>
+        
+        <div class="content">
+            <!-- 出行方式选择 -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">🚌</span>
+                    选择出行方式
+                </h2>
+                <div class="transport-modes" id="transportModes">
+                    <div class="transport-item" data-mode="public-transport">
+                        <span class="transport-icon">🚇</span>
+                        <div class="transport-name">公共交通</div>
+                    </div>
+                    <div class="transport-item" data-mode="bus">
+                        <span class="transport-icon">🚌</span>
+                        <div class="transport-name">巴士</div>
+                    </div>
+                    <div class="transport-item" data-mode="taxi">
+                        <span class="transport-icon">🚕</span>
+                        <div class="transport-name">出租车</div>
+                    </div>
+                    <div class="transport-item" data-mode="ride-hailing">
+                        <span class="transport-icon">��</span>
+                        <div class="transport-name">网约车</div>
+                    </div>
+                    <div class="transport-item" data-mode="bike-sharing">
+                        <span class="transport-icon">🚲</span>
+                        <div class="transport-name">共享单车</div>
+                    </div>
+                    <div class="transport-item" data-mode="high-speed-railway">
+                        <span class="transport-icon">🚄</span>
+                        <div class="transport-name">高铁</div>
+                    </div>
+                    <div class="transport-item" data-mode="parking">
+                        <span class="transport-icon">��️</span>
+                        <div class="transport-name">停车</div>
+                    </div>
+                    <div class="transport-item" data-mode="private-vehicle">
+                        <span class="transport-icon">🚙</span>
+                        <div class="transport-name">私家车</div>
+                    </div>
+                    <div class="transport-item" data-mode="walking">
+                        <span class="transport-icon">🚶</span>
+                        <div class="transport-name">步行</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 出行方式排序 -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">📋</span>
+                    出行方式排序
+                </h2>
+                <ul class="sortable-list" id="sortableList">
+                    <li class="sortable-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <span class="transport-icon">🚇</span>
+                        <span>公共交通</span>
+                    </li>
+                    <li class="sortable-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <span class="transport-icon">🚌</span>
+                        <span>巴士</span>
+                    </li>
+                    <li class="sortable-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <span class="transport-icon">🚕</span>
+                        <span>出租车</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 路线偏好 -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">⚙️</span>
+                    路线偏好
+                </h2>
+                <div class="preferences-grid">
+                    <div class="preference-item" data-preference="fastest">
+                        <div class="preference-title">最快路线</div>
+                        <div class="preference-desc">优先选择时间最短的路线</div>
+                    </div>
+                    <div class="preference-item" data-preference="cheapest">
+                        <div class="preference-title">最经济路线</div>
+                        <div class="preference-desc">优先选择费用最低的路线</div>
+                    </div>
+                    <div class="preference-item" data-preference="comfortable">
+                        <div class="preference-title">最舒适路线</div>
+                        <div class="preference-desc">优先选择最舒适的出行方式</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 时间偏好 -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">⏰</span>
+                    时间偏好
+                </h2>
+                <div class="slider-container">
+                    <div class="slider-label">
+                        <span>步行时间容忍度</span>
+                        <span id="walkingTime">5分钟</span>
+                    </div>
+                    <input type="range" class="slider" id="walkingSlider" min="0" max="30" value="5">
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">
+                        <span>换乘次数容忍度</span>
+                        <span id="transferCount">2次</span>
+                    </div>
+                    <input type="range" class="slider" id="transferSlider" min="0" max="5" value="2">
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn btn-secondary" onclick="skipSettings()">跳过</button>
+            <button class="btn btn-primary" onclick="saveSettings()">保存设置</button>
+        </div>
+    </div>
+    
+    <script>
+        // 出行方式选择
+        document.querySelectorAll('.transport-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('selected');
+            });
+        });
+        
+        // 路线偏好选择
+        document.querySelectorAll('.preference-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.preference-item').forEach(i => i.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        
+        // 滑块更新
+        document.getElementById('walkingSlider').addEventListener('input', function() {
+            document.getElementById('walkingTime').textContent = this.value + '分钟';
+        });
+        
+        document.getElementById('transferSlider').addEventListener('input', function() {
+            document.getElementById('transferCount').textContent = this.value + '次';
+        });
+        
+        // 拖拽排序
+        let draggedElement = null;
+        
+        document.querySelectorAll('.sortable-item').forEach(item => {
+            item.addEventListener('dragstart', function(e) {
+                draggedElement = this;
+                this.classList.add('dragging');
+            });
+            
+            item.addEventListener('dragend', function(e) {
+                this.classList.remove('dragging');
+                draggedElement = null;
+            });
+            
+            item.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+            
+            item.addEventListener('drop', function(e) {
+                e.preventDefault();
+                if (draggedElement && draggedElement !== this) {
+                    const parent = this.parentNode;
+                    const nextSibling = this.nextSibling;
+                    parent.insertBefore(draggedElement, nextSibling);
+                }
+            });
+            
+            item.draggable = true;
+        });
+        
+        function saveSettings() {
+            // 保存设置到本地存储
+            const settings = {
+                transportModes: Array.from(document.querySelectorAll('.transport-item.selected')).map(item => item.dataset.mode),
+                preferences: document.querySelector('.preference-item.selected')?.dataset.preference || 'fastest',
+                walkingTime: document.getElementById('walkingSlider').value,
+                transferCount: document.getElementById('transferSlider').value
+            };
+            localStorage.setItem('userPreferences', JSON.stringify(settings));
+            
+            alert('设置已保存！');
+            window.location.href = 'planning-page.html';
+        }
+        
+        function skipSettings() {
+            window.location.href = 'planning-page.html';
+        }
+    </script>
+</body>
+</html>

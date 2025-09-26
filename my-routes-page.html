@@ -1,0 +1,1007 @@
+<!-- 我的线路页面 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaaS - 我的线路</title>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_KEY"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #1a202c;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        /* 顶部工具栏 */
+        .top-bar {
+            background: white;
+            padding: 60px 20px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .btn-secondary:hover {
+            background: #edf2f7;
+            border-color: #667eea;
+        }
+        
+        /* 地图容器 */
+        .map-container {
+            flex: 1;
+            position: relative;
+            background: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        #mapContainer {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 线路列表面板 */
+        .routes-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 320px;
+            height: 100%;
+            background: white;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .routes-panel.open {
+            transform: translateX(0);
+        }
+        
+        .panel-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .panel-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .panel-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .routes-list {
+            padding: 20px 0;
+        }
+        
+        .route-item {
+            margin: 0 20px 16px;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .route-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .route-item.active {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+        
+        .route-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .route-stats {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .stat {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #718096;
+            display: block;
+        }
+        
+        .route-segments {
+            margin-bottom: 12px;
+        }
+        
+        .segment-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .segment-item:last-child {
+            border-bottom: none;
+        }
+        
+        .segment-icon {
+            width: 24px;
+            height: 24px;
+            background: #f7fafc;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+        
+        .segment-info {
+            flex: 1;
+        }
+        
+        .segment-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 2px;
+        }
+        
+        .segment-details {
+            font-size: 10px;
+            color: #718096;
+        }
+        
+        .segment-duration {
+            font-size: 10px;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .route-features {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        
+        .feature-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        
+        .route-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .btn-small {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-edit {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-edit:hover {
+            background: #5a67d8;
+        }
+        
+        .btn-delete {
+            background: #f7fafc;
+            color: #e53e3e;
+            border: 2px solid #e53e3e;
+        }
+        
+        .btn-delete:hover {
+            background: #e53e3e;
+            color: white;
+        }
+        
+        /* 线路创建面板 */
+        .create-route-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 300;
+        }
+        
+        .create-route-form {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .form-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        .waypoints-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .waypoint-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .waypoint-item:hover {
+            border-color: #667eea;
+            transform: translateY(-1px);
+        }
+        
+        .waypoint-number {
+            width: 24px;
+            height: 24px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+        
+        .waypoint-info {
+            flex: 1;
+        }
+        
+        .waypoint-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .waypoint-address {
+            font-size: 12px;
+            color: #718096;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        
+        .btn-cancel {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .btn-cancel:hover {
+            background: #edf2f7;
+        }
+        
+        /* 轨迹记录状态 */
+        .tracking-indicator {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(72, 187, 120, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            display: none;
+        }
+        
+        .tracking-indicator.visible {
+            display: block;
+        }
+        
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #718096;
+        }
+        
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .empty-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #4a5568;
+        }
+        
+        .empty-description {
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+        
+        /* 底部导航 */
+        .bottom-nav {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            padding: 8px 0 20px;
+        }
+        
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item.active {
+            color: #667eea;
+        }
+        
+        .nav-item:hover {
+            color: #667eea;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        
+        .nav-label {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        /* 地图控制按钮 */
+        .map-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 50;
+        }
+        
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .control-btn.active {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 顶部工具栏 -->
+        <div class="top-bar">
+            <h1 class="page-title">我的线路</h1>
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="toggleRoutesPanel()">📋 线路</button>
+                <button class="btn btn-primary" onclick="showCreateRouteForm()">➕ 创建</button>
+            </div>
+        </div>
+        
+        <!-- 地图容器 -->
+        <div class="map-container">
+            <div id="mapContainer"></div>
+            
+            <!-- 地图控制按钮 -->
+            <div class="map-controls">
+                <button class="control-btn" onclick="toggleTracking()" title="轨迹记录">📍</button>
+                <button class="control-btn" onclick="centerMap()" title="居中显示">🏠</button>
+                <button class="control-btn" onclick="toggleMapStyle()" title="切换地图样式">🗺️</button>
+            </div>
+            
+            <!-- 轨迹记录状态指示器 -->
+            <div class="tracking-indicator" id="trackingIndicator">
+                📍 正在记录轨迹...
+            </div>
+            
+            <!-- 线路列表面板 -->
+            <div class="routes-panel" id="routesPanel">
+                <div class="panel-header">
+                    <h3 class="panel-title">我的线路</h3>
+                    <p class="panel-subtitle">共 5 条线路</p>
+                </div>
+                
+                <div class="routes-list" id="routesList">
+                    <!-- 动态生成线路列表 -->
+                </div>
+            </div>
+            
+            <!-- 线路创建面板 -->
+            <div class="create-route-panel" id="createRoutePanel">
+                <div class="create-route-form">
+                    <h2 class="form-title">创建新线路</h2>
+                    
+                    <div class="form-group">
+                        <label class="form-label">线路名称</label>
+                        <input type="text" class="form-input" placeholder="输入线路名称" id="routeName">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">路径点</label>
+                        <div class="waypoints-list" id="waypointsList">
+                            <div class="waypoint-item" onclick="addWaypoint()">
+                                <div class="waypoint-number">+</div>
+                                <div class="waypoint-info">
+                                    <div class="waypoint-name">添加路径点</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn btn-cancel" onclick="hideCreateRouteForm()">取消</button>
+                        <button class="btn btn-primary" onclick="saveNewRoute()">创建线路</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航 -->
+        <div class="bottom-nav">
+            <div class="nav-item" onclick="navigateTo('planning')">
+                <div class="nav-icon">🗺️</div>
+                <div class="nav-label">规划</div>
+            </div>
+            <div class="nav-item active" onclick="navigateTo('routes')">
+                <div class="nav-icon">📋</div>
+                <div class="nav-label">线路</div>
+            </div>
+            <div class="nav-item" onclick="navigateTo('profile')">
+                <div class="nav-icon">👤</div>
+                <div class="nav-label">我的</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 全局变量
+        let map;
+        let geocoder;
+        let currentRoute;
+        let isTracking = false;
+        let trackingPath = [];
+        let routeMarkers = [];
+        let routePolylines = [];
+        
+        // 示例线路数据
+        const sampleRoutes = [
+            {
+                id: 1,
+                name: "日常通勤路线",
+                segments: [
+                    { mode: "地铁", from: "尖沙咀站", to: "中环站", duration: "15分钟", icon: "🚇" },
+                    { mode: "巴士", from: "中环站", to: "深圳湾口岸", duration: "25分钟", icon: "🚌" },
+                    { mode: "步行", from: "深圳湾口岸", to: "目的地", duration: "5分钟", icon: "🚶" }
+                ],
+                totalDuration: "45分钟",
+                totalCost: "HK$28",
+                waypoints: [
+                    { lng: 114.1717, lat: 22.2969, name: "尖沙咀站" },
+                    { lng: 114.1577, lat: 22.2783, name: "中环站" },
+                    { lng: 113.9368, lat: 22.4903, name: "深圳湾口岸" }
+                ],
+                features: ["常用", "经济"]
+            },
+            {
+                id: 2,
+                name: "周末购物路线",
+                segments: [
+                    { mode: "巴士", from: "起点", to: "购物中心", duration: "30分钟", icon: "🚌" },
+                    { mode: "地铁", from: "购物中心", to: "市中心", duration: "20分钟", icon: "🚇" },
+                    { mode: "共享单车", from: "市中心", to: "目的地", duration: "15分钟", icon: "🚲" }
+                ],
+                totalDuration: "1h 20min",
+                totalCost: "HK$45",
+                waypoints: [
+                    { lng: 114.1717, lat: 22.2969, name: "起点" },
+                    { lng: 114.1577, lat: 22.2783, name: "购物中心" },
+                    { lng: 114.1477, lat: 22.2683, name: "市中心" }
+                ],
+                features: ["舒适", "购物"]
+            },
+            {
+                id: 3,
+                name: "亲子游玩路线",
+                segments: [
+                    { mode: "高铁", from: "西九龙站", to: "深圳北站", duration: "1h 30min", icon: "🚄" },
+                    { mode: "地铁", from: "深圳北站", to: "主题公园", duration: "45分钟", icon: "🚇" },
+                    { mode: "步行", from: "主题公园", to: "目的地", duration: "15分钟", icon: "🚶" }
+                ],
+                totalDuration: "2h 30min",
+                totalCost: "HK$120",
+                waypoints: [
+                    { lng: 114.1655, lat: 22.3034, name: "西九龙站" },
+                    { lng: 114.0306, lat: 22.6109, name: "深圳北站" },
+                    { lng: 113.9368, lat: 22.4903, name: "主题公园" }
+                ],
+                features: ["高铁", "舒适"]
+            }
+        ];
+        
+        // 初始化地图
+        function initMap() {
+            map = new AMap.Map('mapContainer', {
+                zoom: 11,
+                center: [114.057868, 22.543099], // 香港中心点
+                mapStyle: 'amap://styles/blue'
+            });
+            
+            // 初始化地理编码服务
+            geocoder = new AMap.Geocoder({
+                city: "全国",
+                radius: 1000
+            });
+            
+            // 加载示例线路
+            loadRoutes();
+        }
+        
+        // 加载线路
+        function loadRoutes() {
+            const routesList = document.getElementById('routesList');
+            routesList.innerHTML = '';
+            
+            sampleRoutes.forEach(route => {
+                const routeItem = createRouteItem(route);
+                routesList.appendChild(routeItem);
+            });
+        }
+        
+        // 创建线路项
+        function createRouteItem(route) {
+            const routeItem = document.createElement('div');
+            routeItem.className = 'route-item';
+            routeItem.onclick = () => selectRoute(route);
+            
+            routeItem.innerHTML = `
+                <div class="route-name">${route.name}</div>
+                <div class="route-stats">
+                    <div class="stat">
+                        <span class="stat-value">${route.totalDuration}</span>
+                        <span class="stat-label">用时</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">${route.totalCost}</span>
+                        <span class="stat-label">费用</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">${route.segments.length}段</span>
+                        <span class="stat-label">路段</span>
+                    </div>
+                </div>
+                <div class="route-segments">
+                    ${route.segments.map(segment => `
+                        <div class="segment-item">
+                            <div class="segment-icon">${segment.icon}</div>
+                            <div class="segment-info">
+                                <div class="segment-name">${segment.mode}</div>
+                                <div class="segment-details">${segment.from} → ${segment.to}</div>
+                            </div>
+                            <div class="segment-duration">${segment.duration}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="route-features">
+                    ${route.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                </div>
+                <div class="route-actions">
+                    <button class="btn-small btn-edit" onclick="editRoute(event, ${route.id})">编辑</button>
+                    <button class="btn-small btn-delete" onclick="deleteRoute(event, ${route.id})">删除</button>
+                </div>
+            `;
+            
+            return routeItem;
+        }
+        
+        // 选择路线
+        function selectRoute(route) {
+            // 清除之前的标记和路径
+            clearMap();
+            
+            // 添加路径点标记
+            route.waypoints.forEach((waypoint, index) => {
+                const marker = new AMap.Marker({
+                    position: [waypoint.lng, waypoint.lat],
+                    map: map,
+                    icon: new AMap.Icon({
+                        size: new AMap.Size(32, 32),
+                        image: index === 0 ? 
+                            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIiIGZpbGw9IiM0OGJiNzgiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iOCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+' :
+                            index === route.waypoints.length - 1 ?
+                            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIiIGZpbGw9IiNlNTNlM2UiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iOCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+' :
+                            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIiIGZpbGw9IiM2NjdlZWEiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iOCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+',
+                        imageSize: new AMap.Size(32, 32)
+                    })
+                });
+                routeMarkers.push(marker);
+            });
+            
+            // 添加路径线
+            for (let i = 0; i < route.waypoints.length - 1; i++) {
+                const polyline = new AMap.Polyline({
+                    path: [
+                        [route.waypoints[i].lng, route.waypoints[i].lat],
+                        [route.waypoints[i + 1].lng, route.waypoints[i + 1].lat]
+                    ],
+                    strokeColor: '#667eea',
+                    strokeWeight: 4,
+                    strokeOpacity: 0.8,
+                    map: map
+                });
+                routePolylines.push(polyline);
+            }
+            
+            // 调整地图视野
+            map.setFitView(routeMarkers);
+            
+            // 更新选中状态
+            document.querySelectorAll('.route-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            currentRoute = route;
+        }
+        
+        // 清除地图标记和路径
+        function clearMap() {
+            routeMarkers.forEach(marker => marker.setMap(null));
+            routePolylines.forEach(polyline => polyline.setMap(null));
+            routeMarkers = [];
+            routePolylines = [];
+        }
+        
+        // 切换线路面板
+        function toggleRoutesPanel() {
+            const panel = document.getElementById('routesPanel');
+            panel.classList.toggle('open');
+        }
+        
+        // 显示创建线路表单
+        function showCreateRouteForm() {
+            document.getElementById('createRoutePanel').style.display = 'flex';
+        }
+        
+        // 隐藏创建线路表单
+        function hideCreateRouteForm() {
+            document.getElementById('createRoutePanel').style.display = 'none';
+        }
+        
+        // 添加路径点
+        function addWaypoint() {
+            const waypointsList = document.getElementById('waypointsList');
+            const waypointCount = waypointsList.children.length;
+            
+            const waypointItem = document.createElement('div');
+            waypointItem.className = 'waypoint-item';
+            waypointItem.onclick = () => removeWaypoint(waypointItem);
+            
+            waypointItem.innerHTML = `
+                <div class="waypoint-number">${waypointCount + 1}</div>
+                <div class="waypoint-info">
+                    <div class="waypoint-name">点击地图选择位置</div>
+                    <div class="waypoint-address">选择地图上的位置</div>
+                </div>
+            `;
+            
+            waypointsList.appendChild(waypointItem);
+        }
+        
+        // 删除路径点
+        function removeWaypoint(waypointItem) {
+            waypointItem.remove();
+            updateWaypointNumbers();
+        }
+        
+        // 更新路径点编号
+        function updateWaypointNumbers() {
+            const waypoints = document.querySelectorAll('.waypoint-item .waypoint-number');
+            waypoints.forEach((number, index) => {
+                number.textContent = index + 1;
+            });
+        }
+        
+        // 保存新线路
+        function saveNewRoute() {
+            const routeName = document.getElementById('routeName').value;
+            if (!routeName) {
+                alert('请输入线路名称');
+                return;
+            }
+            
+            // 创建新线路对象
+            const newRoute = {
+                id: Date.now(),
+                name: routeName,
+                segments: [],
+                totalDuration: "0分钟",
+                totalCost: "HK$0",
+                waypoints: [],
+                features: ["新建"]
+            };
+            
+            // 添加到示例数据
+            sampleRoutes.push(newRoute);
+            
+            // 隐藏表单
+            hideCreateRouteForm();
+            
+            // 刷新线路列表
+            loadRoutes();
+            
+            alert('线路创建成功！');
+        }
+        
+        // 编辑线路
+        function editRoute(event, routeId) {
+            event.stopPropagation();
+            alert('编辑功能开发中...');
+        }
+        
+        // 删除线路
+        function deleteRoute(event, routeId) {
+            event.stopPropagation();
+            if (confirm('确定要删除这条线路吗？')) {
+                const index = sampleRoutes.findIndex(route => route.id === routeId);
+                if (index > -1) {
+                    sampleRoutes.splice(index, 1);
+                    loadRoutes();
+                }
+            }
+        }
+        
+        // 切换轨迹记录
+        function toggleTracking() {
+            isTracking = !isTracking;
+            const indicator = document.getElementById('trackingIndicator');
+            const btn = event.target;
+            
+            if (isTracking) {
+                indicator.classList.add('visible');
+                btn.classList.add('active');
+                trackingPath = [];
+                
+                // 开始记录轨迹
+                map.on('click', recordTrackingPoint);
+            } else {
+                indicator.classList.remove('visible');
+                btn.classList.remove('active');
+                
+                // 停止记录轨迹
+                map.off('click', recordTrackingPoint);
+            }
+        }
+        
+        // 记录轨迹点
+        function recordTrackingPoint(e) {
+            if (isTracking) {
+                trackingPath.push(e.lnglat);
+                
+                // 在地图上添加轨迹点
+                new AMap.Marker({
+                    position: e.lnglat,
+                    map: map,
+                    icon: new AMap.Icon({
+                        size: new AMap.Size(16, 16),
+                        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iOCIgY3k9IjgiIHI9IjYiIGZpbGw9IiM0OGJiNzgiLz4KPC9zdmc+',
+                        imageSize: new AMap.Size(16, 16)
+                    })
+                });
+            }
+        }
+        
+        // 居中显示地图
+        function centerMap() {
+            if (currentRoute && currentRoute.waypoints.length > 0) {
+                map.setFitView(routeMarkers);
+            } else {
+                map.setCenter([114.057868, 22.543099]);
+                map.setZoom(11);
+            }
+        }
+        
+        // 切换地图样式
+        function toggleMapStyle() {
+            const styles = [
+                'amap://styles/blue',
+                'amap://styles/dark',
+                'amap://styles/light',
+                'amap://styles/fresh'
+            ];
+            
+            const currentStyle = map.getMapStyle();
+            const currentIndex = styles.indexOf(currentStyle);
+            const nextIndex = (currentIndex + 1) % styles.length;
+            
+            map.setMapStyle(styles[nextIndex]);
+        }
+        
+        // 导航切换
+        function navigateTo(page) {
+            switch(page) {
+                case 'planning':
+                    window.location.href = 'planning-page.html';
+                    break;
+                case 'routes':
+                    // 当前页面
+                    break;
+                case 'profile':
+                    window.location.href = 'profile-page.html';
+                    break;
+            }
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+        });
+    </script>
+</body>
+</html>
