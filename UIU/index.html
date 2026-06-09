@@ -1,0 +1,1272 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>煊-恺-科研究整合</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+    :root {
+      --bg: #fffdf5;
+      --card: #ffffff;
+      --card-strong: #ffffff;
+      --ink: #000000;
+      --muted: #000000;
+      --line: #000000;
+      --blue: #3b82f6;
+      --teal: #22c55e;
+      --green: #9ae66e;
+      --orange: #ff9f1c;
+      --rose: #ff6b6b;
+      --violet: #c4b5fd;
+      --yellow: #ffd93d;
+      --shadow: 8px 8px 0 #000;
+      --radius: 0;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(to right, rgba(0,0,0,.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,.08) 1px, transparent 1px),
+        radial-gradient(#000 1.2px, transparent 1.2px);
+      background-size: 44px 44px, 44px 44px, 18px 18px;
+      background-position: 0 0, 0 0, 10px 10px;
+      font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    a { color: inherit; }
+    .shell { max-width: 1240px; margin: 0 auto; padding: 0 22px 64px; }
+    .nav {
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 12px auto 26px;
+      padding: 10px 12px 10px 18px;
+      border: 4px solid var(--line);
+      border-radius: 0;
+      background: var(--card);
+      box-shadow: 6px 6px 0 #000;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 750; }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 0;
+      border: 3px solid #000;
+      background: var(--yellow);
+      box-shadow: 4px 4px 0 #000;
+    }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+    .nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 0;
+      text-transform: uppercase;
+      transition: .12s linear;
+    }
+    .nav a:hover { color: var(--ink); background: var(--yellow); box-shadow: 3px 3px 0 #000; }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
+      gap: 26px;
+      align-items: center;
+      padding: 28px 0 38px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--ink);
+      background: var(--yellow);
+      border: 4px solid #000;
+      box-shadow: 5px 5px 0 #000;
+      padding: 8px 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      transform: rotate(-1deg);
+    }
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(40px, 5.4vw, 68px);
+      line-height: .95;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .lead {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: var(--ink);
+      font-size: clamp(18px, 2.1vw, 22px);
+      line-height: 1.65;
+      background: #fff;
+      border: 4px solid #000;
+      box-shadow: 6px 6px 0 #000;
+      padding: 16px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      border: 4px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 12px 16px;
+      border-radius: 0;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 5px 5px 0 #000;
+      transition: transform .12s linear, box-shadow .12s linear, background .12s linear;
+    }
+    .btn.primary { background: var(--rose); color: #000; border-color: #000; }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #000; }
+    .btn:active { transform: translate(4px, 4px); box-shadow: none; }
+
+    .hero-panel {
+      position: relative;
+      padding: 20px;
+      border: 4px solid var(--line);
+      border-radius: 0;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: rotate(1deg);
+    }
+    .radar-wrap { position: relative; min-height: 390px; }
+    canvas { width: 100%; height: 100%; display: block; }
+    .metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+    .metric {
+      padding: 14px;
+      border: 3px solid var(--line);
+      border-radius: 0;
+      background: var(--yellow);
+    }
+    .metric b { display: block; font-size: 25px; margin-bottom: 4px; }
+    .metric span { color: var(--muted); font-size: 13px; }
+
+    section { padding: 42px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .section-head h2 {
+      display: inline-block;
+      margin: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      letter-spacing: 0;
+      line-height: 1;
+      text-transform: uppercase;
+      background: var(--violet);
+      border: 4px solid #000;
+      box-shadow: 7px 7px 0 #000;
+      padding: 10px 14px;
+      transform: rotate(-1deg);
+    }
+    .section-head p { margin: 0; max-width: 620px; color: var(--ink); line-height: 1.65; background: #fff; border: 3px solid #000; padding: 12px; }
+
+    .grid { display: grid; gap: 18px; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card {
+      border: 4px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .18s linear, box-shadow .18s linear;
+    }
+    .card:hover { transform: translate(-2px, -2px); box-shadow: 12px 12px 0 #000; }
+    .card-inner { padding: 22px; }
+    .prof-card { min-height: 100%; }
+    .prof-top { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+    .avatar {
+      width: 76px;
+      height: 88px;
+      border-radius: 0;
+      border: 4px solid #000;
+      color: #fff;
+      font-weight: 820;
+      font-size: 22px;
+      display: grid;
+      place-items: center;
+      box-shadow: 5px 5px 0 #000;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .chen { background: linear-gradient(145deg, #1f7aff, #0fb9b1); }
+    .zhou { background: linear-gradient(145deg, #43b36a, #1f7aff); }
+    .peng { background: linear-gradient(145deg, #f59f37, #f05f78); }
+    .prof-card h3 { margin: 0 0 4px; font-size: 24px; }
+    .role { color: var(--ink); font-size: 14px; line-height: 1.5; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .tag {
+      padding: 7px 10px;
+      border: 3px solid var(--line);
+      border-radius: 999px;
+      background: var(--yellow);
+      color: #000;
+      font-size: 13px;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 #000;
+    }
+    .analysis { color: #000; line-height: 1.7; margin: 0; }
+    .mini-list { margin: 16px 0 0; padding: 0; list-style: none; }
+    .mini-list li { padding: 10px 0; border-top: 3px solid var(--line); color: #000; line-height: 1.6; }
+    .mini-list b { color: var(--ink); }
+
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    button, input, select { font: inherit; }
+    .tab, .chip, .seg {
+      border: 3px solid var(--line);
+      background: #fff;
+      color: #000;
+      border-radius: 0;
+      padding: 9px 13px;
+      cursor: pointer;
+      transition: .12s linear;
+      box-shadow: 4px 4px 0 #000;
+      font-weight: 700;
+    }
+    .tab.active, .chip.active, .seg.active { background: var(--rose); color: #000; border-color: #000; transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+    .detail-pane { display: none; }
+    .detail-pane.active { display: block; animation: fadeUp .36s ease both; }
+    .detail-grid { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 18px; }
+    .fact-list { display: grid; gap: 10px; }
+    .fact {
+      padding: 13px 14px;
+      border-radius: 0;
+      background: #fff;
+      border: 3px solid var(--line);
+      box-shadow: 4px 4px 0 #000;
+    }
+    .fact small { color: var(--ink); display: block; margin-bottom: 5px; text-transform: uppercase; }
+    .fact strong { line-height: 1.5; }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 12px;
+      padding-left: 18px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(var(--blue), var(--teal), var(--orange));
+      border-radius: 2px;
+    }
+    .event {
+      position: relative;
+      padding: 14px 16px;
+      border: 3px solid var(--line);
+      border-radius: 0;
+      background: #fff;
+      box-shadow: 4px 4px 0 #000;
+    }
+    .event::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: 21px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 0 0 4px rgba(31,122,255,.14);
+    }
+    .event b { display: block; margin-bottom: 4px; }
+    .event span { color: #000; line-height: 1.55; }
+
+    .chart-card { min-height: 360px; padding: 18px; }
+    .chart-title { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .chart-title h3 { margin: 0; font-size: 18px; }
+    .chart-title span { color: #000; font-size: 13px; text-transform: uppercase; }
+    .bar-chart { display: grid; gap: 12px; margin-top: 18px; }
+    .bar-row { display: grid; grid-template-columns: 140px 1fr; align-items: center; gap: 10px; }
+    .bar-row label { color: #000; font-size: 14px; }
+    .bar-track { height: 16px; border-radius: 0; background: #fff; border: 3px solid #000; overflow: hidden; }
+    .bar-fill { width: 0; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--blue), var(--teal)); transition: width 1s cubic-bezier(.2,.8,.2,1); }
+    .bar-row output { display: none; }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .score-card {
+      padding: 18px;
+      border: 4px solid var(--line);
+      border-radius: 0;
+      background: #fff;
+      box-shadow: 6px 6px 0 #000;
+    }
+    .score-card h3 { margin: 0 0 8px; font-size: 20px; }
+    .score-card p { margin: 0 0 14px; color: #000; line-height: 1.7; }
+    .score-line {
+      display: grid;
+      grid-template-columns: 96px 1fr 34px;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+      color: #000;
+      font-size: 13px;
+    }
+    .score-track {
+      height: 10px;
+      border-radius: 0;
+      background: #fff;
+      border: 3px solid #000;
+      overflow: hidden;
+    }
+    .score-fill {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 0;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+      transition: width 1s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .axis-note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 0;
+      background: var(--yellow);
+      color: #000;
+      line-height: 1.7;
+      border: 4px solid var(--line);
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    .portfolio {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .portfolio-row {
+      display: grid;
+      grid-template-columns: 118px 1fr 120px;
+      gap: 14px;
+      align-items: center;
+      padding: 15px;
+      border: 3px solid var(--line);
+      border-radius: 0;
+      background: #fff;
+      box-shadow: 5px 5px 0 #000;
+    }
+    .portfolio-row strong { font-size: 18px; }
+    .portfolio-row p { margin: 4px 0 0; color: #000; line-height: 1.6; }
+    .portfolio-badge {
+      justify-self: end;
+      padding: 8px 10px;
+      border-radius: 0;
+      border: 3px solid #000;
+      background: var(--yellow);
+      color: #000;
+      font-size: 13px;
+      font-weight: 720;
+      white-space: nowrap;
+    }
+
+    .network {
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .network svg {
+      width: 100%;
+      height: 520px;
+      border-radius: 0;
+      background: #fff;
+      border: 4px solid var(--line);
+      box-shadow: 6px 6px 0 #000;
+    }
+    .node { cursor: pointer; transition: transform .18s ease, opacity .2s ease; transform-box: fill-box; transform-origin: center; }
+    .node:hover { transform: scale(1.06); }
+    .node circle { filter: drop-shadow(0 10px 16px rgba(22,35,60,.14)); }
+    .edge { stroke: #000; stroke-width: 2; opacity: .68; }
+    .edge.strong { stroke-width: 4; stroke: #000; opacity: 1; }
+    .edge.theme { stroke-dasharray: 8 7; }
+    .network-label { font-size: 12px; font-weight: 800; fill: #000; opacity: .68; letter-spacing: .08em; }
+    .network-note { padding: 18px; border: 4px solid var(--line); border-radius: 0; background: var(--violet); line-height: 1.7; color: #000; box-shadow: 6px 6px 0 #000; }
+    .network-note h3 { margin: 0 0 10px; color: var(--ink); }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto auto;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .search {
+      width: 100%;
+      border: 4px solid var(--line);
+      border-radius: 0;
+      background: #fff;
+      padding: 11px 14px;
+      outline: none;
+      box-shadow: 5px 5px 0 #000;
+      font-weight: 700;
+    }
+    .search:focus { background: var(--yellow); }
+    .table-wrap {
+      overflow: auto;
+      max-height: 560px;
+      border: 4px solid var(--line);
+      border-radius: 0;
+      background: #fff;
+      box-shadow: 7px 7px 0 #000;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 900px; }
+    th, td { padding: 13px 14px; border-bottom: 3px solid var(--line); text-align: left; vertical-align: top; }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--yellow);
+      color: #000;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    td { color: #000; line-height: 1.55; }
+    .type-pill {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: var(--violet);
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .insight {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 16px;
+      padding: 20px;
+      border: 4px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card-strong);
+      box-shadow: 7px 7px 0 #000;
+    }
+    .insight-num {
+      width: 54px;
+      height: 54px;
+      border-radius: 0;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 820;
+      background: var(--rose);
+      border: 3px solid #000;
+    }
+    .insight h3 { margin: 0 0 8px; }
+    .insight p { margin: 0; color: #000; line-height: 1.75; }
+
+    .footer { color: #000; text-align: center; padding: 30px 0 0; font-size: 14px; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    @media (max-width: 980px) {
+      .hero, .grid.three, .grid.two, .detail-grid, .network, .score-grid, .portfolio-row { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .nav { align-items: flex-start; border-radius: 24px; }
+      .nav-links { display: none; }
+      .toolbar { grid-template-columns: 1fr; }
+      .metric-row { grid-template-columns: 1fr; }
+      .portfolio-badge { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand"><span class="brand-mark"></span><span>UIU Research Atlas</span></div>
+      <div class="nav-links">
+        <a href="#overview">总览</a>
+        <a href="#profiles">人物画像</a>
+        <a href="#collab">协同框架</a>
+        <a href="#network">合作网络</a>
+        <a href="#matrix">研究矩阵</a>
+        <a href="#quality">学术评价</a>
+        <a href="#library">成果库</a>
+        <a href="#insights">分析建议</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="overview">
+      <div>
+        <div class="eyebrow">煊-恺-科研究整合</div>
+        <h1>从收缩城市到日常生活空间，再到健康与感知治理。</h1>
+        <p class="lead">三位学者的研究共同指向一种面向真实城市现场的协同路径：以规划价值和更新治理建立判断框架，以日常生活空间和消费场景形成行动界面，以健康行为、食品环境和社区生活圈提供精细化的评估与策略。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#profiles">查看人物画像</a>
+          <a class="btn" href="#library">检索成果条目</a>
+        </div>
+      </div>
+      <div class="hero-panel reveal">
+        <div class="chart-title">
+          <h3>研究重心雷达图</h3>
+          <span>按公开履历与本地成果归纳</span>
+        </div>
+        <div class="radar-wrap"><canvas id="radar" width="720" height="480"></canvas></div>
+        <div class="metric-row">
+          <div class="metric"><b data-count="215">0</b><span>本地成果与证明材料</span></div>
+          <div class="metric"><b data-count="9">0</b><span>交叉研究主题</span></div>
+          <div class="metric"><b data-count="3">0</b><span>互补型研究角色</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="profiles">
+      <div class="section-head reveal">
+        <h2>人物画像</h2>
+        <p>围绕城市更新、公共空间活力、夜间消费场景、健康行为和社区生活圈，三位学者形成互补的研究谱系。</p>
+      </div>
+      <div class="grid three">
+        <article class="card prof-card reveal">
+          <div class="card-inner">
+            <div class="prof-top">
+              <div class="avatar zhou" data-initial="周"><img src="photos/zhou-kai.jpg" alt="周恺照片" onerror="this.remove(); this.parentElement.textContent=this.parentElement.dataset.initial;"></div>
+              <div>
+                <h3>周恺</h3>
+                <div class="role">教授、博士生导师、城乡规划系主任、国家注册规划师</div>
+              </div>
+            </div>
+            <div class="tag-cloud">
+              <span class="tag">收缩城市</span><span class="tag">规划价值观</span><span class="tag">职业伦理</span><span class="tag">空间定量分析</span><span class="tag">城市更新</span>
+            </div>
+            <p class="analysis">周恺的研究主轴是“后增长时代的规划如何保持公共性和行动能力”。从城市收缩、人口流动、区域可达性到规划伦理，他的成果能够为更新行动、空间资源配置和公共价值判断提供宏观框架。</p>
+            <ul class="mini-list">
+              <li><b>关键身份：</b>SCiRN、SCRNC 成员；多家规划/地理/景观期刊编委或青年编委。</li>
+              <li><b>代表项目：</b>国家自然科学基金面上项目“城市收缩治理的理论模型、国际比较和关键规划领域研究”。</li>
+              <li><b>网络角色：</b>为协同研究提供价值判断、规划伦理、城市转型和治理框架。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card prof-card reveal">
+          <div class="card-inner">
+            <div class="prof-top">
+              <div class="avatar chen" data-initial="陈"><img src="photos/chen-xuan.jpg" alt="陈煊照片" onerror="this.remove(); this.parentElement.textContent=this.parentElement.dataset.initial;"></div>
+              <div>
+                <h3>陈煊</h3>
+                <div class="role">教授、博士生导师；湖南大学人口老龄化应对策略研究中心副主任</div>
+              </div>
+            </div>
+            <div class="tag-cloud">
+              <span class="tag">日常都市主义</span><span class="tag">非正规空间</span><span class="tag">城市设计</span><span class="tag">夜间生活区</span><span class="tag">社会福利设施</span>
+            </div>
+            <p class="analysis">陈煊的研究把城市设计带到生活现场：街市、夜市、社区养老、儿童友好、十五分钟生活圈和城市体检，形成“如何识别生活活力、组织参与、营造消费场景并推动空间再更新”的研究路径。</p>
+            <ul class="mini-list">
+              <li><b>关键身份：</b>长沙市国土空间规划学会空间治理与创新委员会主任委员；工作室公众号“101种长沙”。</li>
+              <li><b>代表项目：</b>国家自然科学基金面上项目“夜间日常生活区的建构过程、活力机制与更新治理路径研究”。</li>
+              <li><b>网络角色：</b>连接宏观规划议题与街道、社区、市场、夜间生活等可观察、可营造的空间场景。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card prof-card reveal">
+          <div class="card-inner">
+            <div class="prof-top">
+              <div class="avatar peng" data-initial="彭"><img src="photos/peng-ke.jpg" alt="彭科照片" onerror="this.remove(); this.parentElement.textContent=this.parentElement.dataset.initial;"></div>
+              <div>
+                <h3>彭科</h3>
+                <div class="role">副教授；关注健康行为与建成环境、食品环境和社区生活圈</div>
+              </div>
+            </div>
+            <div class="tag-cloud">
+              <span class="tag">健康行为</span><span class="tag">建成环境</span><span class="tag">食品供应链</span><span class="tag">社区生活圈</span><span class="tag">时空耦合</span>
+            </div>
+            <p class="analysis">彭科的研究应更准确地理解为健康行为与建成环境之间的时空耦合机制研究，并进一步进入食品供应链、生产链、社区生活圈和空间规划策略。她的研究能够为场景营造后的行为反馈、服务供给和健康效应评估提供方法支撑。</p>
+            <ul class="mini-list">
+              <li><b>关键成果：</b>社区食品环境优化、健康城市政策质量评估、建成环境与肥胖机制、TOD 与空间可达性等研究。</li>
+              <li><b>代表议题：</b>食物链、食品供应链/生产链、社区食品环境、健康行为与建成环境的时空耦合。</li>
+              <li><b>网络角色：</b>把消费场景和社区生活圈转化为食品可达、健康行为、服务供给与空间规划策略问题。</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="collab">
+        <div class="section-head reveal">
+          <h2>协同框架</h2>
+          <p>三人的结合点在于把城市更新、消费场景、AI 技术、虚实互动和食物链系统放入同一个研究闭环。</p>
+        </div>
+        <div class="grid two">
+          <div class="insight reveal">
+            <div class="insight-num">A</div>
+            <div><h3>夜间消费场景与城市更新</h3><p>周恺解释虚实互动和价值捕获，陈煊负责场景识别、设计与更新路径，彭科评估食品环境、服务供给和健康行为反馈。该方向可形成从空间策划到运营评估的完整方法。</p></div>
+          </div>
+          <div class="insight reveal">
+            <div class="insight-num">B</div>
+            <div><h3>AI 辅助城市设计与场景运营</h3><p>陈煊牵引大模型与 AI 在城市更新、城市设计和场景识别中的应用，周恺提供治理伦理和公共价值框架，彭科提供行为数据、健康影响和食品环境校验。</p></div>
+          </div>
+          <div class="insight reveal">
+            <div class="insight-num">C</div>
+            <div><h3>食物链导向的社区生活圈</h3><p>彭科牵引食物链、食品环境和健康行为机制，陈煊连接菜市场、街市、夜市和日常生活空间，周恺提供公平、公共性和更新治理框架。</p></div>
+          </div>
+          <div class="insight reveal">
+            <div class="insight-num">D</div>
+            <div><h3>网红城市的虚实空间治理</h3><p>周恺牵引网红城市、网红空间和虚实结合研究，陈煊负责线下空间营造和社会参与，彭科补足消费行为、食品获取和健康效应评价。</p></div>
+          </div>
+        </div>
+    </section>
+
+    <section id="network">
+      <div class="section-head reveal">
+        <h2>合作网络</h2>
+        <p>三位核心学者位于网络中心，外围展开高频合作者、研究主题、方法工具和案例场地，显示成果之间可形成的关系链。</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-inner network">
+          <svg id="networkSvg" viewBox="0 0 900 520" role="img" aria-label="合作网络图"></svg>
+          <aside class="network-note" id="networkNote">
+            <h3>点击节点查看说明</h3>
+            <p>中心是陈煊、周恺、彭科；外围展开戴燕归、何婧、熊益群、丁竹慧、杨婕、刘建阳、谭威等合作者，以及夜市、网红空间、社区食品环境、食物链、AI 场景识别等共同议题。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="details">
+      <div class="section-head reveal">
+        <h2>详细档案</h2>
+        <p>教育经历、学术任职、研究方向和代表性研究进展。</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-inner">
+          <div class="tabs" id="personTabs"></div>
+          <div id="detailPanes"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="matrix">
+      <div class="section-head reveal">
+        <h2>研究矩阵</h2>
+        <p>围绕理论建构、空间对象、方法工具、治理转化和公共价值展开的研究方向图谱。</p>
+      </div>
+      <div class="grid two">
+        <div class="card chart-card reveal">
+          <div class="chart-title"><h3>研究方向覆盖</h3><span>主题关系图</span></div>
+          <div class="tabs" id="themeSwitch"></div>
+          <div class="bar-chart" id="themeBars"></div>
+        </div>
+        <div class="card chart-card reveal">
+          <div class="chart-title"><h3>成果类型分布</h3><span>基于已整理资料统计</span></div>
+          <canvas id="donut" width="620" height="340"></canvas>
+        </div>
+      </div>
+      <div class="axis-note reveal">三人的研究可以理解为三个互补层次：周恺提供城市转型中的规划价值和治理模型，陈煊提供日常空间中的设计实践与场景营造方法，彭科提供健康行为、食品环境与建成环境的机制识别和空间策略。</div>
+    </section>
+
+    <section id="quality">
+      <div class="section-head reveal">
+        <h2>科研画像</h2>
+        <p>结合国家级课题、代表性论文、著作译著、重要教学与实践成果，凝练三位学者的科研方向和学术特长。</p>
+      </div>
+      <div class="score-grid reveal" id="portraitCards"></div>
+      <div class="grid two" style="margin-top:18px;">
+        <div class="card chart-card reveal">
+          <div class="chart-title"><h3>方向关键词图</h3><span>科研画像</span></div>
+          <canvas id="keywordMap" width="620" height="390"></canvas>
+        </div>
+        <div class="card chart-card reveal">
+          <div class="chart-title"><h3>代表性证据</h3><span>课题、论文、著作、实践</span></div>
+          <div class="portfolio" id="portfolioRows"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="library">
+      <div class="section-head reveal">
+        <h2>成果库</h2>
+        <p>内置代表性成果、项目、活动和教学实践。可按人物筛选，也可以搜索关键词，例如“夜市”“收缩”“生活圈”“伦理”。</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-inner">
+          <div class="toolbar">
+            <input class="search" id="searchInput" placeholder="搜索成果、项目、关键词">
+            <div class="tabs" id="filterTabs"></div>
+            <select class="seg" id="typeSelect" aria-label="类型筛选">
+              <option value="全部">全部类型</option>
+              <option value="论文">论文</option>
+              <option value="著作">著作/译著</option>
+              <option value="项目">项目</option>
+              <option value="研究方向">研究方向</option>
+              <option value="活动">活动/组稿</option>
+              <option value="教学">教学/获奖</option>
+              <option value="软著">专利/软著</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>年份</th><th>人物</th><th>类型</th><th>成果/事项</th><th>分析标签</th></tr></thead>
+              <tbody id="libraryRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights">
+      <div class="section-head reveal">
+        <h2>专业分析</h2>
+        <p>基于材料整合后，可以进一步组织成课题申报、团队介绍、学科方向凝练或展示汇报。</p>
+      </div>
+      <div class="grid two">
+        <div class="insight reveal">
+          <div class="insight-num">01</div>
+          <div><h3>协同链条可凝练为“价值判断—场景营造—AI辅助—食物链反馈”。</h3><p>周恺处理网红城市、虚实互动、公共价值和空间治理，陈煊处理城市更新、夜市消费场景和 AI 辅助城市设计，彭科处理食物链、食品环境、健康行为和建成环境反馈。三者能够从判断、设计、评估到治理形成连续链条。</p></div>
+        </div>
+        <div class="insight reveal">
+          <div class="insight-num">02</div>
+          <div><h3>夜间消费与网红空间是最强交叉场。</h3><p>周恺已有新消费社会、网红空间和数字赋能更新研究；陈煊有夜间日常生活区、社区型夜市和城市设计实践；彭科可从食品供应、消费可达、健康行为和社区服务网络补足运营反馈。该方向天然适合形成从空间策划到持续评估的协同方案。</p></div>
+        </div>
+        <div class="insight reveal">
+          <div class="insight-num">03</div>
+          <div><h3>“食物链—健康行为—空间公平”可以成为更精准的价值锚点。</h3><p>空间正义、共同富裕、规划伦理可与老年友好、食品可达性、供应链韧性和健康城市政策评估打通。这样既能保持规划学理论高度，也能落到居民日常生活福祉和可测量的服务供需匹配。</p></div>
+        </div>
+        <div class="insight reveal">
+          <div class="insight-num">04</div>
+          <div><h3>建议形成可持续更新的协同知识库与案例库。</h3><p>当前材料已经覆盖论文、课题、软著、教学、活动和实践。后续可把每条成果补齐作者、期刊、DOI、角色、关键词和原文件链接，形成面向研究展示、场景策划、设计推演和合作沟通共用的知识底座。</p></div>
+        </div>
+      </div>
+      <div class="footer">数据依据：用户补充的官方主页资料、本地论文/项目/获奖文件索引、已整理 Excel 工作簿。</div>
+    </section>
+  </div>
+
+  <script>
+    const people = {
+      "周恺": {
+        cls: "zhou",
+        role: "教授、博士生导师、系主任、国家注册规划师",
+        email: "kai_zhou@hnu.edu.cn；zhoukai_nju@hotmail.com",
+        homepage: "https://arch.hnu.edu.cn/info/1267/5316.htm",
+        facts: [
+          ["研究方向", "收缩城市及规划应对；规划价值观与职业伦理；空间定量分析技术与应用"],
+          ["教育经历", "2007-2011 英国曼彻斯特大学博士；2005-2007 南京大学硕士；2000-2005 南京大学学士"],
+          ["工作履历", "2025- 湖南大学建筑与规划学院教授、系主任；2017-2025 副教授、系主任；2018-2019 美国塔夫茨大学富布莱特访问学者"],
+          ["学术兼职", "SCiRN、SCRNC 成员；多个中国城市规划学会青年委员；《Quaestiones Geographicae》《景观设计学》《热带地理》等编委"],
+          ["课程", "规划概论、城乡规划原理、区域分析与区域规划、总体规划、城乡规划理论前沿、城市空间定量分析方法与应用"]
+        ],
+        timeline: [
+          ["2008", "Town Planning Review 论文", "In Search of Regional Planning in China 进入区域规划与长三角研究。"],
+          ["2015", "收缩城市研究进展", "《收缩城市：逆增长情景下的城市发展路径研究进展》成为国内收缩城市研究的重要综述。"],
+          ["2017", "湖南人口收缩地图", "在多地理尺度上识别湖南人口收缩，为后续区域治理研究奠基。"],
+          ["2020", "收缩治理专辑", "组织并发表“为收缩而规划”系列成果，提出理论模型与精明收缩耦合框架。"],
+          ["2022", "国际比较研究", "IJURR 发表中、美、捷收缩城市多层级治理比较。"],
+          ["2024", "专著与景观正义", "出版城市收缩治理专著，并组织景观正义专题。"],
+          ["2025", "教授、系主任", "职务晋升后，研究主题延伸至规划伦理、数字赋能更新和网红价值捕获。"]
+        ]
+      },
+      "陈煊": {
+        cls: "chen",
+        role: "教授、博士生导师；湖南大学人口老龄化应对策略研究中心副主任",
+        email: "chenxuan@hnu.edu.cn",
+        homepage: "https://arch.hnu.edu.cn/info/1267/5614.htm",
+        facts: [
+          ["研究方向", "城市非正规性与活力空间识别、治理；中国日常生活模式与社会福利设施体系化规划；环境人文与智能交互设计"],
+          ["经历", "2025-07 湖南大学教授；2016-2025 副教授；2016-2018 UC Berkeley 全球人居环境研究中心博士后，合作导师 Margaret Crawford；2004-2009 华中科技大学与英国卡的夫大学联合培养博士"],
+          ["学术兼职", "湖南省国土空间规划学会责任规划师副主任委员；长沙市空间治理与创新委员会主任委员；中国九色鹿城市更新志愿者公益基金委员"],
+          ["课程", "城市设计、控制性详细规划与设计、城市经济学、城乡社会实践调查、城市更新发展的社会经济学原理"],
+          ["工作室品牌", "101种长沙；行走长沙；绘长沙绘生活"]
+        ],
+        timeline: [
+          ["2007", "学生街与非正规空间", "《高校外周边地区“学生街”现状调查研究》体现其早期对校园周边非正规生活空间的关注。"],
+          ["2012-2013", "拼贴城市与街道非正规化", "《拼贴城市》《城市街道空间的非正规化演化》形成日常都市主义研究底色。"],
+          ["2016-2018", "伯克利博士后", "与 Margaret Crawford 合作，强化 Everyday Urbanism 理论来源。"],
+          ["2019", "日常都市主义专题", "在《国际城市规划》发表日常都市主义、街边市场和理论渊源系列论文。"],
+          ["2021", "适老化与街市治理", "发表社区适老化规划、街市型菜市场治理等成果。"],
+          ["2023-2027", "夜间日常生活区", "主持国家自然科学基金面上项目，研究建构过程、活力机制与更新治理路径。"],
+          ["2025", "教授与教学竞赛一等奖", "城市设计课程建设与社会实践品牌继续强化。"]
+        ]
+      },
+      "彭科": {
+        cls: "peng",
+        role: "副教授；健康行为与建成环境、食品环境、食物链与空间规划策略方向",
+        email: "个人主页详见湖南大学教师主页",
+        homepage: "https://grzy.hnu.edu.cn/site/index/pengke2",
+        facts: [
+          ["研究方向", "健康行为与建成环境的时空耦合机制与空间规划策略；食品供应链、生产链及食品环境；社区生活圈；健康城市、TOD 与空间可达性"],
+          ["资料跨度", "当前彭科团队本地归档为 28 条，集中在食品环境、健康城市、建成环境、TOD、可达性、老年消费服务设施等主题"],
+          ["方法特征", "以空间可达性、建成环境测度、食品网点/邻里食品可达、健康城市政策评价和健康行为关联分析为主"],
+          ["代表线索", "社区食品环境优化；城乡食物环境研究；Food outlet count；Neighborhood Food Access；TOD站点周边规划设计；建成环境对肥胖影响"],
+          ["交叉关系", "与陈煊在社区生活圈、消费服务设施、街市/菜市场和日常生活空间上衔接；与周恺在消费空间、健康公平和更新治理评价上互补"]
+        ],
+        timeline: [
+          ["2018-2023", "健康城市与食品环境", "材料集中到城乡食物环境、食品可达、健康城市政策评估和社区消费服务设施。"],
+          ["2024", "社区食品环境与空间规划", "《社区食品环境优化的空间规划路径研究》《空间可达性研究述评》等成果支撑食物链和可达性分析。"],
+          ["2024-2025", "建成环境与健康行为", "Food outlet count、Neighborhood Food Access、建成环境对肥胖影响等成果强化健康行为与建成环境耦合。"],
+          ["2024-2025", "TOD与交通可达性", "TOD站点周边城市规划设计策略和空间可达性研究可与生活圈、食品环境和健康服务设施配置联动。"],
+          ["2026", "年龄友好空间评估", "A Type-Based Assessment Method for Matching Policy Supply to Everyday Demands in Age-Friendly Spaces 延续健康与空间供需匹配方向。"]
+        ]
+      }
+    };
+
+    const themes = [
+      { name: "研究对象尺度", scores: { "周恺": 5, "陈煊": 4, "彭科": 4 }, note: "周恺覆盖城市、区域与国际比较；陈煊聚焦街区、社区、街市/夜市等日常场景；彭科聚焦社区生活圈、食品环境和健康行为发生场所。" },
+      { name: "理论问题凝练", scores: { "周恺": 5, "陈煊": 4, "彭科": 3 }, note: "周恺形成收缩治理、规划价值观与职业伦理框架；陈煊以日常都市主义、非正规性和社会福利设施体系化规划为主；彭科目前更偏机制识别与策略应用。" },
+      { name: "方法技术支撑", scores: { "周恺": 4, "陈煊": 5, "彭科": 4 }, note: "周恺强调空间定量、PPGIS/WebGIS 与区域分析；陈煊强调 Mapping、行动策划、视觉识别、夜间场景感知和 AI 辅助设计；彭科强调空间可达性、食品环境识别、建成环境测度和健康行为关联分析。" },
+      { name: "治理应用转化", scores: { "周恺": 5, "陈煊": 5, "彭科": 4 }, note: "周恺更偏政策与规划治理框架；陈煊更偏空间更新、生活圈、工作坊和社会设计实践；彭科更偏健康行为与建成环境的空间规划策略。" },
+      { name: "公共价值议题", scores: { "周恺": 5, "陈煊": 4, "彭科": 5 }, note: "周恺从空间正义、共同富裕和规划伦理展开；陈煊从社区福利设施与日常生活空间展开；彭科从健康行为、食品环境与服务可达性展开。" },
+      { name: "社会实践连接", scores: { "周恺": 3, "陈煊": 5, "彭科": 4 }, note: "陈煊的城市设计课程、行走长沙和绘长沙绘生活最成体系；彭科的健康行为采集和食品环境研究具备实践转译潜力；周恺更多连接政策与规划治理实践。" },
+      { name: "跨学科整合", scores: { "周恺": 4, "陈煊": 5, "彭科": 5 }, note: "三人的交汇点可落在虚实消费空间、夜间生活、食品环境、社区生活圈、健康公平和后增长治理。" }
+    ];
+
+    const scholarPortraits = [
+      {
+        name: "周恺",
+        title: "网红城市与虚实空间治理研究者",
+        keywords: ["网红城市", "虚实结合", "数字赋能更新", "空间正义", "价值捕获"],
+        summary: "以城市收缩、后增长治理和规划价值观为学术底盘，近年延展到社交媒体影响下的新消费空间、网红城市和城市空间的虚实结合。其优势在于把流量、公共性、空间生产和治理伦理放进同一套规划解释框架。",
+        signature: "适合承担城市转型、虚实空间治理、网红消费空间、公共价值和更新收益分配方向的学术牵引。"
+      },
+      {
+        name: "陈煊",
+        title: "城市更新与 AI 场景设计研究者",
+        keywords: ["城市更新", "夜市消费场景", "AI/大模型", "日常都市主义", "城市设计实践"],
+        summary: "以街市、夜市、社区、养老、儿童友好和城市设计教学实践为主要场域，近年布局城市更新、夜市等消费场景与空间，以及大模型和 AI 等前沿技术在城市更新、场景识别和城市设计中的应用。",
+        signature: "适合牵引日常生活空间、夜间消费场景、AI 辅助城市设计、空间更新和社区社会实践方向。"
+      },
+      {
+        name: "彭科",
+        title: "食物链与健康生活空间研究者",
+        keywords: ["食物链", "食品供应链", "健康行为", "建成环境", "社区食品环境"],
+        summary: "研究重心落在健康行为与建成环境的时空耦合机制、食品供应链/生产链与社区食品环境，以及面向健康城市的空间规划策略。其价值在于把消费场景从“空间热度”推进到“供给链条、健康影响和日常可达”。",
+        signature: "适合牵引食物链、食品环境、社区生活圈、健康行为和行为数据支持的空间策略研究。"
+      }
+    ];
+
+    const keywordClusters = [
+      { name: "周恺", color: "#9ae66e", x: 168, y: 150, words: ["网红城市", "虚实结合", "空间正义", "价值捕获", "数字更新"] },
+      { name: "陈煊", color: "#ff6b6b", x: 324, y: 210, words: ["城市更新", "夜市场景", "AI设计", "日常都市", "社区参与"] },
+      { name: "彭科", color: "#ffd93d", x: 486, y: 150, words: ["食物链", "食品环境", "健康行为", "建成环境", "社区供给"] }
+    ];
+
+    const portfolio = [
+      ["周恺", "国家自然科学基金面上项目：城市收缩治理的理论模型、国际比较和关键规划领域研究", "治理框架"],
+      ["周恺", "IJURR 论文 Urban shrinkage in China, the USA, and the Czech Republic；JPER 论文 Diverging Standpoints...", "高水平期刊"],
+      ["周恺", "社交媒体影响下的城市消费空间、数字赋能城市更新下的网红空间、网红价值捕获等研究", "虚实空间"],
+      ["陈煊", "国家自然科学基金面上项目：夜间日常生活区的建构过程、活力机制与更新治理路径研究", "场景营造"],
+      ["陈煊", "夜市、日常都市主义、社区生活圈图像编码、AI/大模型辅助城市更新与设计应用", "AI更新"],
+      ["陈煊", "国家级一流课程《城市设计》实践课程；2025 湖南省课堂教学竞赛一等奖", "教学奖项"],
+      ["彭科", "健康行为与建成环境的时空耦合机制与空间规划策略；食品供应链/生产链与食品环境", "食物链"],
+        ["彭科", "社区食品环境优化、城乡食物环境研究、Food outlet count、Neighborhood Food Access 等食品环境成果", "食品环境"],
+        ["彭科", "TOD 站点周边城市规划设计、空间可达性研究述评、建成环境对居民肥胖影响、健康城市政策质量评估", "健康规划"]
+      ];
+
+    const records = [
+      ["2024", "周恺", "著作", "《城市收缩治理的理论模型、国际比较和关键规划领域研究》", "国家重点图书出版项目；收缩治理框架"],
+      ["2022", "周恺", "著作", "Post-Socialist Shrinking Cities, Routledge", "国际收缩城市研究网络"],
+      ["2023", "周恺", "著作", "《收缩城市研究：选题、方法和范例》译著", "研究方法与案例引介"],
+      ["2020", "周恺", "著作", "《城市兴衰启示录》译著", "美国阳光地带与铁锈地带比较"],
+      ["2024", "周恺", "论文", "Diverging Standpoints in the Spiral of Change", "规划学生社会正义价值观；JPER"],
+      ["2024", "周恺", "论文", "人口-土地协调视角下的湖南省主体功能区优化探索", "收缩城市专辑；国土空间"],
+      ["2024", "周恺", "论文", "数字赋能城市更新下的业态导入及空间生产", "长沙丰盈西里；网红空间"],
+      ["2026", "周恺", "研究方向", "网红城市与城市空间的虚实结合", "线上流量；线下空间；价值捕获；更新治理"],
+      ["2023", "周恺", "论文", "规划师职业伦理中的道德责任归属", "职业伦理；道德责任"],
+      ["2022", "周恺", "论文", "Urban shrinkage in China, the USA, and the Czech Republic", "IJURR；多层级治理比较"],
+      ["2021", "周恺", "论文", "社交媒体影响下的城市消费空间新特征", "小红书；长沙网红打卡地"],
+      ["2020", "周恺", "论文", "收缩治理的理论模型、国际比较和关键政策领域研究", "范式转换；关键政策领域"],
+      ["2017", "周恺", "论文", "湖南省多地理尺度下的人口“收缩地图”", "人口收缩识别"],
+      ["2025", "周恺", "活动", "Special Session: The Present and Future of Shrinking Cities in Asia", "首尔；亚洲收缩城市"],
+      ["2024", "周恺", "活动", "《景观设计学》“景观正义”专辑", "召集人/撰稿人；空间正义延展"],
+      ["2020", "周恺", "活动", "《国际城市规划》汇智沙龙：为收缩而规划", "专辑组稿与学术组织"],
+      ["2020", "周恺", "项目", "国家自然科学基金面上项目：城市收缩治理的理论模型、国际比较和关键规划领域研究", "项目号 52078197"],
+      ["2016", "周恺", "项目", "湖南省历史建筑、村落及街区保护信息云平台开发及应用", "WebGIS、PPGIS、历史文化空间"],
+
+      ["2021", "陈煊", "著作", "《日常都市主义》译著", "Everyday Urbanism 理论引介"],
+      ["2018", "陈煊", "著作", "参译《城市“缩小”时代的再开发方向》", "与周恺共同参与译著"],
+      ["2023", "陈煊", "论文", "社区型夜市混合发展的风险与稳定性再更新路径研究", "长沙扬帆安置小区夜市；2002-2021"],
+      ["2021", "陈煊", "论文", "基于战术的非示范型社区适老化规划路径研究", "长沙中心老年人高聚集区"],
+      ["2019", "陈煊", "论文", "日常都市主义的理论渊源及其对中国城市设计的挑战", "理论源流；城市设计"],
+      ["2019", "陈煊", "论文", "街边市场多目标协同规划管理方法", "波特兰街边市场对比"],
+      ["2017", "陈煊", "论文", "丘陵城市建筑高度规划控制系统构建", "岳麓山；景观控制"],
+      ["2013", "陈煊", "论文", "城市街道空间的非正规化演化", "非正规性；街道空间"],
+      ["2012", "陈煊", "论文", "拼贴城市", "日常空间与城市形态"],
+      ["2024", "陈煊", "论文", "基于图像编码方法的社区生活圈建设运营特征识别研究", "现代城市研究；社区生活圈"],
+      ["2024", "陈煊", "项目", "国家自然科学基金面上项目：夜间日常生活区的建构过程、活力机制与更新治理路径研究", "2024-2027；项目主持人"],
+      ["2026", "陈煊", "研究方向", "大模型与 AI 在城市更新、场景识别和城市设计中的应用", "AI/大模型；城市更新；消费场景；设计推演"],
+      ["2023", "陈煊", "项目", "湖南省夜间消费集聚区的发展机遇、内涵和品牌形象战略", "湖南省社会科学基金"],
+      ["2023", "陈煊", "教学", "国家级一流课程建设：城市设计实践课程", "城市设计社会实践"],
+      ["2025", "陈煊", "教学", "湖南省普通高校教师课堂教学竞赛《城市设计》一等奖", "教学品牌强化"],
+      ["2019", "陈煊", "活动", "夜莺计划6：冬瓜山夜市社会设计合作工作营", "公开招募；夜市社会设计"],
+      ["2021", "陈煊", "活动", "绘长沙绘生活之龄活计划", "城市体检；老年友好"],
+      ["2024", "陈煊", "软著", "社区商店行业类型与收入支出状况评价系统 V1.0", "第一著作权人"],
+      ["2024", "陈煊", "软著", "用户兴趣行走路线智能推荐系统 V1.0/V2.0", "行走路线与兴趣推荐"],
+      ["2024", "陈煊", "软著", "一种用于识别社区生活圈建设运营的图像编码方法", "发明专利；社区生活圈识别"],
+      ["2025", "陈煊", "论文", "基于图像编码方法的社区生活圈建设运营特征识别", "雨花区社区生活圈；空间运营识别"],
+      ["2025", "陈煊", "论文", "视听感知视角下夜间消费集聚区场景的要素与组合模式识别", "长沙 109 个夜间消费集聚区；场景营造"],
+      ["2025", "陈煊", "论文", "非正规经济视角下城市夜市空间的政策演进与治理特征", "长沙夜市；非正规经济治理"],
+      ["2025", "陈煊", "软著", "健康老年人社区日常生活行为信息采集和可视化软件", "行为数据采集与可视化"],
+      ["2025", "陈煊", "教学", "省级教学奖赛一等奖、国赛二等奖等", "城市设计教学与社会实践"],
+
+      ["2026", "彭科", "论文", "A Type-Based Assessment Method for Matching Policy Supply to Everyday Demands in Age-Friendly Spaces", "长沙；年龄友好空间供需匹配"],
+      ["2026", "彭科", "研究方向", "食物链导向的社区食品环境与健康生活空间研究", "供应链；生产链；消费可达；健康行为"],
+      ["2025", "彭科", "论文", "健康行为与建成环境的时空耦合机制与空间规划策略相关研究", "健康行为；建成环境；空间规划策略"],
+      ["2025", "彭科", "论文", "食品供应链、生产链与社区食品环境研究", "食品供应链；生产链；食物环境"],
+      ["2024", "彭科", "论文", "社区食品环境优化的空间规划路径研究", "食品环境；空间规划策略"],
+      ["2024", "彭科", "论文", "基于1000城市挑战分析框架的健康城市规划政策质量评估：以长沙为例", "健康城市政策；评估框架"],
+      ["2025", "彭科", "论文", "建成环境对居民肥胖的影响机制", "建成环境；肥胖；健康行为"],
+      ["2025", "彭科", "论文", "Food outlet count, street connectivity and frequency of use", "食品网点；街道连通性；使用频率"],
+      ["2025", "彭科", "论文", "Availability of neighbourhood supermarkets and convenience", "邻里超市；便利性；食品可达性"],
+      ["2025", "彭科", "论文", "Association between Neighborhood Food Access", "邻里食品可达性；健康行为"],
+      ["2025", "彭科", "论文", "A method for estimating neighborhood", "邻里尺度估计；空间测度"],
+      ["2025", "彭科", "论文", "CHNS 相关健康行为与建成环境研究", "中国健康与营养调查；健康行为"],
+      ["2024", "彭科", "论文", "空间可达性研究述评：基于土地利用和交通互动视角", "可达性；土地利用交通互动"],
+      ["2024", "彭科", "论文", "TOD站点周边城市规划设计策略研究", "TOD；交通可达性；规划设计"],
+      ["2024", "彭科", "论文", "老年视角下社区日常消费性服务设施的感知与使用研究", "老年友好；消费服务设施"]
+    ];
+
+    const sourceCounts = { "陈煊": 114, "周恺": 73, "彭科": 28 };
+
+    function drawRadar() {
+      const canvas = document.getElementById("radar");
+      const ctx = canvas.getContext("2d");
+      const labels = ["对象尺度", "理论凝练", "方法技术", "治理转化", "公共价值", "社会实践", "跨学科"];
+      const names = Object.keys(people);
+      const colors = { "周恺": "#43b36a", "陈煊": "#1f7aff", "彭科": "#f59f37" };
+      const cx = canvas.width / 2, cy = canvas.height / 2 + 22, r = 145;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.lineWidth = 1;
+      ctx.font = "18px -apple-system, BlinkMacSystemFont, sans-serif";
+      for (let ring = 1; ring <= 5; ring++) {
+        ctx.beginPath();
+        labels.forEach((_, i) => {
+          const a = -Math.PI / 2 + i * Math.PI * 2 / labels.length;
+          const rr = r * ring / 5;
+          const x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr;
+          if (i === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        });
+        ctx.closePath();
+        ctx.strokeStyle = "rgba(50,65,90,.12)";
+        ctx.stroke();
+      }
+      labels.forEach((label, i) => {
+        const a = -Math.PI / 2 + i * Math.PI * 2 / labels.length;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r); ctx.stroke();
+        const lx = cx + Math.cos(a) * (r + 46), ly = cy + Math.sin(a) * (r + 34);
+        ctx.fillStyle = "#5b6679";
+        ctx.textAlign = lx < cx - 20 ? "right" : lx > cx + 20 ? "left" : "center";
+        ctx.fillText(label, lx, ly);
+      });
+      names.forEach((name) => {
+        ctx.beginPath();
+        themes.forEach((theme, i) => {
+          const a = -Math.PI / 2 + i * Math.PI * 2 / labels.length;
+          const score = theme.scores[name] / 5;
+          const x = cx + Math.cos(a) * r * score, y = cy + Math.sin(a) * r * score;
+          if (i === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        });
+        ctx.closePath();
+        ctx.fillStyle = colors[name] + "22";
+        ctx.strokeStyle = colors[name];
+        ctx.lineWidth = 3;
+        ctx.fill();
+        ctx.stroke();
+      });
+      names.forEach((name, i) => {
+        ctx.fillStyle = colors[name];
+        ctx.fillRect(150 + i * 130, 34, 24, 10);
+        ctx.fillStyle = "#172033";
+        ctx.textAlign = "left";
+        ctx.fillText(name, 182 + i * 130, 44);
+      });
+    }
+
+    function drawKeywordMap() {
+      const canvas = document.getElementById("keywordMap");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = "#000";
+      ctx.setLineDash([10, 8]);
+      ctx.beginPath(); ctx.moveTo(168, 150); ctx.lineTo(324, 210); ctx.lineTo(486, 150); ctx.lineTo(168, 150); ctx.stroke();
+      ctx.setLineDash([]);
+      keywordClusters.forEach(cluster => {
+        ctx.fillStyle = cluster.color;
+        ctx.beginPath();
+        ctx.arc(cluster.x, cluster.y, 58, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = "#000";
+        ctx.textAlign = "center";
+        ctx.font = "700 24px Space Grotesk, sans-serif";
+        ctx.fillText(cluster.name, cluster.x, cluster.y + 7);
+        ctx.font = "700 15px Space Grotesk, sans-serif";
+        cluster.words.forEach((word, i) => {
+          const angle = -Math.PI / 2 + i * Math.PI * 2 / cluster.words.length;
+          const x = cluster.x + Math.cos(angle) * 104;
+          const y = cluster.y + Math.sin(angle) * 82;
+          ctx.fillStyle = "#fff";
+          ctx.strokeStyle = "#000";
+          const w = ctx.measureText(word).width + 22;
+          ctx.fillRect(x - w / 2, y - 15, w, 30);
+          ctx.strokeRect(x - w / 2, y - 15, w, 30);
+          ctx.fillStyle = "#000";
+          ctx.fillText(word, x, y + 5);
+        });
+      });
+    }
+
+    function renderScholarPortraits() {
+      document.getElementById("portraitCards").innerHTML = scholarPortraits.map(item => `
+        <div class="score-card">
+          <h3>${item.name}</h3>
+          <p><b>${item.title}</b></p>
+          <div class="tag-cloud">${item.keywords.map(keyword => `<span class="tag">${keyword}</span>`).join("")}</div>
+          <p>${item.summary}</p>
+          <div class="axis-note">${item.signature}</div>
+        </div>
+      `).join("");
+      document.getElementById("portfolioRows").innerHTML = portfolio.map(row => `
+        <div class="portfolio-row">
+          <strong>${row[0]}</strong>
+          <p>${row[1]}</p>
+          <span class="portfolio-badge">${row[2]}</span>
+        </div>
+      `).join("");
+    }
+
+    function drawDonut() {
+      const canvas = document.getElementById("donut");
+      const ctx = canvas.getContext("2d");
+      const data = [
+        ["周恺本地资料", sourceCounts["周恺"], "#43b36a"],
+        ["陈煊本地资料", sourceCounts["陈煊"], "#1f7aff"],
+        ["彭科本地资料", sourceCounts["彭科"], "#f59f37"]
+      ];
+      const total = data.reduce((s, d) => s + d[1], 0);
+      const cx = 210, cy = 170, radius = 118;
+      let start = -Math.PI / 2;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      data.forEach(([label, value, color]) => {
+        const end = start + value / total * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, radius, start, end);
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+        start = end;
+      });
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath(); ctx.arc(cx, cy, 72, 0, Math.PI * 2); ctx.fill();
+      ctx.globalCompositeOperation = "source-over";
+      ctx.fillStyle = "#172033";
+      ctx.font = "700 34px -apple-system, BlinkMacSystemFont, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(total, cx, cy - 2);
+      ctx.font = "16px -apple-system, BlinkMacSystemFont, sans-serif";
+      ctx.fillStyle = "#657083";
+      ctx.fillText("条资料", cx, cy + 25);
+      data.forEach(([label, value, color], i) => {
+        const y = 92 + i * 52;
+        ctx.fillStyle = color; ctx.fillRect(390, y, 28, 12);
+        ctx.fillStyle = "#172033"; ctx.textAlign = "left"; ctx.font = "18px -apple-system, BlinkMacSystemFont, sans-serif";
+        ctx.fillText(label, 430, y + 12);
+        ctx.fillStyle = "#657083"; ctx.fillText(value + " 条", 430, y + 36);
+      });
+    }
+
+    function renderDetails() {
+      const tabs = document.getElementById("personTabs");
+      const panes = document.getElementById("detailPanes");
+      Object.entries(people).forEach(([name, p], i) => {
+        const tab = document.createElement("button");
+        tab.className = "tab" + (i === 0 ? " active" : "");
+        tab.textContent = name;
+        tab.onclick = () => activatePerson(name);
+        tabs.appendChild(tab);
+        const pane = document.createElement("div");
+        pane.className = "detail-pane" + (i === 0 ? " active" : "");
+        pane.dataset.name = name;
+        pane.innerHTML = `
+          <div class="detail-grid">
+            <div class="fact-list">
+              <div class="fact"><small>身份</small><strong>${p.role}</strong></div>
+              <div class="fact"><small>邮箱/联系</small><strong>${p.email}</strong></div>
+              <div class="fact"><small>主页</small><strong><a href="${p.homepage}" target="_blank" rel="noreferrer">${p.homepage}</a></strong></div>
+              ${p.facts.map(([k,v]) => `<div class="fact"><small>${k}</small><strong>${v}</strong></div>`).join("")}
+            </div>
+            <div class="timeline">
+              ${p.timeline.map(([year,title,desc]) => `<div class="event"><b>${year} · ${title}</b><span>${desc}</span></div>`).join("")}
+            </div>
+          </div>`;
+        panes.appendChild(pane);
+      });
+    }
+
+    function activatePerson(name) {
+      document.querySelectorAll("#personTabs .tab").forEach(btn => btn.classList.toggle("active", btn.textContent === name));
+      document.querySelectorAll(".detail-pane").forEach(pane => pane.classList.toggle("active", pane.dataset.name === name));
+    }
+
+    function renderThemeBars(theme = themes[0]) {
+      document.getElementById("themeSwitch").innerHTML = themes.map((t, i) => `<button class="chip ${t.name === theme.name ? "active" : ""}" data-theme="${i}">${t.name}</button>`).join("");
+      document.querySelectorAll("#themeSwitch .chip").forEach(btn => btn.onclick = () => renderThemeBars(themes[Number(btn.dataset.theme)]));
+      const bars = document.getElementById("themeBars");
+      bars.innerHTML = Object.entries(theme.scores).map(([name, score]) => `
+        <div class="bar-row">
+          <label>${name}</label>
+          <div class="bar-track"><div class="bar-fill" style="background:${name === "周恺" ? "linear-gradient(90deg,#43b36a,#1f7aff)" : name === "陈煊" ? "linear-gradient(90deg,#1f7aff,#0fb9b1)" : "linear-gradient(90deg,#f59f37,#f05f78)"}"></div></div>
+        </div>`).join("") + `<p class="analysis">${theme.note}</p>`;
+      requestAnimationFrame(() => {
+        document.querySelectorAll(".bar-fill").forEach((bar, i) => {
+          const score = Object.values(theme.scores)[i];
+          bar.style.width = (score / 5 * 100) + "%";
+        });
+      });
+    }
+
+    function renderNetwork() {
+      const svg = document.getElementById("networkSvg");
+      const nodes = [
+        ["周恺", 365, 210, "#9ae66e", "核心节点：网红城市、虚实结合、城市收缩、空间正义、规划伦理和更新治理。", "core"],
+        ["陈煊", 450, 305, "#ff6b6b", "核心节点：城市更新、夜市消费场景、日常都市主义、AI/大模型与城市设计实践。", "core"],
+        ["彭科", 535, 210, "#ffd93d", "核心节点：食物链、社区食品环境、健康行为、建成环境、TOD 和空间可达性。", "core"],
+
+        ["戴燕归", 170, 130, "#c7f36f", "周恺高频合作者，关联收缩治理、乡村权、地方空间与流动空间等成果。", "collab"],
+        ["夏依宁", 250, 70, "#c7f36f", "周恺著作与论文合作者，连接收缩治理、规划价值观和共同富裕议题。", "collab"],
+        ["何婧", 175, 250, "#c7f36f", "周恺团队合作者，关联共享城市、传统聚落治理、历史文化空间智慧治理。", "collab"],
+        ["熊益群", 265, 330, "#c7f36f", "周恺方法合作者，关联机器学习、消费场景识别和规划伦理研究。", "collab"],
+        ["张海涛等", 320, 420, "#c7f36f", "周恺消费空间合作网络，包含张海涛、张一雯、周洋等，关联社区团购、共享住宿、O2O零售和网红空间。", "collab"],
+
+        ["丁竹慧", 525, 430, "#ff9f80", "陈煊团队夜市治理合作者，关联非正规经济视角下城市夜市政策演进。", "collab"],
+        ["杨婕等", 625, 355, "#ff9f80", "陈煊团队视觉编码/社区生活圈识别/工具网络，包含杨婕、刘奕含、阮姝、朱家正等。", "collab"],
+        ["Margaret", 700, 250, "#ff9f80", "陈煊博士后合作网络节点，支撑日常都市主义和城市非正规性理论来源。", "collab"],
+
+        ["刘建阳等", 720, 120, "#ffe88a", "彭科食品环境与健康城市合作网络，包含刘建阳、李超骕、周玄霜、贺璟寰、梁茵栩等。", "collab"],
+        ["欧阳虹彬", 625, 65, "#ffe88a", "彭科老年友好和日常消费服务设施方向合作者，可与社区生活圈和适老更新衔接。", "collab"],
+        ["谭威", 790, 315, "#ffe88a", "彭科消费空间合作者，关联长沙生活性消费空间和城市空间历史。", "collab"],
+
+        ["收缩治理", 76, 78, "#7857ff", "周恺的理论底座，连接后增长城市、人口变化、空间正义和公共服务网络韧性。", "theme"],
+        ["网红空间", 70, 365, "#0fb9b1", "小红书长沙打卡地、丰盈西里、网红价值捕获等成果共同指向虚实消费空间治理。", "theme"],
+        ["夜市案例", 450, 486, "#7857ff", "扬帆夜市、冬瓜山夜市和长沙夜间消费集聚区，是三方最容易共同进入的案例场。", "theme"],
+        ["AI识别", 450, 90, "#6b7280", "视觉识别、场景识别、机器学习、社区商店评价和路线推荐可组成方法工具层。", "theme"],
+        ["食物链", 830, 74, "#0fb9b1", "食品供应链、生产链、社区食品环境和食品可达性，是彭科方向进入城市更新场景的关键接口。", "theme"],
+        ["健康反馈", 826, 430, "#0fb9b1", "健康行为、建成环境、服务供给和可达性评价，可作为消费场景营造后的反馈层。", "theme"],
+        ["生活圈", 450, 25, "#c4b5fd", "社区生活圈是陈煊的运营识别、彭科的食品环境评价和周恺的公共性框架可以汇合的尺度。", "theme"]
+      ];
+      const edges = [
+        ["陈煊","周恺",1],["陈煊","彭科",1],["周恺","彭科",.85],
+        ["周恺","戴燕归",1],["周恺","夏依宁",.9],["周恺","何婧",.9],["周恺","熊益群",.9],["周恺","张海涛等",.85],
+        ["陈煊","丁竹慧",1],["陈煊","杨婕等",1],["陈煊","Margaret",.75],
+        ["彭科","刘建阳等",1],["彭科","欧阳虹彬",.85],["彭科","谭威",.8],
+        ["周恺","收缩治理",1],["周恺","网红空间",1],["周恺","AI识别",.65],
+        ["陈煊","夜市案例",1],["陈煊","AI识别",1],["陈煊","生活圈",.85],
+        ["彭科","食物链",1],["彭科","健康反馈",1],["彭科","生活圈",.75],
+        ["丁竹慧","夜市案例",.8],["杨婕等","AI识别",.9],["熊益群","AI识别",.75],
+        ["张海涛等","网红空间",.75],["戴燕归","收缩治理",.7],["何婧","生活圈",.55],
+        ["刘建阳等","食物链",.8],["欧阳虹彬","健康反馈",.7],["谭威","健康反馈",.55],
+        ["网红空间","夜市案例",.85],["夜市案例","食物链",.65],["食物链","健康反馈",.85],["生活圈","健康反馈",.75],["生活圈","AI识别",.65]
+      ];
+      const pos = Object.fromEntries(nodes.map(n => [n[0], n]));
+      svg.innerHTML = `
+        <text class="network-label" x="56" y="42">THEMES</text>
+        <text class="network-label" x="392" y="176">CORE</text>
+        <text class="network-label" x="690" y="42">COLLABORATORS</text>
+      ` + edges.map(([a,b,w]) => {
+        const themed = pos[a][5] === "theme" || pos[b][5] === "theme";
+        return `<line class="edge ${w === 1 ? "strong" : ""} ${themed ? "theme" : ""}" x1="${pos[a][1]}" y1="${pos[a][2]}" x2="${pos[b][1]}" y2="${pos[b][2]}"></line>`;
+      }).join("") +
+        nodes.map(([name,x,y,color,note,type]) => `
+          <g class="node" data-name="${name}" data-note="${note}" transform="translate(${x},${y})">
+            <circle r="${type === "core" ? 40 : type === "theme" ? 29 : 27}" fill="${color}"></circle>
+            <text text-anchor="middle" dominant-baseline="middle" fill="${["#ffd93d","#ffe88a","#9ae66e","#c7f36f","#c4b5fd"].includes(color) ? "#000" : "#fff"}" font-size="${type === "core" ? 17 : name.length <= 3 ? 13 : 11}" font-weight="800">${name}</text>
+          </g>`).join("");
+      svg.querySelectorAll(".node").forEach(node => node.addEventListener("click", () => {
+        document.getElementById("networkNote").innerHTML = `<h3>${node.dataset.name}</h3><p>${node.dataset.note}</p>`;
+      }));
+    }
+
+    function renderLibrary() {
+      const filterTabs = document.getElementById("filterTabs");
+      filterTabs.innerHTML = ["全部", "周恺", "陈煊", "彭科"].map((name, i) => `<button class="tab ${i === 0 ? "active" : ""}" data-person="${name}">${name}</button>`).join("");
+      filterTabs.querySelectorAll(".tab").forEach(btn => btn.onclick = () => {
+        filterTabs.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        updateLibrary();
+      });
+      document.getElementById("searchInput").addEventListener("input", updateLibrary);
+      document.getElementById("typeSelect").addEventListener("change", updateLibrary);
+      updateLibrary();
+    }
+
+    function updateLibrary() {
+      const person = document.querySelector("#filterTabs .active").dataset.person;
+      const type = document.getElementById("typeSelect").value;
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+      const rows = records.filter(r =>
+        (person === "全部" || r[1] === person) &&
+        (type === "全部" || r[2] === type || (type === "著作" && r[2] === "著作/译著") || (type === "教学" && r[2] === "教学/获奖") || (type === "软著" && r[2] === "专利/软著")) &&
+        (!q || r.join(" ").toLowerCase().includes(q))
+      );
+      document.getElementById("libraryRows").innerHTML = rows.map(r => `
+        <tr><td>${r[0]}</td><td>${r[1]}</td><td><span class="type-pill">${r[2]}</span></td><td>${r[3]}</td><td>${r[4]}</td></tr>
+      `).join("") || `<tr><td colspan="5">没有匹配结果。</td></tr>`;
+    }
+
+    function animateCounters() {
+      document.querySelectorAll("[data-count]").forEach(el => {
+        const end = Number(el.dataset.count);
+        let value = 0;
+        const step = Math.max(1, Math.ceil(end / 42));
+        const timer = setInterval(() => {
+          value += step;
+          if (value >= end) { value = end; clearInterval(timer); }
+          el.textContent = value;
+        }, 22);
+      });
+    }
+
+    function setupReveal() {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      }, { threshold: .14 });
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+    }
+
+    window.addEventListener("load", () => {
+      drawRadar();
+      drawDonut();
+      drawKeywordMap();
+      renderDetails();
+      renderThemeBars();
+      renderScholarPortraits();
+      renderNetwork();
+      renderLibrary();
+      animateCounters();
+      setupReveal();
+      window.addEventListener("resize", () => { drawRadar(); drawDonut(); drawKeywordMap(); });
+    });
+  </script>
+</body>
+</html>
