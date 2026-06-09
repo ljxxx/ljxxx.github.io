@@ -183,6 +183,48 @@
     .grid { display: grid; gap: 18px; }
     .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .diagram-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+    .diagram-card .card-inner { padding: 18px; }
+    .diagram-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+    .diagram-head h3 { margin: 0; font-size: clamp(22px, 3vw, 34px); line-height: 1.1; }
+    .diagram-head p { margin: 0; max-width: 520px; line-height: 1.55; color: #000; font-weight: 700; }
+    .diagram-frame {
+      display: block;
+      border: 4px solid #000;
+      background: #fff;
+      box-shadow: 7px 7px 0 #000;
+      overflow: auto;
+      max-height: min(72vh, 760px);
+      text-decoration: none;
+    }
+    .diagram-frame img {
+      display: block;
+      width: 100%;
+      min-width: 900px;
+      height: auto;
+    }
+    .diagram-caption {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .diagram-caption span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 10px;
+      border: 3px solid #000;
+      background: var(--yellow);
+      font-weight: 800;
+      box-shadow: 4px 4px 0 #000;
+    }
     .card {
       border: 4px solid var(--line);
       border-radius: var(--radius);
@@ -497,6 +539,9 @@
       .toolbar { grid-template-columns: 1fr; }
       .metric-row { grid-template-columns: 1fr; }
       .portfolio-badge { justify-self: start; }
+      .diagram-head { display: block; }
+      .diagram-head p { margin-top: 10px; max-width: none; }
+      .diagram-frame img { min-width: 780px; }
     }
   </style>
 </head>
@@ -508,6 +553,7 @@
         <a href="#overview">总览</a>
         <a href="#profiles">人物画像</a>
         <a href="#collab">协同框架</a>
+        <a href="#diagrams">机制图示</a>
         <a href="#network">合作网络</a>
         <a href="#matrix">研究矩阵</a>
         <a href="#quality">学术评价</a>
@@ -634,6 +680,43 @@
             <div><h3>网红城市的虚实空间治理</h3><p>周恺牵引网红城市、网红空间和虚实结合研究，陈煊负责线下空间营造和社会参与，彭科补足消费行为、食品获取和健康效应评价。</p></div>
           </div>
         </div>
+    </section>
+
+    <section id="diagrams">
+      <div class="section-head reveal">
+        <h2>机制图示</h2>
+        <p>将协同关系进一步转译为可展示、可讨论的机制图和技术路线图，便于外部读者快速理解三人的互补结构。</p>
+      </div>
+      <div class="diagram-grid">
+        <article class="card diagram-card reveal">
+          <div class="card-inner">
+            <div class="diagram-head">
+              <h3>科研方向与技术机制协同图</h3>
+              <p>以“价值—场景—健康”闭环解释城市更新、消费空间、社区生活圈与食物链治理的交叉机制。</p>
+            </div>
+            <a class="diagram-frame" href="photos/research-mechanism-map.png" target="_blank" rel="noopener" aria-label="打开科研方向与技术机制协同图大图">
+              <img src="photos/research-mechanism-map.png" alt="三人科研方向与技术机制协同图">
+            </a>
+            <div class="diagram-caption">
+              <span>价值建构</span><span>场景转译</span><span>健康反馈</span><span>数据与技术底座</span><span>治理与运营闭环</span>
+            </div>
+          </div>
+        </article>
+        <article class="card diagram-card reveal">
+          <div class="card-inner">
+            <div class="diagram-head">
+              <h3>合作技术路线图</h3>
+              <p>围绕议题共建、多源数据、机制解释、方案生成和成果转化，呈现三位学者可互补的研究流程。</p>
+            </div>
+            <a class="diagram-frame" href="photos/collaboration-technical-route.png" target="_blank" rel="noopener" aria-label="打开合作技术路线图大图">
+              <img src="photos/collaboration-technical-route.png" alt="三人合作技术路线图">
+            </a>
+            <div class="diagram-caption">
+              <span>议题共建</span><span>多源数据</span><span>模型集成</span><span>方案迭代</span><span>成果转化</span>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="network">
